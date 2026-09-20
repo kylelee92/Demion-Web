@@ -1,0 +1,20 @@
+node_modules/
+
+# 빌드 산출물
+dist/
+build/
+.vite/
+
+# 비밀키 — 절대 커밋 금지
+.env
+.env.*
+!.env.example
+
+# 로컬 전용 설정
+.claude/settings.local.json
+.impeccable/config.local.json
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+*.log
