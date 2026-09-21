@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-22T00:00:00+09:00",
+  "title": "Design System: 골목 리소 전단지 (Alley Riso Flyer)",
+  "extensions": {
+    "colorMeta": {
+      "federal-blue": { "role": "primary", "displayName": "Federal Blue", "canonical": "#1e4fff", "cssVar": "--blue", "tonalRamp": ["oklch(18% 0.09 264)", "oklch(28% 0.15 264)", "oklch(38% 0.21 264)", "oklch(52% 0.26 264)", "oklch(62% 0.2 264)", "oklch(72% 0.14 264)", "oklch(84% 0.08 264)", "oklch(95% 0.025 264)"] },
+      "blue-ink-dense": { "role": "primary", "displayName": "Dense Blue Ink", "canonical": "#1537c9", "cssVar": "--ink", "tonalRamp": ["oklch(16% 0.08 265)", "oklch(26% 0.14 265)", "oklch(42% 0.22 265)", "oklch(52% 0.22 265)", "oklch(62% 0.17 265)", "oklch(72% 0.12 265)", "oklch(84% 0.06 265)", "oklch(95% 0.02 265)"] },
+      "blue-underlay": { "role": "primary", "displayName": "Blue Underlay", "canonical": "#2b58ff", "cssVar": "--blue-under", "tonalRamp": ["oklch(18% 0.09 266)", "oklch(30% 0.15 266)", "oklch(42% 0.21 266)", "oklch(55% 0.25 266)", "oklch(64% 0.2 266)", "oklch(74% 0.13 266)", "oklch(85% 0.07 266)", "oklch(95% 0.025 266)"] },
+      "fluoro-pink": { "role": "secondary", "displayName": "Fluoro Pink", "canonical": "#ff3ea5", "cssVar": "--pink", "tonalRamp": ["oklch(22% 0.09 355)", "oklch(34% 0.15 355)", "oklch(48% 0.2 355)", "oklch(58% 0.24 355)", "oklch(66% 0.26 355)", "oklch(76% 0.17 355)", "oklch(86% 0.09 355)", "oklch(95% 0.03 355)"] },
+      "pink-double-hit": { "role": "secondary", "displayName": "Pink Double-Hit", "canonical": "#ff0f6b", "cssVar": "--pink-dense", "tonalRamp": ["oklch(20% 0.08 8)", "oklch(32% 0.14 8)", "oklch(46% 0.2 8)", "oklch(56% 0.23 8)", "oklch(63% 0.25 8)", "oklch(74% 0.17 8)", "oklch(85% 0.09 8)", "oklch(95% 0.03 8)"] },
+      "sunflower": { "role": "tertiary", "displayName": "Sunflower", "canonical": "#ffd22a", "cssVar": "--sun", "tonalRamp": ["oklch(25% 0.05 92)", "oklch(38% 0.08 92)", "oklch(52% 0.11 92)", "oklch(66% 0.14 92)", "oklch(78% 0.16 92)", "oklch(88% 0.17 92)", "oklch(93% 0.1 92)", "oklch(97% 0.04 92)"] },
+      "newsprint": { "role": "neutral", "displayName": "Cool Newsprint", "canonical": "#e4e6e3", "cssVar": "--paper", "tonalRamp": ["oklch(18% 0.004 145)", "oklch(30% 0.004 145)", "oklch(42% 0.004 145)", "oklch(55% 0.004 145)", "oklch(68% 0.004 145)", "oklch(80% 0.004 145)", "oklch(92% 0.004 145)", "oklch(97% 0.003 145)"] },
+      "paper-ink": { "role": "neutral", "displayName": "Paper Ink", "canonical": "#f4f3ee", "cssVar": "--paper-ink", "tonalRamp": ["oklch(18% 0.007 95)", "oklch(30% 0.007 95)", "oklch(42% 0.007 95)", "oklch(55% 0.007 95)", "oklch(68% 0.007 95)", "oklch(80% 0.007 95)", "oklch(90% 0.007 95)", "oklch(96.5% 0.007 95)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display (Black Han Sans)", "purpose": "Hero headline only; one phrase per line, each line an overprinted plate." },
+      "headline": { "displayName": "Headline (Black Han Sans)", "purpose": "Section titles, overprinted; flood sections may run to clamp(48px, 7vw, 112px)." },
+      "title": { "displayName": "Title (Black Han Sans)", "purpose": "Price-tag item names and brand marks." },
+      "body": { "displayName": "Body (Pretendard)", "purpose": "Running text, ledes, notes; word-break keep-all." },
+      "label": { "displayName": "Label (Do Hyeon)", "purpose": "Nav, buttons, tag titles, visit labels. Never uppercase-tracked; never an eyebrow above a heading." },
+      "figure": { "displayName": "Figure (Do Hyeon, tabular)", "purpose": "Prices, clock times, hours." }
+    },
+    "shadows": [],
+    "overprint": [
+      { "name": "misregistration", "value": "translate(var(--misreg-x), var(--misreg-y)) = translate(5px, 3px)", "purpose": "The only offset in the system: the pink plate (outline or type duplicate) behind buttons, tags, headlines. Zeroed under prefers-reduced-motion." },
+      { "name": "riso-a", "value": "SVG filter: feTurbulence fractalNoise baseFrequency 0.55, numOctaves 3, seed 3; alpha matrix 0 0 0 -3 2.55; composite in", "purpose": "Grain voids for type plates, stamps, illustration." },
+      { "name": "riso-b", "value": "SVG filter: feTurbulence fractalNoise baseFrequency 0.6, numOctaves 3, seed 11; alpha matrix 0 0 0 -3 2.55; composite in", "purpose": "Grain voids for button faces, tags, paper notes (second drum)." },
+      { "name": "riso-flood", "value": "SVG filter: feTurbulence fractalNoise baseFrequency 0.7, numOctaves 3, seed 5; alpha matrix 0 0 0 -3 2.6; composite in", "purpose": "Finer grain for full-section floods." },
+      { "name": "paper-fibre", "value": "fixed body::after, fractalNoise 0.6 tinted, mix-blend-mode multiply, opacity 0.1", "purpose": "Faint paper texture across the whole page." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All plate movement." },
+      { "name": "register", "value": "0.9s ease-out; from translate(24px, -16px) opacity 0 to the misregistration vector; 0.08s stagger per line", "purpose": "Headline pink plates slide in on load." },
+      { "name": "shudder", "value": "0.32s ease-out; misreg -> (9px, 0) -> (2px, 5px) -> misreg", "purpose": "Tag pink plate on hover, once." },
+      { "name": "button-register", "value": "0.25s ease-out; pink plate to translate(1px, 1px) on hover; button translate(2px, 2px) on active", "purpose": "Button feedback." }
+    ],
+    "breakpoints": [
+      { "name": "lg", "value": "1080px", "note": "Board to 2 columns; hero stacks type, art, floating tag." },
+      { "name": "md", "value": "900px", "note": "Flood and visit grids to single column." },
+      { "name": "sm", "value": "640px", "note": "Board to 1 column, tag tilts removed, bar wraps." }
+    ],
+    "siteSpecific": [
+      "Loaf illustration and its drop keyframe",
+      "Hero art and floating times-tag coordinates tuned to the 하루치 headline",
+      "Six-item board with 2x2 lead item and lead-tag loaf mark",
+      "Store hours, bake times, sold-out rules in script.js; stamp wording 품절 / 오늘 없음"
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main action: blue ink face on blue underlay with the pink plate misregistered behind.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\"><span>오늘 매대 보기</span><svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><path d=\"M3 9h11M10 4.5 14.5 9 10 13.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\"/></svg></a>",
+      "css": ".ds-btn { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 22px; font-family: 'Do Hyeon', sans-serif; font-size: 21px; text-decoration: none; transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn::after { content: ''; position: absolute; inset: 0; z-index: -2; border: 2px solid var(--pink, #ff3ea5); transform: translate(5px, 3px); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn:hover::after { transform: translate(1px, 1px); } .ds-btn:active { transform: translate(2px, 2px); } .ds-btn:focus-visible { outline: 3px solid var(--ink, #1537c9); outline-offset: 3px; } .ds-btn-primary { color: var(--paper-ink, #f4f3ee); background: var(--blue, #1e4fff); }"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "Secondary action: blue outline plate with pink plate offset.",
+      "html": "<a class=\"ds-btn-line\" href=\"#\"><span>오시는 길</span><svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><path d=\"M3 9h11M10 4.5 14.5 9 10 13.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\"/></svg></a>",
+      "css": ".ds-btn-line { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 22px; font-family: 'Do Hyeon', sans-serif; font-size: 21px; text-decoration: none; color: var(--blue, #1e4fff); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-line::before { content: ''; position: absolute; inset: 0; z-index: -1; border: 2px solid var(--blue, #1e4fff); } .ds-btn-line::after { content: ''; position: absolute; inset: 0; z-index: -2; border: 2px solid var(--pink, #ff3ea5); transform: translate(5px, 3px); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-line:hover::after { transform: translate(1px, 1px); } .ds-btn-line:active { transform: translate(2px, 2px); } .ds-btn-line:focus-visible { outline: 3px solid var(--ink, #1537c9); outline-offset: 3px; }"
+    },
+    {
+      "name": "Paper Button",
+      "kind": "button",
+      "refersTo": "button-paper",
+      "description": "Action on the blue flood: paper face, blue text, pink plate offset.",
+      "html": "<div class=\"ds-flood\"><a class=\"ds-btn-paper\" href=\"#\"><span>네이버 지도에서 찾기</span><svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" aria-hidden=\"true\"><path d=\"M4.5 13.5l9-9M6 4.5h7.5V12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\"/></svg></a></div>",
+      "css": ".ds-flood { background: var(--blue, #1e4fff); padding: 32px; } .ds-btn-paper { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 22px; font-family: 'Do Hyeon', sans-serif; font-size: 21px; text-decoration: none; color: var(--blue, #1e4fff); background: var(--paper-ink, #f4f3ee); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-paper::after { content: ''; position: absolute; inset: 0; z-index: -2; border: 2px solid var(--pink, #ff3ea5); transform: translate(5px, 3px); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-paper:hover::after { transform: translate(1px, 1px); } .ds-btn-paper:active { transform: translate(2px, 2px); } .ds-btn-paper:focus-visible { outline: 3px solid var(--paper-ink, #f4f3ee); outline-offset: 3px; }"
+    },
+    {
+      "name": "Price Tag",
+      "kind": "card",
+      "refersTo": "price-tag",
+      "description": "Signature card: paper tag with blue border, punched hole, pink plate that shudders on hover.",
+      "html": "<div class=\"ds-tag\"><h3 class=\"ds-tag-name\">소금빵</h3><p class=\"ds-tag-price\">3,200원</p><p class=\"ds-tag-note\">보통 13시 전에 다 나갑니다</p></div>",
+      "css": ".ds-tag { position: relative; isolation: isolate; width: 260px; padding: 22px 22px 20px; color: var(--ink, #1537c9); transform: rotate(-1deg); } .ds-tag::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at calc(100% - 20px) 18px, var(--paper, #e4e6e3) 0 5px, var(--blue, #1e4fff) 5.5px 7.5px, transparent 8px), var(--paper-ink, #f4f3ee); border: 2px solid var(--blue, #1e4fff); } .ds-tag::after { content: ''; position: absolute; inset: 0; z-index: -2; border: 2px solid var(--pink, #ff3ea5); transform: translate(5px, 3px); } .ds-tag:hover::after { animation: ds-shudder 0.32s cubic-bezier(0.16, 1, 0.3, 1); } @keyframes ds-shudder { 0% { transform: translate(5px, 3px); } 35% { transform: translate(9px, 0); } 70% { transform: translate(2px, 5px); } 100% { transform: translate(5px, 3px); } } .ds-tag-name { margin: 0; padding-right: 28px; font-family: 'Black Han Sans', sans-serif; font-weight: 400; font-size: 30px; line-height: 1.15; color: var(--blue, #1e4fff); } .ds-tag-price { margin: 14px 0 0; font-family: 'Do Hyeon', sans-serif; font-size: 26px; font-variant-numeric: tabular-nums; } .ds-tag-note { margin: 6px 0 0; font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 15px; line-height: 1.5; }"
+    },
+    {
+      "name": "Sold-out Stamp",
+      "kind": "custom",
+      "refersTo": "stamp",
+      "description": "Double-hit pink stamp slammed onto an unavailable tag; name and price fade, price struck.",
+      "html": "<div class=\"ds-stamped\"><h3 class=\"ds-stamped-name\">소금빵</h3><p class=\"ds-stamped-price\">3,200원</p><span class=\"ds-stamp\" aria-hidden=\"true\">품절</span></div>",
+      "css": ".ds-stamped { position: relative; width: 260px; padding: 22px; background: var(--paper-ink, #f4f3ee); border: 2px solid var(--blue, #1e4fff); color: var(--ink, #1537c9); } .ds-stamped-name { margin: 0; font-family: 'Black Han Sans', sans-serif; font-weight: 400; font-size: 30px; color: var(--blue, #1e4fff); opacity: 0.5; } .ds-stamped-price { margin: 14px 0 0; font-family: 'Do Hyeon', sans-serif; font-size: 26px; opacity: 0.5; text-decoration: line-through; text-decoration-thickness: 2px; } .ds-stamp { position: absolute; top: 38%; left: 64%; translate: -50% -50%; rotate: -12deg; padding: 2px 14px; border: 4px solid var(--pink-dense, #ff0f6b); color: var(--pink-dense, #ff0f6b); font-family: 'Black Han Sans', sans-serif; font-size: 34px; line-height: 1.2; white-space: nowrap; mix-blend-mode: multiply; }"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "top-bar",
+      "description": "Sticky newsprint bar: display mark, label nav with pink hover underline, live status dot.",
+      "html": "<header class=\"ds-bar\"><a class=\"ds-bar-mark\" href=\"#\">하루치</a><nav class=\"ds-bar-nav\"><a href=\"#\">매대</a><a href=\"#\">이야기</a><a href=\"#\">오시는 길</a></nav><p class=\"ds-bar-status\">지금 영업 중 · 19시까지</p></header>",
+      "css": ".ds-bar { display: flex; align-items: center; gap: 32px; padding: 10px 24px; background: var(--paper, #e4e6e3); border-bottom: 1px solid var(--pink, #ff3ea5); } .ds-bar-mark { font-family: 'Black Han Sans', sans-serif; font-size: 28px; line-height: 1; letter-spacing: 0.02em; color: var(--blue, #1e4fff); text-decoration: none; } .ds-bar-nav { display: flex; gap: 24px; font-family: 'Do Hyeon', sans-serif; font-size: 19px; } .ds-bar-nav a { padding-block: 12px; color: var(--blue, #1e4fff); text-decoration: none; } .ds-bar-nav a:hover { text-decoration: underline; text-decoration-color: var(--pink, #ff3ea5); text-decoration-thickness: 3px; text-underline-offset: 0.22em; } .ds-bar-nav a:focus-visible { outline: 3px solid var(--ink, #1537c9); outline-offset: 3px; } .ds-bar-status { margin: 0 0 0 auto; display: flex; align-items: center; gap: 8px; font-family: 'Do Hyeon', sans-serif; font-size: 17px; color: var(--ink, #1537c9); font-variant-numeric: tabular-nums; } .ds-bar-status::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--pink, #ff3ea5); }"
+    },
+    {
+      "name": "Overprint Headline",
+      "kind": "custom",
+      "refersTo": "typography.display",
+      "description": "Blue type plate with a pink duplicate offset by the misregistration vector and multiplied; violet where they cross.",
+      "html": "<h2 class=\"ds-overprint\"><span class=\"ds-plate\" data-text=\"오늘 구운\">오늘 구운</span><span class=\"ds-plate\" data-text=\"만큼만\">만큼만</span></h2>",
+      "css": ".ds-overprint { margin: 0; font-family: 'Black Han Sans', sans-serif; font-weight: 400; font-size: 72px; line-height: 0.96; letter-spacing: -0.025em; } .ds-plate { position: relative; display: block; color: var(--blue, #1e4fff); } .ds-plate::before { content: attr(data-text); position: absolute; inset: 0; color: var(--pink, #ff3ea5); mix-blend-mode: multiply; transform: translate(5px, 3px); pointer-events: none; }"
+    },
+    {
+      "name": "Blue Flood Info Cell",
+      "kind": "custom",
+      "refersTo": "flood-blue",
+      "description": "Full-bleed blue flood with knockout paper text, pink-underlined labels, translucent paper hairlines.",
+      "html": "<section class=\"ds-blue\"><div class=\"ds-cell\"><h3 class=\"ds-cell-label\">영업시간</h3><p class=\"ds-cell-value\">화 – 금 08:00 – 19:00</p></div></section>",
+      "css": ".ds-blue { background: var(--blue, #1e4fff); color: var(--paper-ink, #f4f3ee); padding: 48px 32px; } .ds-cell { padding: 28px 0 32px; border-top: 1px solid rgba(244, 243, 238, 0.55); border-bottom: 1px solid rgba(244, 243, 238, 0.55); } .ds-cell-label { margin: 0; font-family: 'Do Hyeon', sans-serif; font-weight: 400; font-size: 22px; text-decoration: underline; text-decoration-color: var(--pink, #ff3ea5); text-decoration-thickness: 3px; text-underline-offset: 8px; } .ds-cell-value { margin: 14px 0 0; font-family: 'Pretendard Variable', Pretendard, sans-serif; font-size: 20px; line-height: 1.5; font-variant-numeric: tabular-nums; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Alley Riso Flyer",
+    "overview": "The page is a two-color risograph flyer pasted to a telephone pole in a residential alley. Cool grey newsprint carries two spot inks, fluoro pink and federal blue, printed as separate plates that never quite line up. Where the plates overlap, multiply blending makes a deep violet the way real ink does. Every inked surface is grainy: SVG turbulence filters punch voids into the ink so the paper shows through. A third ink, sunflower, floods one whole section and fills parts of the illustration. It is never used for UI chrome or text.\n\nDensity is poster-like. Headlines are huge, compressed Korean gothic set edge to edge. Information sits on small paper price tags pinned to the page at slight angles. There are no photographs by default: illustration is made from flat printed shapes (circles, domes, slabs, halftone dot fields), each on its own plate. The signature behavior is misregistration. The pink plate sits offset by a fixed vector (5px, 3px), slides in on load, shudders once on hover, and snaps to perfect register under reduced motion.\n\nThis world is a style preset, and its first site is a fictional bakery. The palette, plates, grain, tag, stamp, flood sections, type stack and motion are reusable system. The loaf illustration, the bake-time schedule, the headline copy, the hero art coordinates, and the 3-column board with a 2×2 lead tag belong to 하루치 alone (see Components > Site-specific).",
+    "keyCharacteristics": [
+      "Two spot inks (pink, blue) on cool newsprint, plus one flood ink (sunflower).",
+      "Every ink plate carries grain voids, and plates overlap with multiply.",
+      "A fixed misregistration vector (5px, 3px) is the system's single offset.",
+      "Square corners everywhere except printed circles.",
+      "Compressed display gothic, a rounded label face for numbers and actions, and a neutral sans for body text.",
+      "Depth comes only from overprint and plate offset, never from light and shadow."
+    ],
+    "rules": [
+      { "name": "The Two Plates Rule", "body": "Anything inked is either a blue plate or a pink plate (sunflower only as flood or illustration fill). Overlaps are made with `mix-blend-mode: multiply`. Violet is never picked as a color. It only ever comes from overprint.", "section": "colors" },
+      { "name": "The Pink Never Speaks Rule", "body": "Fluoro pink is for shapes, offsets, hairlines, and underlines. Readable pink text uses only the double-hit pink, and only at stamp size or larger.", "section": "colors" },
+      { "name": "The Underlay Rule", "body": "Every grain-filtered surface that carries text sits on a solid underlay color (blue-underlay under blue, newsprint or paper-ink under paper). The voids then reveal a legible ground instead of dropping contrast.", "section": "colors" },
+      { "name": "The Marker Numerals Rule", "body": "Every price, clock time, and hour is set in Do Hyeon with tabular figures, never in the body face.", "section": "typography" },
+      { "name": "The One Weight Rule", "body": "All three faces run at weight 400. Hierarchy comes from size and face, not from bolding.", "section": "typography" },
+      { "name": "The Misregistration Rule", "body": "The only offset in the system is the pink plate shifted by (5px, 3px). It is drawn as an outline or a type duplicate, never as a filled or blurred shadow. Hover pulls it to (1px, 1px) on buttons or shudders it once on tags. Under `prefers-reduced-motion` the vector becomes (0, 0) and the plates print in perfect register.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do print every inked surface through a riso grain filter, and give text-bearing ink a solid underlay (The Underlay Rule).",
+      "Do make every overlap with multiply between the pink and blue plates, and let violet appear only there.",
+      "Do use the single (5px, 3px) misregistration vector for every offset plate, and zero it under reduced motion.",
+      "Do set prices, times, and hours in Do Hyeon with tabular figures.",
+      "Do keep containers square, and let roundness live in printed shapes only.",
+      "Do divide sections and cells with 1px hairlines (pink on paper, translucent paper-ink inside the blue flood)."
+    ],
+    "donts": [
+      "Don't set readable text in fluoro pink (#ff3ea5, about 2.6:1 on newsprint), and don't use the double-hit pink below stamp size.",
+      "Don't use sunflower for text, borders, or buttons, or place it on the blue flood.",
+      "Don't add blurred or light-based `box-shadow` elevation. Depth is only overprint and plate offset.",
+      "Don't warm the paper toward cream (#e6e6df was rejected for exactly this).",
+      "Don't introduce extra offset values or rotations beyond the tag tilts (-1°, 0.8°, -0.5°, -3° floating) and the stamp (-12°).",
+      "Don't bold any face. Everything is weight 400."
+    ]
+  }
+}

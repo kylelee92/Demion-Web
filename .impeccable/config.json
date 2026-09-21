@@ -1,1 +1,18 @@
-{"buildPath":"comp"}
+{
+  "buildPath": "comp",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/test/index.html"
+        ],
+        "createdAt": "2026-09-21T15:19:19.490Z",
+        "reason": "Claude measured computed padding in browser at 1440px: hero 80/48/96/48, story and visit 128/48/128/48; detector cannot resolve clamp() in the padding shorthand"
+      }
+    ]
+  }
+}

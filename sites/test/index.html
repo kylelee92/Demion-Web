@@ -13,126 +13,209 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
   <a class="skip" href="#main">본문 바로가기</a>
 
-  <header class="nav">
-    <nav class="nav__pill" aria-label="주 메뉴">
-      <span class="nav__mark">하루치</span>
+  <!-- 리소 잉크판. 잉크가 덜 묻은 자리(보이드)로 종이가 비친다.
+       드럼마다 입자가 달라서 판마다 seed를 달리 쓴다. -->
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <filter id="riso-a" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="3" seed="3" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3 2.55" result="v"/>
+      <feComposite in="SourceGraphic" in2="v" operator="in"/>
+    </filter>
+    <filter id="riso-b" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" seed="11" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3 2.55" result="v"/>
+      <feComposite in="SourceGraphic" in2="v" operator="in"/>
+    </filter>
+    <!-- 넓은 면(해바라기·블루)은 입자를 조금 더 곱게 -->
+    <filter id="riso-flood" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" seed="5" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -3 2.6" result="v"/>
+      <feComposite in="SourceGraphic" in2="v" operator="in"/>
+    </filter>
+    <!-- 밀가루: 블루 잉크 망점 -->
+    <pattern id="halftone" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(22)">
+      <circle cx="4.5" cy="4.5" r="2.1" fill="var(--blue)"/>
+    </pattern>
+    <pattern id="halftone-paper" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(-18)">
+      <circle cx="5" cy="5" r="2.4" fill="var(--paper-ink)"/>
+    </pattern>
+    <clipPath id="dough-clip">
+      <path d="M22 316C22 184 104 70 196 70s174 114 174 246z"/>
+    </clipPath>
+  </svg>
+
+  <header class="bar">
+    <a class="bar__mark" href="#top" aria-label="하루치 처음으로">하루치</a>
+    <nav class="bar__nav" aria-label="주 메뉴">
       <a href="#menu">매대</a>
       <a href="#story">이야기</a>
       <a href="#visit">오시는 길</a>
     </nav>
+    <p class="bar__status" data-status-wrap><span data-status>화–금 08–19 · 토–일 09–18</span><span class="bar__closed">월 휴무</span></p>
   </header>
 
   <main id="main">
-    <section class="hero wrap">
-      <div class="hero__text">
-        <h1 class="hero__title">
-          <span class="hero__line">오늘 구운 만큼만</span>
-          <span class="hero__line">팝니다<em class="hero__dot">.</em></span>
-        </h1>
-        <p class="hero__body">하루치는 그날 팔 만큼만 굽습니다. 남은 빵을 다음 날 내놓지 않기 위해서입니다. 오후 늦게 오시면 매대가 비어 있을 수 있습니다.</p>
-
-        <div class="hero__actions">
-          <a class="btn" href="#menu">
-            <span>오늘의 매대 보기</span>
-            <span class="btn__icon" aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 10.5L10.5 2.5M10.5 2.5H4.5M10.5 2.5V8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </a>
-          <a class="link" href="#visit">영업시간 확인</a>
-        </div>
-
-        <dl class="stats">
-          <div class="stats__item"><dt class="stats__value">06:30</dt><dd class="stats__label">첫 반죽 시작</dd></div>
-          <div class="stats__item"><dt class="stats__value">12</dt><dd class="stats__label">매일 굽는 품목</dd></div>
-          <div class="stats__item"><dt class="stats__value">0</dt><dd class="stats__label">전날 빵 판매</dd></div>
-        </dl>
+    <section class="hero" id="top">
+      <div class="hero__art" aria-hidden="true">
+        <svg class="loaf" viewBox="0 0 460 360">
+          <!-- 해바라기 해: 오른쪽 아래, 빵 옆 -->
+          <circle class="ink ink--sun" cx="372" cy="226" r="86" fill="var(--sun)" filter="url(#riso-b)"/>
+          <!-- 핑크 반죽: 둥근 돔 + 평평한 밑면 (헤드라인 첫 줄 뒤로 들어간다) -->
+          <path class="ink ink--pink" d="M22 316C22 184 104 70 196 70s174 114 174 246z" fill="var(--pink)" filter="url(#riso-a)"/>
+          <!-- 껍질 테: 같은 핑크를 한 번 더 찍어 가장자리가 진하다 -->
+          <path class="ink ink--pink" d="M30 312C34 190 110 82 196 82s162 108 166 230" fill="none" stroke="var(--pink)" stroke-width="16" filter="url(#riso-b)"/>
+          <!-- 밀가루 망점 -->
+          <g class="ink ink--blue" clip-path="url(#dough-clip)" filter="url(#riso-b)">
+            <path d="M0 60h280v70C200 150 120 190 40 250H0z" fill="url(#halftone)"/>
+          </g>
+          <!-- 쿠프: 벌어진 칼집 속 크럼(해바라기)과 그 위로 들린 귀(블루) -->
+          <path class="ink ink--sun" d="M86 206C146 156 232 134 282 136 232 150 166 172 86 206z" fill="var(--sun)" filter="url(#riso-a)"/>
+          <path class="ink ink--blue" d="M78 206C130 136 222 110 286 120l-6 14C222 124 148 152 90 214z" fill="var(--blue)" filter="url(#riso-a)"/>
+          <!-- 바닥선 -->
+          <rect class="ink ink--blue" x="8" y="316" width="376" height="14" fill="var(--blue)" filter="url(#riso-b)"/>
+        </svg>
       </div>
 
-      <figure class="hero__figure">
-        <!-- 교체 지점: 고객 실제 사진이나 생성 이미지로 바꾼다.
-             images/hero.jpg 로 넣고 src 만 바꾸면 된다. -->
-        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80"
-             alt="갓 구운 빵이 놓인 베이커리 매대" width="1200" height="1500">
-        <figcaption>연희동 · 2019년부터</figcaption>
-      </figure>
+      <div class="hero__type">
+        <h1 class="hero__title">
+          <span class="plate" data-text="오늘 구운">오늘 구운</span>
+          <span class="plate" data-text="만큼만">만큼만</span>
+          <span class="plate" data-text="팝니다">팝니다</span>
+        </h1>
+        <p class="hero__lede">연희동 골목의 하루치는 그날 팔 만큼만 굽습니다. 남은 빵은 다음 날 매대에 올리지 않습니다. 오후 늦게 오시면 비어 있을 수 있어요.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#menu">
+            <span>오늘 매대 보기</span>
+            <svg class="btn__arrow" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M10 4.5 14.5 9 10 13.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+          </a>
+          <a class="btn btn--line" href="#visit">
+            <span>오시는 길</span>
+            <svg class="btn__arrow" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M10 4.5 14.5 9 10 13.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <aside class="tag tag--times" aria-labelledby="times-title">
+        <h2 class="tag__title" id="times-title">오늘 나오는 시각</h2>
+        <ol class="times">
+          <li><time>08:00</time><span>통밀 캄파뉴 · 소금빵</span></li>
+          <li><time>10:30</time><span>크로와상 · 포카치아</span></li>
+          <li><time>14:00</time><span>통밀 캄파뉴 두 번째</span></li>
+        </ol>
+      </aside>
     </section>
 
-    <section id="menu" class="menu wrap reveal">
-      <div class="section__head">
-        <h2>오늘의 매대</h2>
-        <p class="section__note">품목은 계절과 재료에 따라 바뀝니다</p>
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <div class="menu__head">
+        <h2 class="section-title" id="menu-title">
+          <span class="plate" data-text="오늘의 매대">오늘의 매대</span>
+        </h2>
+        <p class="menu__note">품목은 계절과 재료에 따라 바뀝니다. 가격은 1개 기준입니다.</p>
       </div>
-      <ul class="menu__list">
-        <li class="menu__item">
-          <div class="menu__row"><span class="menu__name">통밀 캄파뉴</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">7,500원</span></div>
-          <p class="menu__note">하루 두 번, 8시 · 14시</p>
+
+      <ul class="tags">
+        <li class="tag tag--lead">
+          <h3 class="tag__name">통밀 캄파뉴</h3>
+          <p class="tag__price">7,500원</p>
+          <p class="tag__note">하루 두 번 굽습니다. 반 개도 팝니다.</p>
+          <p class="tag__bake" aria-label="굽는 시각 08시와 14시"><time>08:00</time><time>14:00</time></p>
+          <svg class="tag__mark" viewBox="0 0 120 90" aria-hidden="true">
+            <path d="M6 84C6 40 34 10 64 10s58 30 58 74z" fill="var(--pink)" filter="url(#riso-a)"/>
+            <path d="M22 52C42 28 76 20 104 30l-2 6C76 28 46 36 28 58z" fill="var(--blue)" filter="url(#riso-b)"/>
+          </svg>
         </li>
-        <li class="menu__item">
-          <div class="menu__row"><span class="menu__name">소금빵</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">3,200원</span></div>
-          <p class="menu__note">가장 빨리 나갑니다</p>
+        <li class="tag" data-soldout-after="13:00">
+          <h3 class="tag__name">소금빵</h3>
+          <p class="tag__price">3,200원</p>
+          <p class="tag__note">보통 13시 전에 다 나갑니다</p>
+          <span class="stamp" aria-hidden="true">품절</span>
         </li>
-        <li class="menu__item">
-          <div class="menu__row"><span class="menu__name">무화과 호밀</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">8,000원</span></div>
-          <p class="menu__note">수 · 토요일만</p>
+        <li class="tag" data-days="3,6">
+          <h3 class="tag__name">무화과 호밀</h3>
+          <p class="tag__price">8,000원</p>
+          <p class="tag__note">수요일 · 토요일만</p>
+          <span class="stamp" aria-hidden="true">오늘 없음</span>
         </li>
-        <li class="menu__item">
-          <div class="menu__row"><span class="menu__name">버터 크로와상</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">4,500원</span></div>
+        <li class="tag">
+          <h3 class="tag__name">버터 크로와상</h3>
+          <p class="tag__price">4,500원</p>
+          <p class="tag__note">10:30부터</p>
         </li>
-        <li class="menu__item">
-          <div class="menu__row"><span class="menu__name">올리브 포카치아</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">6,800원</span></div>
+        <li class="tag">
+          <h3 class="tag__name">올리브 포카치아</h3>
+          <p class="tag__price">6,800원</p>
+          <p class="tag__note">10:30부터</p>
         </li>
-        <li class="menu__item">
-          <div class="menu__row"><span class="menu__name">드립 커피</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">4,500원</span></div>
-          <p class="menu__note">직접 볶은 원두</p>
+        <li class="tag">
+          <h3 class="tag__name">드립 커피</h3>
+          <p class="tag__price">4,500원</p>
+          <p class="tag__note">직접 볶은 원두</p>
         </li>
       </ul>
     </section>
 
-    <section id="story" class="story wrap reveal">
-      <div class="story__aside">
-        <span class="story__eyebrow">Since 2019</span>
-        <h2><span class="story__line">빵은 다음 날</span><span class="story__line">다른 음식이 됩니다</span></h2>
+    <section class="story" id="story" aria-labelledby="story-title">
+      <svg class="story__shapes" viewBox="0 0 520 420" aria-hidden="true">
+        <circle cx="330" cy="200" r="170" fill="var(--pink)" filter="url(#riso-a)"/>
+        <rect class="overprint" x="40" y="150" width="330" height="190" fill="var(--blue)" transform="rotate(-9 205 245)" filter="url(#riso-b)"/>
+      </svg>
+      <h2 class="story__title" id="story-title">
+        <span class="plate" data-text="빵은 다음 날">빵은 다음 날</span>
+        <span class="plate" data-text="다른 음식이 됩니다">다른 음식이 됩니다</span>
+      </h2>
+      <div class="story__body">
+        <p>반죽은 전날 저녁에 잡고, 새벽에 굽습니다. 그날 나온 빵은 그날 팝니다.</p>
+        <p>문을 닫을 때 남은 것은 인근 복지관으로 보내고, 다음 날 매대에는 올리지 않습니다. 재고를 줄이려고 만든 규칙이 아니라, 처음에 빵을 배운 방식이 그랬습니다.</p>
       </div>
-      <p class="story__body">반죽은 전날 저녁에 잡고, 새벽에 굽습니다. 그날 나온 빵은 그날 팝니다. 문을 닫을 때 남은 것은 인근 복지관으로 보내고, 다음 날 매대에는 올리지 않습니다. 재고를 줄이려고 만든 규칙이 아니라, 처음에 빵을 배운 방식이 그랬습니다.</p>
     </section>
 
-    <section id="visit" class="visit wrap reveal">
-      <h2 class="visit__title">오시는 길</h2>
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <svg class="visit__shape" viewBox="0 0 400 400" aria-hidden="true">
+        <circle cx="200" cy="200" r="190" fill="var(--pink)" filter="url(#riso-b)"/>
+        <rect x="60" y="150" width="280" height="140" fill="url(#halftone-paper)" transform="rotate(8 200 220)" filter="url(#riso-a)"/>
+      </svg>
+      <h2 class="section-title section-title--paper" id="visit-title">
+        <span class="plate plate--knockout" data-text="오시는 길">오시는 길</span>
+      </h2>
       <div class="visit__grid">
-        <div class="visit__block">
+        <div class="visit__cell">
           <h3 class="visit__label">주소</h3>
           <p class="visit__value">서울 서대문구 연희로11길 34</p>
-          <p class="visit__sub">1층 · 주차 공간 없음, 골목 안쪽</p>
-          <a class="link" href="https://map.naver.com/" target="_blank" rel="noopener noreferrer">지도에서 열기</a>
+          <p class="visit__sub">1층 · 골목 안쪽 · 주차 공간 없음</p>
+          <a class="btn btn--paper" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EC%84%9C%EB%8C%80%EB%AC%B8%EA%B5%AC%20%EC%97%B0%ED%9D%AC%EB%A1%9C11%EA%B8%B8%2034" target="_blank" rel="noopener noreferrer">
+            <span>네이버 지도에서 찾기</span>
+            <svg class="btn__arrow" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4.5 13.5l9-9M6 4.5h7.5V12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+          </a>
         </div>
-        <div class="visit__block">
+        <div class="visit__cell">
           <h3 class="visit__label">영업시간</h3>
           <dl class="hours">
-            <div class="hours__row"><dt>화 – 금</dt><dd>08:00 – 19:00</dd></div>
-            <div class="hours__row"><dt>토 – 일</dt><dd>09:00 – 18:00</dd></div>
+            <div><dt>화 – 금</dt><dd>08:00 – 19:00</dd></div>
+            <div><dt>토 – 일</dt><dd>09:00 – 18:00</dd></div>
+            <div><dt>월</dt><dd>쉽니다</dd></div>
           </dl>
-          <p class="visit__sub">매주 월요일 휴무</p>
         </div>
-        <div class="visit__block">
+        <div class="visit__cell">
           <h3 class="visit__label">문의</h3>
-          <p class="visit__value"><a href="tel:020000000">02-000-0000</a></p>
+          <p class="visit__value"><a class="visit__tel" href="tel:020000000">02-000-0000</a></p>
           <p class="visit__sub">영업시간 중에만 받습니다</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="foot wrap">
+  <footer class="foot">
     <span class="foot__mark">하루치</span>
     <span class="foot__meta">연희동 베이커리 · 서울 서대문구 연희로11길 34</span>
-    <span class="foot__meta">© 2026 HARUCHI</span>
+    <span class="foot__meta foot__meta--note">검토용 시안 · 예시 데이터로 만든 가상의 가게입니다</span>
   </footer>
 
   <script src="script.js" defer></script>
