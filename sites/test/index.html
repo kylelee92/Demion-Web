@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 검토용 서브도메인은 검색에 노출되면 안 된다.
+       고객 도메인으로 이전할 때 이 줄을 지운다. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>하루치 베이커리 · 연희동</title>
+  <meta name="description" content="연희동 골목의 작은 베이커리. 그날 구운 만큼만 팝니다.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#main">본문 바로가기</a>
+
+  <header class="nav">
+    <nav class="nav__pill" aria-label="주 메뉴">
+      <span class="nav__mark">하루치</span>
+      <a href="#menu">매대</a>
+      <a href="#story">이야기</a>
+      <a href="#visit">오시는 길</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap">
+      <div class="hero__text">
+        <h1 class="hero__title">
+          <span class="hero__line">오늘 구운 만큼만</span>
+          <span class="hero__line">팝니다<em class="hero__dot">.</em></span>
+        </h1>
+        <p class="hero__body">하루치는 그날 팔 만큼만 굽습니다. 남은 빵을 다음 날 내놓지 않기 위해서입니다. 오후 늦게 오시면 매대가 비어 있을 수 있습니다.</p>
+
+        <div class="hero__actions">
+          <a class="btn" href="#menu">
+            <span>오늘의 매대 보기</span>
+            <span class="btn__icon" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 10.5L10.5 2.5M10.5 2.5H4.5M10.5 2.5V8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </a>
+          <a class="link" href="#visit">영업시간 확인</a>
+        </div>
+
+        <dl class="stats">
+          <div class="stats__item"><dt class="stats__value">06:30</dt><dd class="stats__label">첫 반죽 시작</dd></div>
+          <div class="stats__item"><dt class="stats__value">12</dt><dd class="stats__label">매일 굽는 품목</dd></div>
+          <div class="stats__item"><dt class="stats__value">0</dt><dd class="stats__label">전날 빵 판매</dd></div>
+        </dl>
+      </div>
+
+      <figure class="hero__figure">
+        <!-- 교체 지점: 고객 실제 사진이나 생성 이미지로 바꾼다.
+             images/hero.jpg 로 넣고 src 만 바꾸면 된다. -->
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80"
+             alt="갓 구운 빵이 놓인 베이커리 매대" width="1200" height="1500">
+        <figcaption>연희동 · 2019년부터</figcaption>
+      </figure>
+    </section>
+
+    <section id="menu" class="menu wrap reveal">
+      <div class="section__head">
+        <h2>오늘의 매대</h2>
+        <p class="section__note">품목은 계절과 재료에 따라 바뀝니다</p>
+      </div>
+      <ul class="menu__list">
+        <li class="menu__item">
+          <div class="menu__row"><span class="menu__name">통밀 캄파뉴</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">7,500원</span></div>
+          <p class="menu__note">하루 두 번, 8시 · 14시</p>
+        </li>
+        <li class="menu__item">
+          <div class="menu__row"><span class="menu__name">소금빵</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">3,200원</span></div>
+          <p class="menu__note">가장 빨리 나갑니다</p>
+        </li>
+        <li class="menu__item">
+          <div class="menu__row"><span class="menu__name">무화과 호밀</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">8,000원</span></div>
+          <p class="menu__note">수 · 토요일만</p>
+        </li>
+        <li class="menu__item">
+          <div class="menu__row"><span class="menu__name">버터 크로와상</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">4,500원</span></div>
+        </li>
+        <li class="menu__item">
+          <div class="menu__row"><span class="menu__name">올리브 포카치아</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">6,800원</span></div>
+        </li>
+        <li class="menu__item">
+          <div class="menu__row"><span class="menu__name">드립 커피</span><span class="menu__dots" aria-hidden="true"></span><span class="menu__price">4,500원</span></div>
+          <p class="menu__note">직접 볶은 원두</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="story" class="story wrap reveal">
+      <div class="story__aside">
+        <span class="story__eyebrow">Since 2019</span>
+        <h2><span class="story__line">빵은 다음 날</span><span class="story__line">다른 음식이 됩니다</span></h2>
+      </div>
+      <p class="story__body">반죽은 전날 저녁에 잡고, 새벽에 굽습니다. 그날 나온 빵은 그날 팝니다. 문을 닫을 때 남은 것은 인근 복지관으로 보내고, 다음 날 매대에는 올리지 않습니다. 재고를 줄이려고 만든 규칙이 아니라, 처음에 빵을 배운 방식이 그랬습니다.</p>
+    </section>
+
+    <section id="visit" class="visit wrap reveal">
+      <h2 class="visit__title">오시는 길</h2>
+      <div class="visit__grid">
+        <div class="visit__block">
+          <h3 class="visit__label">주소</h3>
+          <p class="visit__value">서울 서대문구 연희로11길 34</p>
+          <p class="visit__sub">1층 · 주차 공간 없음, 골목 안쪽</p>
+          <a class="link" href="https://map.naver.com/" target="_blank" rel="noopener noreferrer">지도에서 열기</a>
+        </div>
+        <div class="visit__block">
+          <h3 class="visit__label">영업시간</h3>
+          <dl class="hours">
+            <div class="hours__row"><dt>화 – 금</dt><dd>08:00 – 19:00</dd></div>
+            <div class="hours__row"><dt>토 – 일</dt><dd>09:00 – 18:00</dd></div>
+          </dl>
+          <p class="visit__sub">매주 월요일 휴무</p>
+        </div>
+        <div class="visit__block">
+          <h3 class="visit__label">문의</h3>
+          <p class="visit__value"><a href="tel:020000000">02-000-0000</a></p>
+          <p class="visit__sub">영업시간 중에만 받습니다</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot wrap">
+    <span class="foot__mark">하루치</span>
+    <span class="foot__meta">연희동 베이커리 · 서울 서대문구 연희로11길 34</span>
+    <span class="foot__meta">© 2026 HARUCHI</span>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

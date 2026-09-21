@@ -1,0 +1,395 @@
+/* ─────────────────────────────────────────────
+   프리셋 A · 에디토리얼 럭셔리
+   design-portfolio/디자인-시안-3종.md 의 시안 A.
+   다른 고객은 이 :root 값만 바꿔도 톤이 바뀐다.
+   ───────────────────────────────────────────── */
+:root {
+  --ground: #fdfbf7;
+  --ink: #2a211b;
+  --muted: #72645a;
+  --surface: #f3eee4;
+  --accent: #5f6d53;
+  --line: rgba(42, 33, 27, 0.14);
+  --hairline: rgba(42, 33, 27, 0.07);
+
+  --font-display: 'Gowun Batang', serif;
+  --font-latin: 'Instrument Serif', serif;
+  --font-body: 'Gowun Dodum', sans-serif;
+
+  --page: 1200px;
+  --gutter: 24px;
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  /* 한국어는 이게 없으면 단어 중간에서 줄이 끊긴다 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* 종이 질감 — 고정 레이어라 스크롤 중 다시 그리지 않는다 */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: radial-gradient(var(--ink) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--page);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 60;
+  background: var(--ink);
+  color: var(--ground);
+  padding: 12px 20px;
+}
+.skip:focus { left: 16px; top: 16px; }
+
+/* ── 내비 ── */
+.nav {
+  display: flex;
+  justify-content: center;
+  padding: 24px var(--gutter) 0;
+}
+.nav__pill {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 4vw, 40px);
+  padding: 12px 28px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 14px;
+}
+.nav__pill a {
+  padding-block: 10px;
+  transition: color 0.3s var(--ease);
+}
+.nav__pill a:hover { color: var(--accent); }
+.nav__mark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  font-size: 18px;
+}
+
+/* ── 히어로 ── */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.72fr);
+  gap: clamp(32px, 6vw, 72px);
+  padding-top: clamp(56px, 8vw, 96px);
+  align-items: start;
+}
+.hero__title {
+  margin-top: 0;
+  font-size: clamp(40px, 5.8vw, 84px);
+  line-height: 1.08;
+}
+.hero__line { display: block; }
+.hero__dot {
+  font-family: var(--font-latin);
+  font-style: italic;
+  color: var(--accent);
+}
+.hero__body {
+  margin: 32px 0 0;
+  max-width: 44ch;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--muted);
+}
+.hero__actions {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 48px;
+  background: var(--ink);
+  color: var(--ground);
+  border-radius: 999px;
+  padding: 7px 8px 7px 26px;
+  font-size: 15px;
+  transition: transform 0.4s var(--ease);
+}
+.btn:active { transform: scale(0.98); }
+.btn__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(253, 251, 247, 0.16);
+  display: grid;
+  place-items: center;
+  transition: transform 0.4s var(--ease);
+}
+.btn:hover .btn__icon { transform: translate(2px, -2px); }
+
+.link {
+  display: inline-block;
+  padding-block: 10px 3px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+.link:hover { border-color: var(--accent); color: var(--accent); }
+
+.stats {
+  margin: 64px 0 0;
+  display: flex;
+  gap: clamp(28px, 5vw, 48px);
+  flex-wrap: wrap;
+}
+.stats__item { margin: 0; }
+.stats__value {
+  font-family: var(--font-latin);
+  font-size: 38px;
+  line-height: 1.1;
+}
+.stats__label {
+  margin: 2px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.hero__figure {
+  margin: 0;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: 220px 220px 24px 24px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+.hero__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 캡션은 사진 밝기와 무관하게 읽혀야 하므로 자체 바탕을 갖는다 */
+.hero__figure figcaption {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--ground);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+/* ── 섹션 공통 ── */
+.section__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.section__head h2 { font-size: clamp(30px, 4vw, 46px); }
+.section__note {
+  margin: 0;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* ── 매대 ── */
+.menu { padding-top: clamp(72px, 10vw, 120px); }
+.menu__list {
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 0 clamp(32px, 5vw, 64px);
+}
+.menu__item {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.menu__row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.menu__name {
+  font-family: var(--font-display);
+  font-size: 20px;
+}
+.menu__dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--line);
+  transform: translateY(-4px);
+}
+.menu__price { font-size: 15px; color: var(--muted); }
+.menu__note {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── 이야기 ── */
+.story {
+  padding-top: clamp(72px, 10vw, 120px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+.story__eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.story h2 {
+  margin-top: 16px;
+  font-size: clamp(28px, 3.4vw, 38px);
+  line-height: 1.25;
+}
+.story__line { display: block; }
+.story__body {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2vw, 25px);
+  line-height: 1.75;
+  letter-spacing: -0.02em;
+  max-width: 62ch;
+}
+
+/* ── 오시는 길 ── */
+.visit { padding-top: clamp(72px, 10vw, 120px); }
+.visit__title { font-size: clamp(30px, 4vw, 46px); }
+.visit__grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.visit__block {
+  background: var(--ground);
+  padding: 28px 26px;
+}
+.visit__label {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.visit__value { margin: 12px 0 0; font-size: 17px; }
+.visit__value a { border-bottom: 1px solid var(--line); }
+.visit__sub {
+  margin: 8px 0 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.hours { margin: 12px 0 0; }
+.hours__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 0;
+  font-size: 15px;
+}
+.hours__row dt { color: var(--muted); }
+.hours__row dd { margin: 0; }
+
+/* ── 푸터 ── */
+.foot {
+  margin-top: clamp(72px, 10vw, 120px);
+  padding-block: 36px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.foot__mark {
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.22em;
+}
+.foot__meta { font-size: 12px; color: var(--muted); }
+
+/* ── 진입 애니메이션: JS가 켜졌을 때만 숨긴다 ── */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── 모바일 ── */
+@media (max-width: 860px) {
+  .hero, .story { grid-template-columns: 1fr; }
+  .hero__figure {
+    border-radius: 160px 160px 20px 20px;
+    aspect-ratio: 3 / 4;
+  }
+  .nav__pill {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 18px;
+    font-size: 13px;
+  }
+  .nav__mark { font-size: 16px; }
+  .stats { margin-top: 44px; }
+  .menu__list { grid-template-columns: 1fr; }
+}
