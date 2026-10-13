@@ -1,0 +1,9 @@
+// Cloudflare Workers 정적 배포 설정 — demion.co
+// main에 push하면 Cloudflare가 `npx wrangler deploy`로 sites/demion 폴더를 그대로 올린다.
+{
+  "name": "demion-web",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./sites/demion"
+  }
+}
