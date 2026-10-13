@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
   <link rel="stylesheet" href="orbit.css?v=11">
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=13">
   <link rel="stylesheet" href="concepts.css?v=11">
   <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -210,6 +210,21 @@
         <p class="err" id="e-message" role="alert"></p>
       </div>
 
+      <!-- 개인정보 수집·이용 동의 (필수). 보유 기간은 운영자 확인 항목 -->
+      <div class="field consent" data-field="agree">
+        <dl class="privacy" aria-label="개인정보 수집·이용 안내">
+          <dt>수집 항목</dt><dd>이름 또는 회사명, 이메일, 의뢰 내용, 현재·레퍼런스 홈페이지(입력한 경우)</dd>
+          <dt>이용 목적</dt><dd>프로젝트 문의 확인과 답변</dd>
+          <dt>보유 기간</dt><dd>문의 처리 완료 후 1년, 이후 지체 없이 파기</dd>
+        </dl>
+        <p class="privacy-note">동의를 거부할 수 있으며, 거부하면 문의를 접수할 수 없습니다.</p>
+        <label class="check" for="f-agree">
+          <input id="f-agree" name="agree" type="checkbox" value="yes" required aria-describedby="e-agree">
+          <span>개인정보 수집·이용에 동의합니다 <em>필수</em></span>
+        </label>
+        <p class="err" id="e-agree" role="alert"></p>
+      </div>
+
       <div class="banner" id="banner-fail" role="alert" hidden>
         <b>전송하지 못했습니다.</b>
         <span id="fail-text">잠시 후 다시 시도해주세요. 입력하신 내용은 그대로 남아 있습니다.</span>
@@ -228,6 +243,6 @@
   <noscript><p class="noscript">작업 화면을 보려면 JavaScript가 필요합니다.</p></noscript>
   <script src="concepts.js?v=9"></script>
   <script src="orbit.js?v=10"></script>
-  <script src="script.js?v=12"></script>
+  <script src="script.js?v=13"></script>
 </body>
 </html>

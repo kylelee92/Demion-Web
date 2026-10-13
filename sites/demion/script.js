@@ -122,6 +122,7 @@
     url: '주소 형식을 확인해주세요. 예: example.com',
     refs: '주소 형식을 확인해주세요. 여러 개는 쉼표로 나눠주세요. 예: example.com, sample.co.kr',
     message: '의뢰 내용을 간단히 적어주세요.',
+    agree: '개인정보 수집·이용에 동의해주셔야 문의를 보낼 수 있습니다.',
   };
 
   function setErr(field, msg) {
@@ -148,7 +149,8 @@
     const refs = String(d.get('refs')).split(/[,\s]+/).filter(Boolean);
     if (refs.some(r => !isSite(r))) errs.refs = MSG.refs;
     if (!String(d.get('message')).trim()) errs.message = MSG.message;
-    ['name', 'email', 'url', 'refs', 'message'].forEach(f => setErr(f, errs[f]));
+    if (!d.get('agree')) errs.agree = MSG.agree;
+    ['name', 'email', 'url', 'refs', 'message', 'agree'].forEach(f => setErr(f, errs[f]));
     return errs;
   }
 
@@ -197,7 +199,7 @@
 
   $$('input, textarea', form).forEach(el => el.addEventListener('input', () => {
     const f = el.closest('[data-field]');
-    if (f.classList.contains('invalid')) setErr(f.dataset.field, '');
+    if (f && f.classList.contains('invalid')) setErr(f.dataset.field, '');
   }));
   $('#again').addEventListener('click', () => { flag.hidden = true; setState('idle'); $('#f-name').focus(); });
 

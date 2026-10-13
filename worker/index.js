@@ -26,6 +26,8 @@ export default {
     const f = {};
     for (const k of Object.keys(MAX)) f[k] = String(d[k] ?? '').trim().slice(0, MAX[k]);
     if (!f.name || !f.message || !EMAIL.test(f.email)) return json({ error: 'invalid' }, 400);
+    // 개인정보 수집·이용 동의(필수) 없이 온 요청은 받지 않는다
+    if (d.agree !== 'yes') return json({ error: 'no_consent' }, 400);
 
     if (!env.INQUIRY_MAIL || !env.INQUIRY_TO) return json({ error: 'not_configured' }, 503);
 
@@ -41,6 +43,7 @@ export default {
       '--------',
       f.message,
       '',
+      `개인정보 수집·이용 동의: 동의함 (보유 기간: 처리 완료 후 1년)`,
       `— demion.co 문의 폼, ${new Date().toISOString()}`,
     ].join('\n');
 
