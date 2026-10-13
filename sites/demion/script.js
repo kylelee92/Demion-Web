@@ -3,9 +3,9 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
   /* ---------- 문의 접수 경로 ----------
-     운영자가 수신처(폼 서비스 URL 등)를 정하면 아래 값에 넣는다.
-     비어 있으면 실제로 전송하지 않고 "전송하지 못했습니다" 상태를 보여준다. 성공한 것처럼 표시하지 않는다. */
-  const ENDPOINT = '';
+     worker/index.js가 받아 운영자 메일로 보낸다 (Cloudflare Email Routing).
+     비우면 실제로 전송하지 않고 "전송하지 못했습니다" 상태를 보여준다. 성공한 것처럼 표시하지 않는다. */
+  const ENDPOINT = '/api/inquiry';
 
   /* 사례 순서: 0 소담 도예, 1 해무 스테이, 2 마루 */
   const WORKS = [
@@ -120,6 +120,7 @@
     email: '이메일을 입력해주세요.',
     emailBad: '이메일 형식을 확인해주세요. 예: name@example.com',
     url: '주소 형식을 확인해주세요. 예: example.com',
+    refs: '주소 형식을 확인해주세요. 여러 개는 쉼표로 나눠주세요. 예: example.com, sample.co.kr',
     message: '의뢰 내용을 간단히 적어주세요.',
   };
 
@@ -130,6 +131,11 @@
     $('input, textarea', wrap).setAttribute('aria-invalid', msg ? 'true' : 'false');
   }
 
+  function isSite(v) {
+    try { return new URL(/^https?:\/\//i.test(v) ? v : 'https://' + v).hostname.includes('.'); }
+    catch { return false; }
+  }
+
   function validate() {
     const d = new FormData(form);
     const errs = {};
@@ -138,12 +144,11 @@
     if (!email) errs.email = MSG.email;
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) errs.email = MSG.emailBad;
     const url = String(d.get('url')).trim();
-    if (url) {
-      try { const u = new URL(/^https?:\/\//i.test(url) ? url : 'https://' + url); if (!u.hostname.includes('.')) throw 0; }
-      catch { errs.url = MSG.url; }
-    }
+    if (url && !isSite(url)) errs.url = MSG.url;
+    const refs = String(d.get('refs')).split(/[,\s]+/).filter(Boolean);
+    if (refs.some(r => !isSite(r))) errs.refs = MSG.refs;
     if (!String(d.get('message')).trim()) errs.message = MSG.message;
-    ['name', 'email', 'url', 'message'].forEach(f => setErr(f, errs[f]));
+    ['name', 'email', 'url', 'refs', 'message'].forEach(f => setErr(f, errs[f]));
     return errs;
   }
 
@@ -178,6 +183,10 @@
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(Object.fromEntries(new FormData(form))),
       });
+      if (res.status === 503) {
+        setState('fail', '문의 접수 설정이 아직 끝나지 않아 전송되지 않았습니다. 입력하신 내용은 그대로 남아 있습니다.');
+        return;
+      }
       if (!res.ok) throw new Error(res.status);
       form.reset();
       setState('done');

@@ -222,6 +222,8 @@ h2 { font-size: clamp(22px, 2vw, 28px); font-weight: 500; line-height: 1.5; lett
 .panel-head h2 { font-size: 22px; }
 .panel-sub { font-size: 14px; color: var(--ink-2); margin-bottom: 32px; max-width: 34ch; }
 
+/* 봇 차단용 빈 칸: 화면·보조기기 모두에서 숨김 */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .field { margin-bottom: 26px; }
 .field label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 4px; }
 .field em { font-style: normal; font-weight: 400; color: var(--ink-2); margin-left: 6px; }

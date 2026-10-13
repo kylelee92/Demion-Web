@@ -1,9 +1,16 @@
-// Cloudflare Workers 정적 배포 설정 — demion.co
-// main에 push하면 Cloudflare가 `npx wrangler deploy`로 sites/demion 폴더를 그대로 올린다.
+// Cloudflare Workers 배포 설정 — demion.co
+// main에 push하면 Cloudflare가 `npx wrangler deploy`로 배포한다.
+// - sites/demion: 정적 사이트 (파일이 있는 경로는 그대로 내보냄)
+// - worker/index.js: 파일이 없는 경로 처리 (POST /api/inquiry 문의 메일)
+// 대시보드에서 직접 설정하는 것: Email Routing 켜기, 받는 주소 인증, Secret INQUIRY_TO
 {
   "name": "demion-web",
+  "main": "worker/index.js",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./sites/demion"
-  }
+  },
+  "send_email": [
+    { "name": "INQUIRY_MAIL" }
+  ]
 }
