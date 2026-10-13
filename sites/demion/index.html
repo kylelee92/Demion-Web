@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 검토용 시안. 운영 도메인으로 옮길 때 이 줄을 지운다. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>demion · 먼저 보고, 결정하는 홈페이지 디자인</title>
+  <meta name="description" content="하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지 맡는 홈페이지 디자인 스튜디오 demion.">
+
+  <meta property="og:title" content="demion · 먼저 보고, 결정하는 홈페이지 디자인">
+  <meta property="og:description" content="하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#efefec">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316171a'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='17' font-weight='600' fill='%23efefec' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="orbit.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=11">
+  <link rel="stylesheet" href="concepts.css?v=11">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body id="top">
+  <a class="skip" href="#main">본문 바로가기</a>
+
+  <header class="site">
+    <div class="wrap bar">
+      <a class="wordmark" href="#top" aria-label="demion 처음으로">demion</a>
+      <nav class="menu" aria-label="주요 메뉴">
+        <a href="#work">작업</a>
+        <a href="#about">소개</a>
+        <a href="#process">의뢰 방식</a>
+      </nav>
+      <button type="button" class="ask" data-open-contact>프로젝트 문의</button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- 첫 화면: Orbit 휠 (design-guides/motion/orbit-cards.md) -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title">먼저 보고,<br>결정하는 홈페이지 디자인.</h1>
+        <div class="hero-side">
+          <p class="lead">하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지.</p>
+          <button type="button" class="btn" data-open-contact>프로젝트 문의</button>
+        </div>
+      </div>
+      <div class="orbit-scene is-swing" aria-hidden="true">
+        <div class="orbit-wheel"></div>
+        <div class="orbit-dome"></div>
+      </div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-captions">
+        <span aria-hidden="true">demion</span><span aria-hidden="true">선택작 · 자체 콘셉트</span><span aria-hidden="true">웹 · 모바일</span><a href="#work">↓ 디자인 보기</a>
+      </div>
+    </section>
+
+    <!-- 1. 디자인 선택작 -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="work-head">
+          <h2 id="work-title">선택작</h2>
+          <p>직접 구성한 자체 콘셉트 3점입니다. 실제 고객의 작업물이 아닙니다.</p>
+        </div>
+
+        <div class="work-grid">
+          <figure class="w w-lead">
+            <button type="button" class="open-work" data-work="1" aria-label="해무 스테이 디자인 크게 보기">
+              <span class="fit" data-w="1280" data-case="b" data-kind="d" data-narrow="m" role="img" aria-label="해무 스테이 홈페이지 디자인"><span class="sizer"></span></span>
+            </button>
+            <figcaption><b>해무 스테이</b><span>바닷가 숙소</span><span class="own">자체 콘셉트</span></figcaption>
+          </figure>
+
+          <figure class="w w-mobile">
+            <button type="button" class="open-work" data-work="0" data-kind="m" aria-label="소담 도예 모바일 디자인 크게 보기">
+              <span class="fit" data-w="390" data-case="a" data-kind="m" role="img" aria-label="소담 도예 모바일 디자인"><span class="sizer"></span></span>
+            </button>
+            <figcaption><b>소담 도예</b><span>도자기 공방, 모바일 화면</span><span class="own">자체 콘셉트</span></figcaption>
+          </figure>
+
+          <figure class="w w-wide">
+            <figcaption class="side"><b>마루</b><span>매출 정산 서비스</span><span class="own">자체 콘셉트</span></figcaption>
+            <button type="button" class="open-work" data-work="2" aria-label="마루 디자인 크게 보기">
+              <span class="fit" data-w="1280" data-case="c" data-kind="d" data-narrow="m" role="img" aria-label="마루 서비스 소개 페이지 디자인"><span class="sizer"></span></span>
+            </button>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 스튜디오 소개 -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="wrap about-grid">
+        <div class="about-text">
+          <h2 id="about-title">AI로 제작 과정을 줄이고,<br class="pc"> 디자인의 완성도에 집중합니다.</h2>
+          <p>빠르게 만들 수 있는 부분은 AI에 맡기고, 구성과 문장, 화면의 비례처럼 사람이 판단해야 하는 일에 시간을 씁니다. 기업과 개인의 홈페이지를 새로 만들거나 고쳐드립니다.</p>
+        </div>
+        <ul class="services">
+          <li><b>신규 제작</b><span>목적에 맞는 홈페이지 디자인과 개발</span></li>
+          <li><b>기존 홈페이지 개선</b><span>현재 화면의 디자인과 정보 구성 정돈</span></li>
+          <li><b>웹·모바일 디자인과 개발</b><span>화면 크기가 달라도 일관된 경험</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. 의뢰 방식 -->
+    <section class="process" id="process" aria-labelledby="process-title">
+      <div class="wrap">
+        <h2 id="process-title" class="sr">의뢰 방식</h2>
+        <ol class="flow">
+          <li>
+            <h3>문의</h3>
+            <p>회사 소개, 현재 홈페이지, 원하는 분위기를 알려주세요.</p>
+          </li>
+          <li>
+            <h3>첫 디자인 확인</h3>
+            <p>전달받은 내용을 바탕으로 하루 만에 디자인 방향을 보여드립니다.</p>
+          </li>
+          <li>
+            <h3>제작 협의</h3>
+            <p>디자인을 확인한 뒤 제작 범위와 진행 조건을 협의합니다.</p>
+          </li>
+        </ol>
+        <p class="process-note">하루는 첫 디자인을 보여드리는 기간입니다. 첫 디자인의 범위와 조건은 문의하실 때 안내드립니다.</p>
+      </div>
+    </section>
+
+    <!-- 4. 문의 -->
+    <section class="closing" id="contact" aria-labelledby="closing-title">
+      <div class="wrap closing-grid">
+        <h2 id="closing-title">새 홈페이지도, 지금 홈페이지의 개선도<br class="pc"> 먼저 이야기해주세요.</h2>
+        <button type="button" class="btn" data-open-contact>프로젝트 문의</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-grid">
+      <div>
+        <a class="wordmark" href="#top" aria-label="demion 처음으로">demion</a>
+        <p>AI를 활용해 합리적인 비용으로 웹·모바일 홈페이지를 디자인하고 개발하는 스튜디오.</p>
+      </div>
+      <nav aria-label="페이지 이동">
+        <a href="#work">작업</a>
+        <a href="#about">소개</a>
+        <a href="#process">의뢰 방식</a>
+        <button type="button" data-open-contact>프로젝트 문의</button>
+      </nav>
+    </div>
+    <!-- 이메일·사업자 정보·개인정보 처리방침은 운영자가 자료를 제공하면 추가한다. (운영자-확인-항목.md 참고) -->
+  </footer>
+
+  <!-- 작업 상세 -->
+  <dialog class="viewer" id="viewer" aria-labelledby="v-title">
+    <div class="v-bar">
+      <p class="v-name"><b id="v-title">소담 도예</b><span id="v-type">도자기 공방</span><span class="own">자체 콘셉트이며 실제 고객 작업이 아닙니다</span></p>
+      <div class="seg" role="group" aria-label="화면 보기 방식">
+        <button type="button" data-v="d" aria-pressed="true">데스크톱</button>
+        <button type="button" data-v="m" aria-pressed="false">모바일</button>
+      </div>
+      <button type="button" class="plain" id="v-close">닫기</button>
+    </div>
+    <div class="v-stage" id="v-stage">
+      <button type="button" class="v-step v-prev" id="v-prev" aria-label="이전 작업"><svg class="ico flip" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+      <span class="fit v-frame" id="v-frame" data-w="1280" role="img" aria-label="디자인 전체 화면"><span class="sizer"></span></span>
+      <button type="button" class="v-step v-next" id="v-next" aria-label="다음 작업"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+    </div>
+  </dialog>
+
+  <!-- 프로젝트 문의 패널 -->
+  <dialog class="panel" id="contact-panel" aria-labelledby="panel-title">
+    <div class="panel-head">
+      <h2 id="panel-title">프로젝트 문의</h2>
+      <button type="button" class="plain" id="panel-close">닫기</button>
+    </div>
+    <p class="panel-sub">새 홈페이지도, 지금 홈페이지의 개선도 가능합니다. 간단히 적어주세요.</p>
+    <p class="preview-flag" id="preview-flag" hidden>상태 미리보기 화면입니다. 실제로 전송된 내용이 아닙니다.</p>
+
+    <form id="inquiry" novalidate>
+      <div class="field" data-field="name">
+        <label for="f-name">이름 또는 회사명</label>
+        <input id="f-name" name="name" type="text" autocomplete="organization" required aria-describedby="e-name">
+        <p class="err" id="e-name" role="alert"></p>
+      </div>
+      <div class="field" data-field="email">
+        <label for="f-email">이메일</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email">
+        <p class="err" id="e-email" role="alert"></p>
+      </div>
+      <div class="field" data-field="url">
+        <label for="f-url">현재 홈페이지 <em>선택</em></label>
+        <input id="f-url" name="url" type="text" inputmode="url" autocomplete="url" placeholder="example.com" aria-describedby="e-url">
+        <p class="err" id="e-url" role="alert"></p>
+      </div>
+      <div class="field" data-field="message">
+        <label for="f-message">의뢰 내용</label>
+        <textarea id="f-message" name="message" rows="5" required placeholder="회사 소개, 만들거나 고치고 싶은 부분, 원하는 분위기를 적어주세요." aria-describedby="e-message"></textarea>
+        <p class="err" id="e-message" role="alert"></p>
+      </div>
+
+      <div class="banner" id="banner-fail" role="alert" hidden>
+        <b>전송하지 못했습니다.</b>
+        <span id="fail-text">잠시 후 다시 시도해주세요. 입력하신 내용은 그대로 남아 있습니다.</span>
+      </div>
+
+      <button class="btn btn-block" type="submit" id="submit"><span class="btn-label">문의 보내기</span><span class="spin" aria-hidden="true"></span></button>
+    </form>
+
+    <div class="done" id="done" tabindex="-1" hidden>
+      <h3>문의가 접수되었습니다.</h3>
+      <p>보내주신 내용을 확인한 뒤 입력하신 이메일로 연락드립니다.</p>
+      <button type="button" class="quiet-btn" id="again">새 문의 작성하기</button>
+    </div>
+  </dialog>
+
+  <noscript><p class="noscript">작업 화면을 보려면 JavaScript가 필요합니다.</p></noscript>
+  <script src="concepts.js?v=9"></script>
+  <script src="orbit.js?v=10"></script>
+  <script src="script.js?v=10"></script>
+</body>
+</html>

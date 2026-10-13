@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demion · 시안 C 인덱스 오빗</title>
+<meta name="description" content="demion 홈페이지 컨셉 시안 C — 휠이 한 칸씩 전진하며 왼쪽 인덱스와 맞물리는 스플릿 메인">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400&family=Space+Mono&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="orbit.css">
+<style>
+  :root {
+    --bg: #f4f4f2;
+    --stage: #e0e1e4;
+    --ink: #121316;
+    --ink-2: #5d6066;
+    --line: #d9d9d5;
+    --mark: #0c7a5a;
+    --gut: clamp(16px, 3vw, 44px);
+    --mono: 'Space Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font: 400 16px/1.7 'Pretendard Variable', Pretendard, sans-serif;
+    word-break: keep-all; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul, ol { list-style: none; }
+  h1, h2, h3 { text-wrap: balance; }
+  :focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; }
+  .mono { font-family: var(--mono); }
+  .label { font: 400 12px/1.3 var(--mono); color: var(--ink-2); text-transform: uppercase; }
+
+  /* ---------- 히어로: 왼쪽 인덱스 / 오른쪽 무대 ---------- */
+  .hero { display: grid; grid-template-columns: minmax(340px, 5fr) 7fr; min-height: 100svh; }
+  .side { display: grid; grid-template-rows: auto 1fr auto; gap: 40px; padding: 28px var(--gut) 32px; }
+  .bar { display: flex; align-items: center; gap: 24px; }
+  .wordmark { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; margin-right: auto; }
+  .menu { display: flex; gap: 22px; font-size: 14px; font-weight: 500; color: var(--ink-2); }
+  .menu a:hover { color: var(--ink); }
+  .intro { align-self: center; display: grid; gap: 28px; }
+  .hero h1 { font-size: clamp(34px, 4.2vw, 64px); font-weight: 600; line-height: 1.1; letter-spacing: -0.045em; }
+  .intro p { color: var(--ink-2); max-width: 34ch; }
+  .actions { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border-radius: 2px;
+    background: var(--ink); color: var(--bg); font-size: 15px; font-weight: 500; line-height: 1;
+    border: 1px solid var(--ink); transition: background-color .2s, color .2s;
+  }
+  .btn:hover { background: transparent; color: var(--ink); }
+  .link { font-size: 15px; font-weight: 500; border-bottom: 1px solid var(--line); padding: 4px 0; }
+  .link:hover { border-color: var(--ink); }
+
+  /* 지금 가운데 있는 카드의 번호와 이름 */
+  .now { border-top: 1px solid var(--ink); padding-top: 16px; display: grid; grid-template-columns: auto 1fr; gap: 4px 24px; align-items: end; }
+  .now .count { grid-row: span 2; font: 400 clamp(44px, 4.6vw, 72px)/0.9 var(--mono); letter-spacing: -0.04em; }
+  .now .count small { font-size: 0.32em; color: var(--ink-2); letter-spacing: 0; }
+  .now .name { font-weight: 600; min-height: 1.7em; }
+  .now .meta { font-size: 13px; color: var(--ink-2); min-height: 1.7em; }
+  .tick { grid-column: 1 / -1; height: 2px; background: var(--line); margin-top: 14px; overflow: hidden; }
+  .tick i { display: block; height: 100%; background: var(--mark); transform-origin: 0 50%; }
+  .tick i.run { animation: tick 3200ms linear; }
+  @keyframes tick { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  .stage {
+    position: relative; margin: 12px 12px 12px 0; border-radius: 22px; overflow: hidden;
+    background: var(--stage); min-height: 560px;
+  }
+  .stage .orbit-scene {
+    position: absolute; left: 50%; top: 14%; translate: -50% 0;
+    width: max(118%, 100svh);
+  }
+  .stage .overlay { position: absolute; inset: 55% 0 0; background: linear-gradient(to top, #000, transparent); opacity: 0.5; }
+  .stage .captions {
+    position: absolute; left: 28px; right: 28px; bottom: 24px; display: flex; justify-content: space-between;
+    font: 400 13px/1.2 var(--mono); color: rgb(255 255 255 / 0.75);
+  }
+
+  /* ---------- 작업: 인덱스 표 + 미리보기 ---------- */
+  section { padding: clamp(80px, 10vw, 150px) var(--gut); }
+  .sec-head { display: grid; grid-template-columns: 5fr 7fr; gap: 24px 48px; margin-bottom: 56px; }
+  .sec-head h2 { font-size: clamp(26px, 3vw, 42px); font-weight: 600; line-height: 1.2; letter-spacing: -0.035em; }
+  .sec-head p { color: var(--ink-2); max-width: 48ch; }
+
+  .index { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: start; }
+  .rows { border-top: 1px solid var(--ink); }
+  .rows a {
+    display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: baseline;
+    padding: 22px 0; border-bottom: 1px solid var(--line); transition: padding .3s var(--orbit-ease);
+  }
+  .rows a b { font-size: clamp(20px, 2vw, 28px); font-weight: 600; letter-spacing: -0.03em; }
+  .rows a span:last-child { font-size: 14px; color: var(--ink-2); }
+  .rows a[aria-current="true"] { padding-left: 12px; }
+  .rows a[aria-current="true"] .mono { color: var(--mark); }
+  .preview { position: sticky; top: 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .preview .tile-face {
+    position: relative; aspect-ratio: 460 / 742; border-radius: 14px; overflow: hidden; container-type: inline-size;
+    transition: opacity .4s, filter .4s, transform .6s var(--orbit-ease);
+  }
+  .preview.has-on .tile-face:not(.on) { opacity: 0.35; filter: grayscale(1); }
+  .preview .tile-face.on { opacity: 1; filter: none; transform: translateY(-12px); }
+  .disclaim { margin-top: 16px; font-size: 13px; color: var(--ink-2); }
+
+  /* 소개 */
+  .about { border-top: 1px solid var(--line); }
+  .about .big { font-size: clamp(24px, 3vw, 42px); font-weight: 500; line-height: 1.4; letter-spacing: -0.03em; max-width: 30ch; }
+  .about .big em { font-style: normal; color: var(--ink-2); }
+  .svc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 64px; border-top: 1px solid var(--ink); }
+  .svc li { padding: 20px 24px 0 0; display: grid; gap: 6px; }
+  .svc li + li { padding-left: 24px; border-left: 1px solid var(--line); }
+  .svc b { font-weight: 600; }
+  .svc span { color: var(--ink-2); font-size: 15px; }
+
+  /* 의뢰 방식 */
+  .process { border-top: 1px solid var(--line); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 3vw, 40px); }
+  .steps li { display: grid; gap: 10px; align-content: start; }
+  .steps .n { font: 400 clamp(56px, 6vw, 96px)/1 var(--mono); letter-spacing: -0.06em; }
+  .steps li:nth-child(2) .n { color: var(--mark); }
+  .steps h3 { font-size: 20px; font-weight: 600; }
+  .steps p { color: var(--ink-2); }
+  .note { margin-top: 40px; font-size: 14px; color: var(--ink-2); }
+
+  .cta { border-top: 1px solid var(--ink); padding-block: clamp(56px, 8vw, 120px); }
+  .cta p { color: var(--ink-2); margin-bottom: 24px; }
+  .cta a { display: flex; justify-content: space-between; align-items: baseline; gap: 24px;
+    font-size: clamp(36px, 7.4vw, 120px); font-weight: 600; letter-spacing: -0.055em; line-height: 1; }
+  .cta a span:last-child { font-family: var(--mono); font-weight: 400; transition: translate .4s var(--orbit-ease); }
+  .cta a:hover span:last-child { translate: 16px 0; color: var(--mark); }
+
+  footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding: 24px var(--gut) 40px; font: 400 12px/1.6 var(--mono); color: var(--ink-2); }
+
+  @media (max-width: 960px) {
+    .hero { grid-template-columns: 1fr; }
+    .stage { margin: 0 12px; height: 72svh; min-height: 420px; }
+    .menu { display: none; }
+    .sec-head, .index { grid-template-columns: 1fr; }
+    .preview { position: static; grid-row: 1; }
+    .svc, .steps { grid-template-columns: 1fr; }
+    .svc li + li { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); padding-bottom: 20px; }
+  }
+</style>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-label="소개" style="padding:0">
+      <div class="side">
+        <header class="bar">
+          <a class="wordmark" href="#">demion</a>
+          <nav class="menu"><a href="#work">작업</a><a href="#about">소개</a><a href="#process">의뢰 방식</a></nav>
+        </header>
+        <div class="intro">
+          <p class="label">홈페이지 디자인 · 개발 스튜디오</p>
+          <h1>먼저 보고,<br>결정하는<br>홈페이지 디자인.</h1>
+          <p>하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지.</p>
+          <div class="actions"><a class="btn" href="#contact">프로젝트 문의</a><a class="link" href="#work">디자인 보기</a></div>
+        </div>
+        <div class="now" aria-live="polite">
+          <span class="count mono"><span id="num">01</span><small> / 08</small></span>
+          <span class="name" id="name"></span>
+          <span class="meta" id="meta"></span>
+          <div class="tick"><i id="tick"></i></div>
+        </div>
+      </div>
+      <div class="stage" aria-hidden="true">
+        <div class="orbit-scene is-step">
+          <div class="orbit-wheel"></div>
+          <div class="orbit-dome"></div>
+        </div>
+        <div class="overlay"></div>
+        <div class="captions"><span>demion</span><span>15° / 3.2s</span></div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="sec-head">
+        <p class="label">01 — 선택작</p>
+        <div><h2>직접 구성한 자체 콘셉트 3점</h2><p>실제 고객의 작업물이 아닙니다. 분야와 분위기가 다른 홈페이지를 어떻게 풀어내는지 보여드립니다.</p></div>
+      </div>
+      <div class="index">
+        <nav class="rows" aria-label="작업 목록">
+          <a href="#work" data-key="sodam"><span class="mono">01</span><b>소담 도예</b><span>도자기 공방</span></a>
+          <a href="#work" data-key="haemu"><span class="mono">02</span><b>해무 스테이</b><span>바닷가 숙소</span></a>
+          <a href="#work" data-key="maru"><span class="mono">03</span><b>마루</b><span>매출 정산 서비스</span></a>
+        </nav>
+        <div>
+          <div class="preview">
+            <div class="tile-face" data-face="sodam"></div>
+            <div class="tile-face" data-face="haemu"></div>
+            <div class="tile-face" data-face="maru"></div>
+          </div>
+          <p class="disclaim">세 작업 모두 demion이 직접 구성한 콘셉트입니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="sec-head"><p class="label">02 — 소개</p>
+        <p class="big">AI로 제작 과정을 줄이고, <em>디자인의 완성도에 집중합니다.</em> 구성과 문장, 화면의 비례처럼 사람이 판단해야 하는 일에 시간을 씁니다.</p>
+      </div>
+      <ul class="svc">
+        <li><span class="label">01</span><b>신규 제작</b><span>목적에 맞는 홈페이지 디자인과 개발</span></li>
+        <li><span class="label">02</span><b>기존 홈페이지 개선</b><span>현재 화면의 디자인과 정보 구성 정돈</span></li>
+        <li><span class="label">03</span><b>웹·모바일 디자인과 개발</b><span>화면 크기가 달라도 일관된 경험</span></li>
+      </ul>
+    </section>
+
+    <section class="process" id="process">
+      <div class="sec-head"><p class="label">03 — 의뢰 방식</p><h2>보고 나서 결정하는 세 단계</h2></div>
+      <ol class="steps">
+        <li><span class="n">01</span><h3>문의</h3><p>회사 소개, 현재 홈페이지, 원하는 분위기를 알려주세요.</p></li>
+        <li><span class="n">02</span><h3>첫 디자인 확인</h3><p>전달받은 내용을 바탕으로 하루 만에 디자인 방향을 보여드립니다.</p></li>
+        <li><span class="n">03</span><h3>제작 협의</h3><p>디자인을 확인한 뒤 제작 범위와 진행 조건을 협의합니다.</p></li>
+      </ol>
+      <p class="note">하루는 첫 디자인을 보여드리는 기간입니다. 첫 디자인의 범위와 조건은 문의하실 때 안내드립니다.</p>
+    </section>
+
+    <section class="cta" id="contact">
+      <p>새 홈페이지도, 지금 홈페이지의 개선도 먼저 이야기해주세요.</p>
+      <a href="../demion/"><span>프로젝트 문의</span><span>→</span></a>
+    </section>
+  </main>
+
+  <footer>
+    <span>demion — AI를 활용해 합리적인 비용으로 웹·모바일 홈페이지를 디자인하고 개발하는 스튜디오.</span>
+    <span>시안 C · 인덱스 오빗</span>
+  </footer>
+
+  <script>
+    // 휠 가운데 카드 ↔ 왼쪽 표시, 작업 목록 강조를 맞물린다
+    const LABELS = {
+      day:    ['04', '하루', '첫 디자인을 먼저 확인합니다'],
+      maru:   ['03', '마루', '매출 정산 서비스 · 자체 콘셉트'],
+      mark:   ['02', 'demion', '홈페이지 디자인 · 개발 스튜디오'],
+      type:   ['01', '먼저 보고, 결정하는', '디자인을 본 뒤에 제작을 협의합니다'],
+      sodam:  ['08', '소담 도예', '도자기 공방 · 자체 콘셉트'],
+      haemu:  ['07', '해무 스테이', '바닷가 숙소 · 자체 콘셉트'],
+      mobile: ['06', '소담 도예 모바일', '모바일 화면 · 자체 콘셉트'],
+      spec:   ['05', '웹과 모바일', '신규 제작 · 기존 개선 · 디자인과 개발'],
+    };
+    const tick = document.getElementById('tick');
+    document.querySelector('.orbit-scene').addEventListener('orbit:center', (e) => {
+      const [n, name, meta] = LABELS[e.detail];
+      document.getElementById('num').textContent = n;
+      document.getElementById('name').textContent = name;
+      document.getElementById('meta').textContent = meta;
+      tick.classList.remove('run'); tick.getBoundingClientRect(); tick.classList.add('run');
+      document.querySelectorAll('.rows a').forEach((a) => a.setAttribute('aria-current', a.dataset.key === e.detail));
+      const pv = document.querySelector('.preview');
+      pv.classList.toggle('has-on', !!pv.querySelector(`[data-face="${e.detail}"]`));
+      pv.querySelectorAll('.tile-face').forEach((f) => f.classList.toggle('on', f.dataset.face === e.detail));
+    });
+  </script>
+  <script src="orbit.js"></script>
+</body>
+</html>

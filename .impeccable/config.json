@@ -12,6 +12,411 @@
         ],
         "createdAt": "2026-09-21T15:19:19.490Z",
         "reason": "Claude measured computed padding in browser at 1440px: hero 80/48/96/48, story and visit 128/48/128/48; detector cannot resolve clamp() in the padding shorthand"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "sites/songgok-banner/banner-c.html"
+        ],
+        "createdAt": "2026-10-12T11:16:05.723Z",
+        "reason": "Claude: text uses 16-22px white stroke (paint-order) on light sky, checker ignores stroke; rendered contrast verified in PNG"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "sites/songgok-banner/banner-c.html"
+        ],
+        "createdAt": "2026-10-12T11:16:05.995Z",
+        "reason": "Claude: print banner canvas (fixed 5000x900mm), not part of the site design system"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "sites/songgok-banner/banner-c.html"
+        ],
+        "createdAt": "2026-10-12T11:16:06.270Z",
+        "reason": "Claude: print banner canvas (fixed 5000x900mm), not part of the site design system"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "sites/songgok-banner/banner-b.html"
+        ],
+        "createdAt": "2026-10-12T11:16:28.127Z",
+        "reason": "Claude: tracking is only on short English eyebrow labels (Department of…, Admissions Open), not body text"
+      },
+      {
+        "rule": "ai-color-palette",
+        "value": "*",
+        "files": [
+          "sites/songgok-banner/banner-c.html"
+        ],
+        "createdAt": "2026-10-12T11:18:37.415Z",
+        "reason": "Claude: solid plum title (no gradient) chosen to match the lavender apron/cape in the generated illustration; user approved the look ('좋은데')"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto serif kr",
+        "files": [
+          "sites/demion/index.html"
+        ],
+        "createdAt": "2026-10-13T13:22:01.949Z",
+        "reason": "Claude: font used only inside the fictional concept designs (소담 도예 / 마루), not in demion's own UI"
+      },
+      {
+        "rule": "hero-eyebrow-chip",
+        "value": "*",
+        "files": [
+          "sites/demion/index.html"
+        ],
+        "createdAt": "2026-10-13T13:22:34.263Z",
+        "reason": "Claude: English small label requested by user brief"
+      },
+      {
+        "rule": "kicker-above-heading",
+        "value": "*",
+        "files": [
+          "sites/demion/index.html"
+        ],
+        "createdAt": "2026-10-13T13:22:34.523Z",
+        "reason": "Claude: labels inside fictional concept designs and brief-requested English micro-labels"
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "sites/demion/index.html"
+        ],
+        "createdAt": "2026-10-13T13:22:34.765Z",
+        "reason": "Claude: user brief explicitly asks for warm off-white background"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/demion/index.html"
+        ],
+        "createdAt": "2026-10-13T13:22:35.024Z",
+        "reason": "Claude: borders are hairline section/list dividers; text children are padded by their own sections, measured visually"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto serif kr",
+        "files": [
+          "sites/demion/concepts.css"
+        ],
+        "createdAt": "2026-10-13T13:55:54.158Z",
+        "reason": "Claude: font used only inside the fictional concept designs (소담 도예 / 마루), not in demion's own UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex sans kr",
+        "files": [
+          "sites/demion/concepts.css"
+        ],
+        "createdAt": "2026-10-13T13:55:54.440Z",
+        "reason": "Claude: font used only inside the fictional concept designs (소담 도예 / 마루), not in demion's own UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex sans kr",
+        "files": [
+          "sites/demion/index.html"
+        ],
+        "createdAt": "2026-10-13T13:55:55.217Z",
+        "reason": "Claude: font used only inside the fictional concept designs (소담 도예 / 마루), not in demion's own UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "space mono",
+        "files": [
+          "sites/orbit-demo/index.html"
+        ],
+        "createdAt": "2026-10-13T14:32:33.183Z",
+        "reason": "Claude: demo of design-guides/motion/orbit-cards.md, which specifies Space Mono; not part of the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "archivo black",
+        "files": [
+          "sites/orbit-demo/index.html"
+        ],
+        "createdAt": "2026-10-13T14:32:33.472Z",
+        "reason": "Claude: card-face display type for the orbit-cards guide demo, separate from the riso DESIGN.md system"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "sites/orbit-demo/index.html"
+        ],
+        "createdAt": "2026-10-13T14:32:33.729Z",
+        "reason": "Claude: captions are white 75% per the orbit-cards guide, rendered over the dark bottom overlay and grey dome; checker ignores the fixed gradient overlay, verified in screenshots"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "space mono",
+        "files": [
+          "sites/demion-orbit/orbit.css"
+        ],
+        "createdAt": "2026-10-13T14:44:44.661Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex sans kr",
+        "files": [
+          "sites/demion-orbit/orbit.css"
+        ],
+        "createdAt": "2026-10-13T14:44:44.933Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto serif kr",
+        "files": [
+          "sites/demion-orbit/orbit.css"
+        ],
+        "createdAt": "2026-10-13T14:44:45.190Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "variable",
+        "files": [
+          "sites/demion-orbit/orbit.css"
+        ],
+        "createdAt": "2026-10-13T14:44:45.510Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "space mono",
+        "files": [
+          "sites/demion-orbit/a.html"
+        ],
+        "createdAt": "2026-10-13T14:44:45.798Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex sans kr",
+        "files": [
+          "sites/demion-orbit/a.html"
+        ],
+        "createdAt": "2026-10-13T14:44:46.072Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto serif kr",
+        "files": [
+          "sites/demion-orbit/a.html"
+        ],
+        "createdAt": "2026-10-13T14:44:46.317Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "variable",
+        "files": [
+          "sites/demion-orbit/a.html"
+        ],
+        "createdAt": "2026-10-13T14:44:46.559Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "space mono",
+        "files": [
+          "sites/demion-orbit/b.html"
+        ],
+        "createdAt": "2026-10-13T14:44:46.783Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex sans kr",
+        "files": [
+          "sites/demion-orbit/b.html"
+        ],
+        "createdAt": "2026-10-13T14:44:47.058Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto serif kr",
+        "files": [
+          "sites/demion-orbit/b.html"
+        ],
+        "createdAt": "2026-10-13T14:44:47.330Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "variable",
+        "files": [
+          "sites/demion-orbit/b.html"
+        ],
+        "createdAt": "2026-10-13T14:44:47.619Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "space mono",
+        "files": [
+          "sites/demion-orbit/c.html"
+        ],
+        "createdAt": "2026-10-13T14:44:47.877Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex sans kr",
+        "files": [
+          "sites/demion-orbit/c.html"
+        ],
+        "createdAt": "2026-10-13T14:44:48.153Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto serif kr",
+        "files": [
+          "sites/demion-orbit/c.html"
+        ],
+        "createdAt": "2026-10-13T14:44:48.425Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "variable",
+        "files": [
+          "sites/demion-orbit/c.html"
+        ],
+        "createdAt": "2026-10-13T14:44:48.698Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "space mono",
+        "files": [
+          "sites/demion-orbit/index.html"
+        ],
+        "createdAt": "2026-10-13T14:44:48.988Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex sans kr",
+        "files": [
+          "sites/demion-orbit/index.html"
+        ],
+        "createdAt": "2026-10-13T14:44:49.291Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto serif kr",
+        "files": [
+          "sites/demion-orbit/index.html"
+        ],
+        "createdAt": "2026-10-13T14:44:49.565Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "variable",
+        "files": [
+          "sites/demion-orbit/index.html"
+        ],
+        "createdAt": "2026-10-13T14:44:49.854Z",
+        "reason": "Claude: demion orbit concept drafts use demion's own type stack (Pretendard + concept-card fonts) and Space Mono from design-guides/motion/orbit-cards.md, not the riso DESIGN.md system"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "sites/demion-orbit/b.html"
+        ],
+        "createdAt": "2026-10-13T14:44:50.142Z",
+        "reason": "Claude: remaining flags are white 75% hero/caption text over the dark overlay; green CTA darkened to #00803a and step numerals raised to #63666e, verified in screenshots"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/demion-orbit/a.html"
+        ],
+        "createdAt": "2026-10-13T14:45:36.546Z",
+        "reason": "Claude: flagged borders are hairline list/section dividers and underline-style link borders (border-top/bottom only, no box), same pattern as sites/demion; checked in 1440px and 375px screenshots"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/demion-orbit/b.html"
+        ],
+        "createdAt": "2026-10-13T14:45:36.850Z",
+        "reason": "Claude: flagged borders are hairline list/section dividers and underline-style link borders (border-top/bottom only, no box), same pattern as sites/demion; checked in 1440px and 375px screenshots"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/demion-orbit/c.html"
+        ],
+        "createdAt": "2026-10-13T14:45:37.124Z",
+        "reason": "Claude: flagged borders are hairline list/section dividers and underline-style link borders (border-top/bottom only, no box), same pattern as sites/demion; checked in 1440px and 375px screenshots"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/demion-orbit/index.html"
+        ],
+        "createdAt": "2026-10-13T14:45:37.427Z",
+        "reason": "Claude: flagged borders are hairline list/section dividers and underline-style link borders (border-top/bottom only, no box), same pattern as sites/demion; checked in 1440px and 375px screenshots"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "space mono",
+        "files": [
+          "sites/demion/index.html"
+        ],
+        "createdAt": "2026-10-13T14:51:09.096Z",
+        "reason": "Claude: Space Mono is the caption face from design-guides/motion/orbit-cards.md for the Orbit hero the user chose (concept A); demion is not part of the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "space mono",
+        "files": [
+          "sites/demion/styles.css"
+        ],
+        "createdAt": "2026-10-13T14:51:09.369Z",
+        "reason": "Claude: Space Mono is the caption face from design-guides/motion/orbit-cards.md for the Orbit hero the user chose (concept A); demion is not part of the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "space mono",
+        "files": [
+          "sites/demion/orbit.css"
+        ],
+        "createdAt": "2026-10-13T14:51:09.643Z",
+        "reason": "Claude: Space Mono is the caption face from design-guides/motion/orbit-cards.md for the Orbit hero the user chose (concept A); demion is not part of the riso DESIGN.md system"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "variable",
+        "files": [
+          "sites/demion/orbit.css"
+        ],
+        "createdAt": "2026-10-13T14:51:09.933Z",
+        "reason": "Claude: Pretendard Variable is demion's existing UI font"
       }
     ]
   }

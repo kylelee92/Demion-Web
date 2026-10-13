@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demion · 시안 B 나이트 스테이지</title>
+<meta name="description" content="demion 홈페이지 컨셉 시안 B — 어두운 무대 위에 작업 화면만 빛나는 쇼케이스형 메인">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400&family=Space+Mono&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="orbit.css">
+<style>
+  :root {
+    --bg: #0d0e10;
+    --bg-2: #16171a;
+    --ink: #f1f1ee;
+    --ink-2: #9a9da3;
+    --line: #2a2c30;
+    --go: #00803a; /* 가이드 그린을 흰 글자 대비 4.5:1 이상으로 한 단계 눌러 씀 */
+    --gut: clamp(16px, 3.6vw, 56px);
+    --mono: 'Space Mono', ui-monospace, monospace;
+    /* 어두운 휠: 카드만 빛나게 */
+    --orbit-wheel: #1f2024;
+    --orbit-wheel-2: #121316;
+    --orbit-shadow: rgb(0 0 0 / 0.85);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font: 400 16px/1.75 'Pretendard Variable', Pretendard, sans-serif;
+    word-break: keep-all; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul, ol { list-style: none; }
+  h1, h2, h3 { text-wrap: balance; }
+  :focus-visible { outline: 2px solid var(--go); outline-offset: 3px; }
+  .label { font: 400 13px/1.2 var(--mono); color: var(--ink-2); }
+
+  .bar {
+    position: fixed; z-index: 10; inset: 16px var(--gut) auto;
+    display: flex; align-items: center; gap: 28px;
+    height: 52px; padding: 0 8px 0 20px; border-radius: 999px;
+    background: rgb(22 23 26 / 0.7); backdrop-filter: blur(14px); border: 1px solid rgb(255 255 255 / 0.08);
+  }
+  .wordmark { font-size: 17px; font-weight: 600; letter-spacing: -0.02em; margin-right: auto; }
+  .menu { display: flex; gap: 26px; font-size: 14px; font-weight: 500; color: var(--ink-2); }
+  .menu a:hover { color: var(--ink); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 22px;
+    border-radius: 999px; background: var(--go); color: #fff; font-size: 15px; font-weight: 600; line-height: 1;
+    transition: filter .2s;
+  }
+  .btn:hover { filter: brightness(1.12); }
+  .btn::after { content: '→'; font-family: var(--mono); }
+  .bar .btn { min-height: 38px; padding: 0 16px; font-size: 14px; }
+
+  /* ---------- 히어로: 가운데 대형 헤드라인 + 어두운 휠 ---------- */
+  .hero { position: relative; height: 100svh; min-height: 600px; overflow: hidden;
+    background: radial-gradient(80% 60% at 50% 70%, #1d1f24, var(--bg) 70%); }
+  .hero .orbit-scene {
+    position: absolute; left: 50%; top: 26svh; translate: -50% 0;
+    width: min(max(100vw, 90svh), 118svh);
+  }
+  .hero .orbit-dome { box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.14), 0 -30px 90px rgb(0 0 0 / 0.6); }
+  .hero-copy { position: absolute; z-index: 3; inset: 110px var(--gut) auto; text-align: center; }
+  .hero h1 { font-size: clamp(34px, 6.2vw, 100px); font-weight: 700; line-height: 1.02; letter-spacing: -0.055em; }
+  .hero h1 em { font-style: normal; color: var(--ink-2); }
+  .hero-foot {
+    position: absolute; z-index: 3; left: var(--gut); right: var(--gut); bottom: clamp(20px, 3vw, 40px);
+    display: flex; justify-content: space-between; align-items: end; gap: 24px;
+  }
+  .hero-foot p { max-width: 30ch; font-size: 15px; line-height: 1.6; color: rgb(255 255 255 / 0.75); }
+  .overlay { position: absolute; inset: 55% 0 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(to top, #000, transparent); opacity: 0.7; }
+
+  section { padding: clamp(80px, 11vw, 160px) var(--gut); }
+  h2 { font-size: clamp(28px, 4vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -0.045em; }
+
+  /* 작업: 휠을 펼친 듯한 부채꼴 배열 */
+  .work-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 64px; }
+  .work-head p { color: var(--ink-2); max-width: 40ch; }
+  .fan { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(12px, 2vw, 28px); padding-top: 24px; }
+  .fan figure { display: grid; gap: 18px; }
+  .fan .tile-face {
+    position: relative; aspect-ratio: 460 / 742; border-radius: 16px; overflow: hidden; container-type: inline-size;
+    box-shadow: -14px 0 60px rgb(0 0 0 / 0.7);
+    transform-origin: 50% 260%; transition: transform .8s var(--orbit-ease);
+  }
+  .fan figure:nth-child(1) .tile-face { transform: rotate(-6deg); }
+  .fan figure:nth-child(3) .tile-face { transform: rotate(6deg); }
+  .fan:hover .tile-face { transform: none; }
+  .fan figcaption { display: flex; justify-content: space-between; font-weight: 600; }
+  .fan figcaption span:last-child { font: 400 12px/2 var(--mono); color: var(--ink-2); }
+
+  /* 소개 */
+  .about { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(32px, 6vw, 96px); border-top: 1px solid var(--line); }
+  .about p { color: var(--ink-2); margin-top: 24px; max-width: 46ch; }
+  .chips { display: grid; gap: 12px; align-content: start; }
+  .chips li { padding: 22px 24px; border-radius: 18px; background: var(--bg-2); border: 1px solid var(--line); display: grid; gap: 4px; }
+  .chips b { font-size: 18px; font-weight: 600; }
+  .chips span { color: var(--ink-2); font-size: 15px; }
+
+  /* 의뢰 방식: 15° 단위로 기울어진 큰 숫자 */
+  .process { border-top: 1px solid var(--line); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 3vw, 48px); margin-top: 64px; }
+  .steps li { display: grid; gap: 12px; align-content: start; }
+  .steps .n { font: 400 clamp(64px, 8vw, 120px)/1 var(--mono); color: #63666e; display: block; width: fit-content; transform-origin: 50% 100%; }
+  .steps li:nth-child(1) .n { rotate: -6deg; } .steps li:nth-child(3) .n { rotate: 6deg; }
+  .steps h3 { font-size: 22px; font-weight: 600; }
+  .steps p { color: var(--ink-2); }
+  .note { margin-top: 48px; font-size: 14px; color: var(--ink-2); }
+
+  .cta { margin: 0 var(--gut) var(--gut); border-radius: 28px; background: var(--go); color: #fff;
+    display: grid; gap: 32px; justify-items: start; padding: clamp(48px, 8vw, 120px) clamp(24px, 6vw, 96px); }
+  .cta .btn { background: #fff; color: #0d0e10; }
+  .cta h2 { max-width: 16ch; }
+
+  footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding: 24px var(--gut) 40px; font: 400 12px/1.6 var(--mono); color: var(--ink-2); }
+
+  @media (max-width: 860px) {
+    .menu { display: none; }
+    .hero-foot p { display: none; }
+    .hero .orbit-scene { top: 19svh; }
+    .about { grid-template-columns: 1fr; }
+    .fan { grid-template-columns: 1fr 1fr; }
+    .fan figure:last-child { display: none; }
+    .steps { grid-template-columns: 1fr; }
+    .steps .n { rotate: 0deg !important; }
+  }
+</style>
+</head>
+<body>
+  <header class="bar">
+    <a class="wordmark" href="#">demion</a>
+    <nav class="menu"><a href="#work">작업</a><a href="#about">소개</a><a href="#process">의뢰 방식</a></nav>
+    <a class="btn" href="#contact">프로젝트 문의</a>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="소개" style="padding:0">
+      <div class="hero-copy">
+        <h1>먼저 보고,<br><em>결정하는</em> 홈페이지</h1>
+      </div>
+      <div class="orbit-scene is-swing" aria-hidden="true">
+        <div class="orbit-wheel"></div>
+        <div class="orbit-dome"></div>
+      </div>
+      <div class="overlay"></div>
+      <div class="hero-foot">
+        <p>하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지.</p>
+        <a class="btn" href="#contact">첫 디자인 요청</a>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="work-head">
+        <div><p class="label">선택작</p><h2>직접 구성한<br>자체 콘셉트 3점</h2></div>
+        <p>실제 고객의 작업물이 아닙니다. 분야와 분위기가 다른 홈페이지를 어떻게 풀어내는지 보여드립니다.</p>
+      </div>
+      <div class="fan">
+        <figure><div class="tile-face" data-face="sodam"></div><figcaption><span>소담 도예</span><span>도자기 공방</span></figcaption></figure>
+        <figure><div class="tile-face" data-face="haemu"></div><figcaption><span>해무 스테이</span><span>바닷가 숙소</span></figcaption></figure>
+        <figure><div class="tile-face" data-face="maru"></div><figcaption><span>마루</span><span>매출 정산 서비스</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div>
+        <p class="label">소개</p>
+        <h2 style="margin-top:16px">AI로 과정을 줄이고, 완성도에 집중합니다.</h2>
+        <p>빠르게 만들 수 있는 부분은 AI에 맡기고, 구성과 문장, 화면의 비례처럼 사람이 판단해야 하는 일에 시간을 씁니다. 기업과 개인의 홈페이지를 새로 만들거나 고쳐드립니다.</p>
+      </div>
+      <ul class="chips">
+        <li><b>신규 제작</b><span>목적에 맞는 홈페이지 디자인과 개발</span></li>
+        <li><b>기존 홈페이지 개선</b><span>현재 화면의 디자인과 정보 구성 정돈</span></li>
+        <li><b>웹·모바일 디자인과 개발</b><span>화면 크기가 달라도 일관된 경험</span></li>
+      </ul>
+    </section>
+
+    <section class="process" id="process">
+      <p class="label">의뢰 방식</p>
+      <h2 style="margin-top:16px">세 단계, 그중 첫 단계는 보는 것.</h2>
+      <ol class="steps">
+        <li><span class="n">01</span><h3>문의</h3><p>회사 소개, 현재 홈페이지, 원하는 분위기를 알려주세요.</p></li>
+        <li><span class="n">02</span><h3>첫 디자인 확인</h3><p>전달받은 내용을 바탕으로 하루 만에 디자인 방향을 보여드립니다.</p></li>
+        <li><span class="n">03</span><h3>제작 협의</h3><p>디자인을 확인한 뒤 제작 범위와 진행 조건을 협의합니다.</p></li>
+      </ol>
+      <p class="note">하루는 첫 디자인을 보여드리는 기간입니다. 첫 디자인의 범위와 조건은 문의하실 때 안내드립니다.</p>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>새 홈페이지도, 지금 홈페이지의 개선도 먼저 이야기해주세요.</h2>
+      <a class="btn" href="../demion/">프로젝트 문의</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>demion — AI를 활용해 합리적인 비용으로 웹·모바일 홈페이지를 디자인하고 개발하는 스튜디오.</span>
+    <span>시안 B · 나이트 스테이지</span>
+  </footer>
+  <script src="orbit.js"></script>
+</body>
+</html>

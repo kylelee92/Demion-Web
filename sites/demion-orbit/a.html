@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>demion · 시안 A 갤러리 오빗</title>
+<meta name="description" content="demion 홈페이지 컨셉 시안 A — 회색 무대 위에서 작업 화면이 도는 갤러리형 메인">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;700&family=Noto+Serif+KR:wght@400&family=Space+Mono&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="orbit.css">
+<style>
+  :root {
+    --stage: #e0e1e4;
+    --bg: #efefec;
+    --ink: #16171a;
+    --ink-2: #565a60;
+    --line: #d6d6d1;
+    --gut: clamp(16px, 3.6vw, 56px);
+    --mono: 'Space Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font: 400 16px/1.75 'Pretendard Variable', Pretendard, sans-serif;
+    word-break: keep-all; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  ul, ol { list-style: none; }
+  h1, h2, h3 { text-wrap: balance; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  .label { font: 400 13px/1.2 var(--mono); color: var(--ink-2); }
+
+  /* ---------- 헤더 ---------- */
+  .bar {
+    position: fixed; z-index: 20; inset: 0 0 auto;
+    display: flex; align-items: center; gap: 28px;
+    height: 64px; padding-inline: var(--gut);
+    transition: background-color .3s, box-shadow .3s;
+  }
+  /* 히어로를 지나면 바탕을 깔아 본문 위에서도 읽히게 */
+  .bar.is-solid { background: rgb(239 239 236 / 0.92); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
+  .wordmark { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; margin-right: auto; }
+  .menu { display: flex; gap: 28px; font-size: 14px; font-weight: 500; }
+  .menu a { padding: 12px 0; }
+  .menu a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .ask { font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--ink); padding: 4px 0; }
+
+  /* ---------- 히어로: 가이드 그대로의 무대 ---------- */
+  .hero {
+    position: relative; height: 100svh; min-height: 560px;
+    background: var(--stage); overflow: hidden;
+  }
+  .hero .orbit-scene {
+    position: absolute; left: 50%; top: 18svh; translate: -50% 0;
+    width: min(max(100vw, 90svh), 120svh);
+  }
+  .hero-copy {
+    position: absolute; z-index: 3; inset: 96px var(--gut) auto;
+    display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px 48px;
+  }
+  .hero h1 {
+    font-size: clamp(34px, 5.4vw, 84px); font-weight: 600; line-height: 1.08; letter-spacing: -0.045em;
+  }
+  .hero-side { max-width: 300px; display: grid; gap: 20px; padding-bottom: 8px; }
+  .hero-side p { font-size: 15px; color: var(--ink-2); line-height: 1.6; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 48px; padding: 0 24px; border: 1px solid var(--ink); border-radius: 2px;
+    background: var(--ink); color: var(--bg); font-size: 15px; font-weight: 500; line-height: 1;
+    transition: background-color .2s, color .2s;
+  }
+  .btn:hover { background: transparent; color: var(--ink); }
+  .overlay {
+    position: absolute; inset: 50% 0 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(to top, #000, transparent); opacity: 0.5;
+  }
+  .captions {
+    position: absolute; z-index: 3; left: var(--gut); right: var(--gut); bottom: clamp(16px, 2.7vw, 32px);
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    font: 400 clamp(11px, 1vw, 15px)/1.2 var(--mono); color: rgb(255 255 255 / 0.75);
+  }
+  .captions > :nth-child(2), .captions > :nth-child(3) { text-align: center; }
+  .captions > :last-child { text-align: right; }
+  .captions a { padding: 8px 0; }
+  .captions a:hover { color: #fff; }
+  .hero.is-off .orbit-card, .hero.is-off .roll { animation-play-state: paused; }
+
+  /* 첫 화면 문구: 휠과 같은 이징으로 한 번 떠오름 */
+  .hero-copy > * { animation: rise 1100ms var(--orbit-ease) both; }
+  .hero-copy > :nth-child(2) { animation-delay: 150ms; }
+  @keyframes rise { from { opacity: 0; translate: 0 24px; } }
+
+  /* 작업 타일: 휠 한 칸(15°)을 축소한 회전으로 50ms씩 차례로 들어옴 */
+  .js .works .tile-face { opacity: 0; transform: rotate(6deg); }
+  .js .works.in .tile-face {
+    opacity: 1; transform: none;
+    transition: opacity 900ms ease, transform 1750ms var(--orbit-ease);
+  }
+  .js .works.in .tile:nth-child(2) .tile-face { transition-delay: 50ms; }
+  .js .works.in .tile:nth-child(3) .tile-face { transition-delay: 100ms; }
+
+  /* ---------- 섹션 ---------- */
+  section[id] { scroll-margin-top: 64px; }
+  #work { overflow-x: clip; } /* 등장 전 기울어진 타일이 가로 스크롤을 만들지 않게 */
+  section { padding: clamp(80px, 11vw, 160px) var(--gut); border-top: 1px solid var(--line); }
+  .head { display: grid; grid-template-columns: 1fr 2fr; gap: 24px 48px; margin-bottom: clamp(40px, 6vw, 80px); }
+  .head h2 { font-size: clamp(26px, 3.2vw, 44px); font-weight: 600; line-height: 1.2; letter-spacing: -0.035em; }
+  .head p { color: var(--ink-2); max-width: 46ch; }
+
+  .works { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 32px); }
+  .tile { display: grid; gap: 16px; }
+  .tile-face {
+    position: relative; aspect-ratio: 460 / 742; border-radius: 14px; overflow: hidden;
+    container-type: inline-size; transform-origin: 50% 300%;
+  }
+  .tile figcaption { display: flex; justify-content: space-between; gap: 16px; font-size: 15px; font-weight: 500; }
+  .tile figcaption span:last-child { font: 400 12px/1.9 var(--mono); color: var(--ink-2); }
+
+  .services { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; }
+  .services ul { border-top: 1px solid var(--ink); }
+  .services li { display: grid; grid-template-columns: 56px 1fr 1.4fr; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .services li b { font-weight: 600; }
+  .services li span:last-child { color: var(--ink-2); }
+
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 3vw, 48px); counter-reset: s; }
+  .steps li { border-top: 1px solid var(--ink); padding-top: 20px; display: grid; gap: 10px; }
+  .steps h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+  .steps p { color: var(--ink-2); }
+  .note { margin-top: 40px; font-size: 14px; color: var(--ink-2); }
+
+  .cta { background: var(--stage); border-top: 0; text-align: center; display: grid; justify-items: center; gap: 32px; }
+  .cta h2 { font-size: clamp(28px, 4.2vw, 60px); font-weight: 600; line-height: 1.15; letter-spacing: -0.045em; max-width: 18ch; }
+
+  footer { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 32px var(--gut); font: 400 12px/1.6 var(--mono); color: var(--ink-2); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-copy > * { animation: none; }
+    .js .works .tile-face { opacity: 1; transform: none; transition: none; }
+  }
+
+  @media (max-width: 860px) {
+    .menu { display: none; }
+    .hero-copy { grid-template-columns: 1fr; inset-block-start: 84px; }
+    .hero-side p { display: none; }
+    .hero .orbit-scene { top: 30svh; }
+    .head, .services { grid-template-columns: 1fr; }
+    .works { grid-template-columns: 1fr 1fr; }
+    .works .tile:last-child { display: none; }
+    .steps { grid-template-columns: 1fr; }
+    .services li { grid-template-columns: 40px 1fr; }
+    .services li span:last-child { grid-column: 2; }
+    .captions { grid-template-columns: 1fr 1fr; }
+    .captions > :nth-child(2), .captions > :nth-child(3) { display: none; }
+  }
+</style>
+</head>
+<body>
+  <header class="bar">
+    <a class="wordmark" href="#">demion</a>
+    <nav class="menu"><a href="#work">작업</a><a href="#about">소개</a><a href="#process">의뢰 방식</a></nav>
+    <a class="ask" href="#contact">프로젝트 문의</a>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="소개" style="padding:0;border:0">
+      <div class="hero-copy">
+        <h1>먼저 보고,<br>결정하는 홈페이지 디자인.</h1>
+        <div class="hero-side">
+          <p>하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지.</p>
+          <a class="btn" href="#contact">프로젝트 문의</a>
+        </div>
+      </div>
+      <div class="orbit-scene is-swing" aria-hidden="true">
+        <div class="orbit-wheel"></div>
+        <div class="orbit-dome"></div>
+      </div>
+      <div class="overlay"></div>
+      <div class="captions">
+        <span aria-hidden="true">demion</span><span aria-hidden="true">선택작 · 자체 콘셉트</span><span aria-hidden="true">웹 · 모바일</span><a href="#work">↓ 작업 보기</a>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="head">
+        <p class="label">01 — 선택작</p>
+        <div>
+          <h2>직접 구성한 자체 콘셉트 3점</h2>
+          <p>실제 고객의 작업물이 아닙니다. 분야와 분위기가 다른 홈페이지를 어떻게 풀어내는지 보여드리기 위해 만들었습니다.</p>
+        </div>
+      </div>
+      <div class="works">
+        <figure class="tile"><div class="tile-face" data-face="sodam"></div><figcaption><span>소담 도예</span><span>도자기 공방</span></figcaption></figure>
+        <figure class="tile"><div class="tile-face" data-face="haemu"></div><figcaption><span>해무 스테이</span><span>바닷가 숙소</span></figcaption></figure>
+        <figure class="tile"><div class="tile-face" data-face="maru"></div><figcaption><span>마루</span><span>매출 정산 서비스</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="services">
+        <p class="label">02 — 소개</p>
+        <div>
+          <div class="head" style="grid-template-columns:1fr;margin-bottom:40px">
+            <h2>AI로 제작 과정을 줄이고, 디자인의 완성도에 집중합니다.</h2>
+            <p>빠르게 만들 수 있는 부분은 AI에 맡기고, 구성과 문장, 화면의 비례처럼 사람이 판단해야 하는 일에 시간을 씁니다. 기업과 개인의 홈페이지를 새로 만들거나 고쳐드립니다.</p>
+          </div>
+          <ul>
+            <li><span class="label">01</span><b>신규 제작</b><span>목적에 맞는 홈페이지 디자인과 개발</span></li>
+            <li><span class="label">02</span><b>기존 홈페이지 개선</b><span>현재 화면의 디자인과 정보 구성 정돈</span></li>
+            <li><span class="label">03</span><b>웹·모바일 디자인과 개발</b><span>화면 크기가 달라도 일관된 경험</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="head"><p class="label">03 — 의뢰 방식</p><h2>보고 나서 결정하세요</h2></div>
+      <ol class="steps">
+        <li><span class="label">01</span><h3>문의</h3><p>회사 소개, 현재 홈페이지, 원하는 분위기를 알려주세요.</p></li>
+        <li><span class="label">02</span><h3>첫 디자인 확인</h3><p>전달받은 내용을 바탕으로 하루 만에 디자인 방향을 보여드립니다.</p></li>
+        <li><span class="label">03</span><h3>제작 협의</h3><p>디자인을 확인한 뒤 제작 범위와 진행 조건을 협의합니다.</p></li>
+      </ol>
+      <p class="note">하루는 첫 디자인을 보여드리는 기간입니다. 첫 디자인의 범위와 조건은 문의하실 때 안내드립니다.</p>
+    </section>
+
+    <section class="cta" id="contact">
+      <p class="label">04 — 문의</p>
+      <h2>새 홈페이지도, 지금 홈페이지의 개선도 먼저 이야기해주세요.</h2>
+      <a class="btn" href="../demion/">프로젝트 문의</a>
+    </section>
+  </main>
+
+  <footer>
+    <span>demion — AI를 활용해 합리적인 비용으로 웹·모바일 홈페이지를 디자인하고 개발하는 스튜디오.</span>
+    <span>시안 A · 갤러리 오빗</span>
+  </footer>
+  <script src="orbit.js"></script>
+  <script>
+    document.documentElement.classList.add('js');
+    const hero = document.querySelector('.hero');
+    const bar = document.querySelector('.bar');
+    // 히어로가 화면 밖이면 휠 정지 + 헤더에 바탕
+    new IntersectionObserver(([e]) => {
+      hero.classList.toggle('is-off', !e.isIntersecting);
+    }).observe(hero);
+    new IntersectionObserver(([e]) => {
+      bar.classList.toggle('is-solid', !e.isIntersecting);
+    }, { rootMargin: '-64px 0px 0px 0px', threshold: 0.08 }).observe(hero);
+    // 작업 타일 등장
+    const works = document.querySelector('.works');
+    new IntersectionObserver(([e], o) => {
+      if (e.isIntersecting) { works.classList.add('in'); o.disconnect(); }
+    }, { threshold: 0.2 }).observe(works);
+  </script>
+</body>
+</html>

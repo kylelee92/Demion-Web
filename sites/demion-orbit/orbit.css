@@ -1,0 +1,206 @@
+/* Orbit 휠 엔진 + 카드 화면 — design-guides/motion/orbit-cards.md
+   .orbit-scene 하나가 1600×1200 Jitter 아트보드. 1u = 아트보드 1px. */
+
+:root {
+  --orbit-step: 15deg;
+  --orbit-stagger: 50ms;
+  --orbit-dur: 1750ms;
+  --orbit-loop: 5300ms;
+  --orbit-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --orbit-wheel: #b3b3b3;
+  --orbit-wheel-2: #9d9d9f;
+  --orbit-shadow: rgb(0 0 0 / 0.55);
+}
+
+.orbit-scene {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  container-type: inline-size;
+}
+.orbit-scene > * { --u: calc(100cqw / 1600); }
+
+.orbit-wheel {
+  position: absolute;
+  left: calc(800 * var(--u));
+  top: calc(2300 * var(--u));
+}
+
+.orbit-card {
+  --i: 0;
+  --a: 0deg;
+  --w: calc(460 * var(--u));
+  --h: calc(742 * var(--u));
+  --r: calc(1660 * var(--u));
+  position: absolute;
+  left: calc(var(--w) / -2);
+  top: calc(-1 * (var(--r) + var(--h) / 2));
+  width: var(--w);
+  height: var(--h);
+  border-radius: calc(22 * var(--u));
+  overflow: hidden;
+  container-type: inline-size;
+  box-shadow: calc(-20 * var(--u)) 0 calc(100 * var(--u)) var(--orbit-shadow);
+  transform-origin: 50% calc(var(--r) + var(--h) / 2);
+  transform: rotate(var(--a));
+}
+
+.orbit-card:nth-child(1) { --i: 0; --a: 45deg; }
+.orbit-card:nth-child(2) { --i: 1; --a: 30deg; }
+.orbit-card:nth-child(3) { --i: 2; --a: 15deg; }
+.orbit-card:nth-child(4) { --i: 3; --a: 0deg; }
+.orbit-card:nth-child(5) { --i: 4; --a: -15deg; }
+.orbit-card:nth-child(6) { --i: 5; --a: -30deg; }
+.orbit-card:nth-child(7) { --i: 6; --a: -45deg; }
+.orbit-card:nth-child(8) { --i: 7; --a: -60deg; }
+
+/* 모드 1: 왕복 루프 (가이드 원본) */
+.orbit-scene.is-swing .orbit-card {
+  animation: orbit-swing var(--orbit-loop) infinite;
+  animation-delay: calc(var(--i) * var(--orbit-stagger));
+}
+@keyframes orbit-swing {
+  0%          { transform: rotate(var(--a)); animation-timing-function: var(--orbit-ease); }
+  33%         { transform: rotate(calc(var(--a) + var(--orbit-step))); }
+  60.4%       { transform: rotate(calc(var(--a) + var(--orbit-step))); animation-timing-function: var(--orbit-ease); }
+  93.4%, 100% { transform: rotate(var(--a)); }
+}
+
+/* 모드 2: 한 칸씩 전진 (JS가 --a, --i 갱신) */
+.orbit-scene.is-step .orbit-card {
+  transition: transform var(--orbit-dur) var(--orbit-ease);
+  transition-delay: calc(var(--i) * var(--orbit-stagger));
+}
+.orbit-scene.is-step .orbit-card.is-wrap { transition: none; }
+
+.orbit-dome {
+  position: absolute;
+  left: calc((800 - 1393) * var(--u));
+  top: calc(907 * var(--u));
+  width: calc(2786 * var(--u));
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(var(--orbit-wheel), var(--orbit-wheel-2) 30%);
+  box-shadow: 0 calc(-12 * var(--u)) calc(60 * var(--u)) rgb(0 0 0 / 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-scene.is-swing .orbit-card { animation: none; }
+  .orbit-scene.is-step .orbit-card { transition: none; }
+  .face .roll { animation: none; }
+}
+
+/* ---------- 카드 화면 ----------
+   .face는 카드(또는 작업 타일) 폭 기준으로 그린다. 1k = 폭 460 기준 1px. */
+
+.face {
+  --k: calc(100cqw / 460);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  font-family: 'Pretendard Variable', Pretendard, sans-serif;
+  word-break: keep-all;
+}
+.face .tag {
+  position: absolute;
+  left: calc(24 * var(--k));
+  bottom: calc(22 * var(--k));
+  font: 400 calc(13 * var(--k)) / 1 'Space Mono', monospace;
+  opacity: 0.6;
+}
+.face .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: calc(22 * var(--k)) calc(24 * var(--k));
+  font-size: calc(13 * var(--k));
+}
+.face .nav i { display: flex; gap: calc(10 * var(--k)); }
+.face .nav i::before, .face .nav i::after, .face .nav s {
+  content: ''; display: block; width: calc(28 * var(--k)); height: calc(3 * var(--k)); background: currentColor; opacity: 0.35;
+}
+
+/* 소담 도예 — 도자기 공방 */
+.f-sodam { background: #e8e9e5; color: #23262a; }
+.f-sodam h4 {
+  margin: calc(70 * var(--k)) calc(24 * var(--k)) 0;
+  font: 400 calc(64 * var(--k)) / 1.1 'Noto Serif KR', serif;
+}
+.f-sodam p { margin: calc(12 * var(--k)) calc(24 * var(--k)); font-size: calc(15 * var(--k)); color: #5b5f5e; line-height: 1.5; }
+.f-sodam .bowl {
+  position: absolute;
+  left: 50%;
+  bottom: calc(80 * var(--k));
+  width: calc(300 * var(--k));
+  height: calc(150 * var(--k));
+  translate: -50% 0;
+  border-radius: 0 0 50% 50% / 0 0 100% 100%;
+  background: linear-gradient(100deg, #b9b2a5, #d8d2c6 45%, #a79f92);
+}
+.f-sodam .bowl::before {
+  content: ''; position: absolute; left: 0; right: 0; top: calc(-20 * var(--k)); height: calc(40 * var(--k));
+  border-radius: 50%; background: #8f877b; box-shadow: inset 0 calc(6 * var(--k)) 0 #cfc8bb;
+}
+
+/* 해무 스테이 — 바닷가 숙소 */
+.f-haemu {
+  background:
+    linear-gradient(transparent 52%, rgb(232 228 220 / 0.25) 52.3%, transparent 53%),
+    radial-gradient(120% 40% at 50% 52%, rgb(232 228 220 / 0.35), transparent 70%),
+    linear-gradient(#2b343b, #11171d 50%, #0b0f13);
+  color: #e8e4dc;
+}
+.f-haemu h4 {
+  position: absolute; left: calc(24 * var(--k)); bottom: calc(90 * var(--k));
+  font: 400 calc(76 * var(--k)) / 1 'Noto Serif KR', serif;
+}
+.f-haemu p { position: absolute; left: calc(26 * var(--k)); bottom: calc(60 * var(--k)); font-size: calc(14 * var(--k)); color: #98a1a6; }
+
+/* 마루 — 매출 정산 서비스 */
+.f-maru { background: #f4f5f7; color: #12151a; font-family: 'IBM Plex Sans KR', 'Pretendard Variable', sans-serif; }
+.f-maru h4 { margin: calc(40 * var(--k)) calc(24 * var(--k)) 0; font-size: calc(34 * var(--k)); font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; }
+.f-maru .panel {
+  position: absolute; left: calc(24 * var(--k)); right: calc(24 * var(--k)); bottom: calc(60 * var(--k));
+  height: calc(300 * var(--k)); background: #fff; border: 1px solid #dfe2e7; border-radius: calc(10 * var(--k));
+  display: flex; align-items: flex-end; gap: calc(12 * var(--k)); padding: calc(24 * var(--k));
+}
+.f-maru .panel b { flex: 1; background: #dfe2e7; border-radius: calc(3 * var(--k)) calc(3 * var(--k)) 0 0; }
+.f-maru .panel b:nth-child(1) { height: 35%; } .f-maru .panel b:nth-child(2) { height: 55%; }
+.f-maru .panel b:nth-child(3) { height: 45%; } .f-maru .panel b:nth-child(4) { height: 70%; }
+.f-maru .panel b:nth-child(5) { height: 88%; background: #0c7a5a; }
+
+/* 소담 도예 — 모바일 */
+.f-phone { background: #ceced0; }
+.f-phone .ph {
+  position: absolute; left: 50%; top: calc(70 * var(--k)); translate: -50% 0;
+  width: calc(270 * var(--k)); height: calc(560 * var(--k));
+  border-radius: calc(36 * var(--k)); background: #111; padding: calc(10 * var(--k));
+}
+.f-phone .ph > div { position: relative; height: 100%; border-radius: calc(27 * var(--k)); overflow: hidden; container-type: inline-size; }
+.f-phone .tag { color: #111; }
+
+/* 키네틱 타입 */
+.f-type { background: linear-gradient(175deg, #c9cacc, #a7a8ab 70%, #bdbec1); color: #000; text-align: center; }
+.f-type .roll {
+  font-size: calc(104 * var(--k)); font-weight: 800; line-height: 1.02; letter-spacing: -0.05em;
+  animation: roll 6900ms linear infinite;
+}
+@keyframes roll { to { translate: 0 -50%; } }
+
+/* 하루 — 유일한 유채색 카드 */
+.f-green { background: #009942; color: #fff; padding: calc(36 * var(--k)); display: grid; align-content: space-between; }
+.f-green b { font-size: calc(150 * var(--k)); font-weight: 800; line-height: 0.95; letter-spacing: -0.06em; }
+.f-green span { font-size: calc(22 * var(--k)); font-weight: 500; line-height: 1.45; }
+
+/* 마크 */
+.f-mark { background: radial-gradient(120% 70% at 50% 45%, #1c1c1c, #000 70%); color: #fff; display: grid; place-items: center; }
+.f-mark b {
+  display: grid; place-items: center; width: calc(150 * var(--k)); aspect-ratio: 1; border-radius: 50%;
+  border: calc(6 * var(--k)) solid #fff; font-size: calc(84 * var(--k)); font-weight: 600; letter-spacing: -0.04em; line-height: 1;
+  padding-bottom: calc(10 * var(--k));
+}
+
+/* 서비스 목록 */
+.f-spec { background: #f8f8f8; color: #111; padding: calc(36 * var(--k)); display: grid; align-content: space-between; }
+.f-spec b { font-size: calc(60 * var(--k)); font-weight: 700; line-height: 1.1; letter-spacing: -0.04em; }
+.f-spec ul { list-style: none; margin: 0; padding: 0; font: 400 calc(17 * var(--k)) / 1.9 'Space Mono', monospace; }
+.f-spec li { display: flex; justify-content: space-between; border-top: 1px solid #ddd; }

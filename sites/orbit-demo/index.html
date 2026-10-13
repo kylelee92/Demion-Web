@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbit Cards</title>
+<meta name="description" content="Orbit Cards 모션 스타일 가이드(design-guides/motion/orbit-cards.md) 데모">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  /* Tokens: design-guides/motion/orbit-cards.md */
+  :root {
+    --orbit-stage: #e0e1e4;
+    --orbit-wheel: #b3b3b3;
+    --orbit-card-light: #f8f8f8;
+    --orbit-card-mid: #ceced0;
+    --orbit-card-accent: #009942;
+    --orbit-ink: #000;
+    --orbit-caption: rgb(255 255 255 / 0.75);
+
+    --orbit-loop: 5300ms;
+    --orbit-step: 15deg;
+    --orbit-stagger: 50ms;
+    --orbit-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--orbit-stage);
+    overflow: hidden;
+    font-family: "Space Mono", ui-monospace, monospace;
+  }
+
+  /* 1600×1200 scene, bottom-anchored. 1u = 1px of the Jitter artboard. */
+  .scene {
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    width: min(max(100vw, 100vh), 133.34vh);
+    aspect-ratio: 4 / 3;
+    translate: -50% 0;
+    container-type: inline-size;
+  }
+  .scene > * { --u: calc(100cqw / 1600); }
+
+  /* Wheel centre sits below the artboard; cards hang off it at R = 1660u. */
+  .wheel {
+    position: absolute;
+    left: calc(800 * var(--u));
+    top: calc(2300 * var(--u));
+  }
+
+  .card {
+    --i: 0;
+    --base: 0deg;
+    --w: calc(460 * var(--u));
+    --h: calc(742 * var(--u));
+    --r: calc(1660 * var(--u));
+    position: absolute;
+    left: calc(var(--w) / -2);
+    top: calc(-1 * (var(--r) + var(--h) / 2));
+    width: var(--w);
+    height: var(--h);
+    border-radius: calc(22 * var(--u));
+    overflow: hidden;
+    box-shadow: calc(-20 * var(--u)) 0 calc(100 * var(--u)) rgb(0 0 0 / 0.55);
+    transform-origin: 50% calc(var(--r) + var(--h) / 2);
+    transform: rotate(var(--base));
+    animation: orbit-swing var(--orbit-loop) infinite;
+    animation-delay: calc(var(--i) * var(--orbit-stagger));
+  }
+
+  /* 1750/5300 = 33%, 3200/5300 = 60.4%, 4950/5300 = 93.4% */
+  @keyframes orbit-swing {
+    0%          { transform: rotate(var(--base)); animation-timing-function: var(--orbit-ease); }
+    33%         { transform: rotate(calc(var(--base) + var(--orbit-step))); }
+    60.4%       { transform: rotate(calc(var(--base) + var(--orbit-step))); animation-timing-function: var(--orbit-ease); }
+    93.4%, 100% { transform: rotate(var(--base)); }
+  }
+
+  /* Stagger runs from the leading (right) card to the trailing (left) one. */
+  .card:nth-child(1) { --i: 0; --base: 45deg; }
+  .card:nth-child(2) { --i: 1; --base: 30deg; }
+  .card:nth-child(3) { --i: 2; --base: 15deg; }
+  .card:nth-child(4) { --i: 3; --base: 0deg; }
+  .card:nth-child(5) { --i: 4; --base: -15deg; }
+  .card:nth-child(6) { --i: 5; --base: -30deg; }
+  .card:nth-child(7) { --i: 6; --base: -45deg; }
+  .card:nth-child(8) { --i: 7; --base: -60deg; }
+
+  /* ---- Card faces: monochrome stage, colour only inside two cards ---- */
+  .c-green {
+    background: var(--orbit-card-accent);
+    color: #fff;
+    display: grid;
+    align-content: space-between;
+    padding: calc(36 * var(--u));
+  }
+  .c-green b {
+    font: 400 calc(150 * var(--u)) / 0.86 "Archivo Black", sans-serif;
+    letter-spacing: -0.04em;
+  }
+  .c-green span { font-size: calc(18 * var(--u)); opacity: 0.8; }
+
+  .c-yellow {
+    background: linear-gradient(160deg, #f2c230, #d99a12);
+    display: grid;
+    place-items: center;
+  }
+  .c-yellow b {
+    font: 400 calc(330 * var(--u)) / 1 "Archivo Black", sans-serif;
+    color: #111;
+    rotate: -90deg;
+    letter-spacing: -0.05em;
+    translate: calc(60 * var(--u)) 0;
+  }
+
+  .c-black {
+    background: radial-gradient(120% 70% at 50% 45%, #1a1a1a, #000 70%);
+    display: grid;
+    place-items: center;
+  }
+  .c-black svg { width: 46%; }
+
+  .c-type {
+    background: linear-gradient(175deg, #c9cacc, #a7a8ab 70%, #bdbec1);
+    color: #000;
+    text-align: center;
+  }
+  .c-type .roll {
+    font: 400 calc(118 * var(--u)) / 0.98 "Archivo Black", sans-serif;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    animation: roll 4600ms linear infinite;
+  }
+  @keyframes roll { to { translate: 0 -50%; } }
+
+  .c-rings {
+    background:
+      repeating-radial-gradient(circle at 50% 62%, #efefef 0 calc(18 * var(--u)), #8f8f91 calc(19 * var(--u)) calc(36 * var(--u))),
+      #ddd;
+    -webkit-mask: linear-gradient(#000 70%, rgb(0 0 0 / 0.85));
+            mask: linear-gradient(#000 70%, rgb(0 0 0 / 0.85));
+  }
+
+  .c-sphere {
+    background:
+      radial-gradient(circle at 42% 58%, #8a8a8a 0, #2b2b2b calc(60 * var(--u)), transparent calc(62 * var(--u))),
+      radial-gradient(140% 90% at 120% 10%, #6d6d6d 0 30%, transparent 31%),
+      radial-gradient(160% 120% at -30% 120%, #3a3a3a 0 40%, transparent 41%),
+      linear-gradient(200deg, #444, #0a0a0a);
+  }
+
+  .c-spec {
+    background: var(--orbit-card-light);
+    color: #111;
+    padding: calc(36 * var(--u));
+    display: grid;
+    align-content: space-between;
+    font-size: calc(18 * var(--u));
+  }
+  .c-spec dl { display: grid; grid-template-columns: auto 1fr; gap: calc(10 * var(--u)) calc(24 * var(--u)); }
+  .c-spec dt { opacity: 0.5; }
+  .c-spec dd { text-align: right; }
+  .c-spec b { font: 400 calc(96 * var(--u)) / 0.9 "Archivo Black", sans-serif; letter-spacing: -0.03em; }
+
+  .c-dots {
+    background: var(--orbit-card-mid);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-content: center;
+    gap: calc(20 * var(--u));
+    padding: calc(40 * var(--u));
+  }
+  .c-dots i { aspect-ratio: 1; border-radius: 50%; background: #111; }
+  .c-dots i:nth-child(odd) { background: transparent; box-shadow: inset 0 0 0 calc(3 * var(--u)) #111; }
+
+  /* Grey dome of the wheel, in front of the card bottoms. */
+  .dome {
+    position: absolute;
+    left: calc((800 - 1393) * var(--u));
+    top: calc(907 * var(--u));
+    width: calc(2786 * var(--u));
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: linear-gradient(var(--orbit-wheel), #9d9d9f 30%);
+    box-shadow: 0 calc(-12 * var(--u)) calc(60 * var(--u)) rgb(0 0 0 / 0.18);
+  }
+
+  /* Bottom 50% darkening overlay + caption row, pinned to the viewport. */
+  .overlay {
+    position: fixed;
+    inset: 50% 0 0;
+    background: linear-gradient(to top, #000, transparent);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .captions {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: clamp(16px, 2.7vw, 32px);
+    padding: 0 clamp(16px, 2.5vw, 40px);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: baseline;
+    font-size: clamp(11px, 1vw, 16px);
+    line-height: 1.2;
+    color: var(--orbit-caption);
+  }
+  .captions > :nth-child(2),
+  .captions > :nth-child(3) { text-align: center; }
+  .captions > :last-child { text-align: right; }
+  .captions .mark { letter-spacing: -0.02em; }
+
+  .paused .card,
+  .paused .roll { animation-play-state: paused; }
+
+  @media (max-width: 600px) {
+    .captions { grid-template-columns: 1fr 1fr; }
+    .captions > :nth-child(2),
+    .captions > :nth-child(3) { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .roll { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="scene" aria-label="Orbit Cards 모션 데모">
+    <div class="wheel" aria-hidden="true">
+      <div class="card c-green"><b>15°<br>ONE<br>STEP</b><span>Orbit / 01</span></div>
+      <div class="card c-yellow"><b>turn</b></div>
+      <div class="card c-black">
+        <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="7">
+          <circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="6" fill="#fff" stroke="none"/>
+          <path d="M8 50h12M80 50h12" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="card c-type">
+        <div class="roll">
+          Slow<br>Turn<br>015<br>Hold<br>Slow<br>Turn<br>015<br>Hold<br>
+          Slow<br>Turn<br>015<br>Hold<br>Slow<br>Turn<br>015<br>Hold<br>
+        </div>
+      </div>
+      <div class="card c-rings"></div>
+      <div class="card c-sphere"></div>
+      <div class="card c-spec">
+        <b>5.3s<br>loop</b>
+        <dl>
+          <dt>step</dt><dd>15°</dd>
+          <dt>duration</dt><dd>1750ms</dd>
+          <dt>stagger</dt><dd>50ms</dd>
+          <dt>hold</dt><dd>1100ms</dd>
+        </dl>
+      </div>
+      <div class="card c-dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="dome" aria-hidden="true"></div>
+  </main>
+
+  <div class="overlay" aria-hidden="true"></div>
+  <footer class="captions">
+    <span class="mark">orbit○</span>
+    <span>Orbit</span>
+    <span>5-01 (DEMO)</span>
+    <span>15° · 50ms · 1750ms</span>
+  </footer>
+
+  <script>
+    // Space toggles pause, for inspecting a frame.
+    addEventListener('keydown', (e) => {
+      if (e.code !== 'Space') return;
+      e.preventDefault();
+      document.body.classList.toggle('paused');
+    });
+  </script>
+</body>
+</html>

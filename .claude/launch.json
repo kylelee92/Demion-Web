@@ -4,8 +4,58 @@
     {
       "name": "site-test",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "5500", "--bind", "127.0.0.1", "--directory", "sites/test"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5500",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "sites/test"
+      ],
       "port": 5500
+    },
+    {
+      "name": "site-demion",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5501",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "sites/demion"
+      ],
+      "port": 5501
+    },
+    {
+      "name": "site-orbit-demo",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5502",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "sites/orbit-demo"
+      ],
+      "port": 5502
+    },
+    {
+      "name": "site-demion-orbit",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5503",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "sites"
+      ],
+      "port": 5503
     }
   ]
 }
