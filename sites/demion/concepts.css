@@ -2,6 +2,11 @@
 
 .scr { width: 1280px; background: var(--b); color: var(--i); line-height: 1.6; word-break: keep-all; font-size: 16px; text-align: left; }
 .scr.m { width: 390px; }
+/* 실제 작업 캡처: 데스크톱/모바일 이미지 중 하나만 보인다 */
+.scr.shot { background: #fff; }
+.scr.shot img { display: block; width: 100%; height: auto; }
+.scr.shot .shot-m, .scr.shot.m .shot-d { display: none; }
+.scr.shot.m .shot-m { display: block; }
 .scr *, .scr *::before, .scr *::after { box-sizing: border-box; margin: 0; padding: 0; }
 .scr i, .scr em, .scr u { font-style: normal; text-decoration: none; }
 .scr b { font-weight: 600; }

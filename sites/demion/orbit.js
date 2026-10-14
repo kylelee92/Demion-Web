@@ -5,13 +5,13 @@
     { key: 'maru', html: '<div class="face f-maru"><div class="nav"><span>마루</span><i><s></s></i></div><h4>매출 정산을<br>한 화면에서</h4><div class="panel"><b></b><b></b><b></b><b></b><b></b></div><span class="tag">자체 콘셉트</span></div>' },
     { key: 'mark', html: '<div class="face f-mark"><b>d</b></div>' },
     { key: 'type', html: '<div class="face f-type"><div class="roll">먼저<br>보고<br>결정<br>하는<br>먼저<br>보고<br>결정<br>하는<br></div></div>' },
-    { key: 'sodam', html: '<div class="face f-sodam"><div class="nav"><span>소담 도예</span><i><s></s></i></div><h4>흙의 결을<br>빚습니다</h4><p>도자기 공방</p><div class="bowl"></div><span class="tag">자체 콘셉트</span></div>' },
+    { key: 'jhw', html: '<div class="face f-shot"><img src="img/face-jhw.jpg" alt="" decoding="async"><span class="tag">조각가 조희욱 · 실제 작업</span></div>' },
     { key: 'haemu', html: '<div class="face f-haemu"><div class="nav"><span>해무 스테이</span><i><s></s></i></div><h4>해무</h4><p>바닷가 숙소</p><span class="tag">자체 콘셉트</span></div>' },
-    { key: 'mobile', html: '<div class="face f-phone"><div class="ph"><div><div class="face f-sodam"><div class="nav"><span>소담</span></div><h4>흙의 결</h4><div class="bowl"></div></div></div></div><span class="tag">모바일 · 자체 콘셉트</span></div>' },
+    { key: 'mobile', html: '<div class="face f-phone"><div class="ph"><div><div class="face f-shot f-shot-full"><img src="img/face-jhw.jpg" alt="" decoding="async"></div></div></div><span class="tag">모바일 · 조희욱</span></div>' },
     { key: 'spec', html: '<div class="face f-spec"><b>웹과<br>모바일</b><ul><li><span>신규 제작</span><span>01</span></li><li><span>기존 개선</span><span>02</span></li><li><span>디자인·개발</span><span>03</span></li></ul></div>' },
   ];
 
-  // 작업 타일: <div data-face="sodam"> 안에 같은 화면을 채운다
+  // 작업 타일: <div data-face="jhw"> 안에 같은 화면을 채운다
   document.querySelectorAll('[data-face]').forEach((el) => {
     el.innerHTML = FACES.find((f) => f.key === el.dataset.face).html;
   });

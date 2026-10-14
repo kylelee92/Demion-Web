@@ -119,27 +119,10 @@
   content: ''; display: block; width: calc(28 * var(--k)); height: calc(3 * var(--k)); background: currentColor; opacity: 0.35;
 }
 
-/* 소담 도예 — 도자기 공방 */
-.f-sodam { background: #e8e9e5; color: #23262a; }
-.f-sodam h4 {
-  margin: calc(70 * var(--k)) calc(24 * var(--k)) 0;
-  font-size: calc(64 * var(--k)); font-weight: 400; line-height: 1.1;
-}
-.f-sodam p { margin: calc(12 * var(--k)) calc(24 * var(--k)); font-size: calc(15 * var(--k)); color: #5b5f5e; line-height: 1.5; }
-.f-sodam .bowl {
-  position: absolute;
-  left: 50%;
-  bottom: calc(80 * var(--k));
-  width: calc(300 * var(--k));
-  height: calc(150 * var(--k));
-  translate: -50% 0;
-  border-radius: 0 0 50% 50% / 0 0 100% 100%;
-  background: linear-gradient(100deg, #b9b2a5, #d8d2c6 45%, #a79f92);
-}
-.f-sodam .bowl::before {
-  content: ''; position: absolute; left: 0; right: 0; top: calc(-20 * var(--k)); height: calc(40 * var(--k));
-  border-radius: 50%; background: #8f877b; box-shadow: inset 0 calc(6 * var(--k)) 0 #cfc8bb;
-}
+/* 조희욱 — 실제 작업 (jhw.demion.co 모바일 첫 화면 캡처) */
+.f-shot { background: #fff; color: #23262a; }
+.f-shot img { position: absolute; left: 0; top: 0; width: 100%; height: calc(100% - 64 * var(--k)); object-fit: cover; object-position: 50% 0; }
+.f-shot-full img { height: 100%; }
 
 /* 해무 스테이 — 바닷가 숙소 */
 .f-haemu {
@@ -168,7 +151,7 @@
 .f-maru .panel b:nth-child(3) { height: 45%; } .f-maru .panel b:nth-child(4) { height: 70%; }
 .f-maru .panel b:nth-child(5) { height: 88%; background: #0c7a5a; }
 
-/* 소담 도예 — 모바일 */
+/* 모바일 화면 */
 .f-phone { background: #ceced0; }
 .f-phone .ph {
   position: absolute; left: 50%; top: calc(70 * var(--k)); translate: -50% 0;
