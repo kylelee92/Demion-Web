@@ -43,6 +43,9 @@
   transform-origin: 50% calc(var(--r) + var(--h) / 2);
   transform: rotate(var(--a));
 }
+.orbit-card.is-link { display: block; color: inherit; cursor: pointer; }
+.orbit-card.is-link .face { transition: filter .3s ease; }
+.orbit-card.is-link:hover .face { filter: brightness(.94); }
 
 .orbit-card:nth-child(1) { --i: 0; --a: 45deg; }
 .orbit-card:nth-child(2) { --i: 1; --a: 30deg; }

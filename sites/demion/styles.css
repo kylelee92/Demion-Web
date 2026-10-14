@@ -107,6 +107,9 @@ figure:has(.open-work:hover) figcaption b { text-decoration: underline; text-und
 h1 { font-size: clamp(34px, 5.4vw, 84px); font-weight: 600; line-height: 1.08; letter-spacing: -.045em; }
 .hero-side { max-width: 300px; display: grid; gap: 20px; padding-bottom: 8px; }
 .lead { font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+/* 제목 영역이 낮은 화면에서 휠 카드를 덮어도 카드 클릭은 통과시킨다 */
+.hero-copy { pointer-events: none; }
+.hero-copy :is(a, button) { pointer-events: auto; }
 .hero-copy > * { animation: rise 1100ms var(--orbit-ease) both; }
 .hero-copy > :nth-child(2) { animation-delay: 150ms; }
 @keyframes rise { from { opacity: 0; translate: 0 24px; } }
