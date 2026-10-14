@@ -32,11 +32,16 @@
     b.type = "button";
     b.className = "card";
     b.setAttribute("aria-label", `${w.title}, ${w.size}, ${w.mat}`);
-    const img = new Image();
-    img.src = `img/${w.img}.jpg`;
+    // 카카오톡 등 앱 안 브라우저에서 첫 요청이 깨지는 경우가 있어, 실패하면 두 번까지 다시 받는다
+    const img = document.createElement("img");
     img.alt = "";
-    img.decoding = "async";
-    if (i > 2 && i < n - 1) img.loading = "lazy";
+    let tries = 0;
+    img.addEventListener("error", () => {
+      if (tries >= 2) { img.style.visibility = "hidden"; return; }
+      tries += 1;
+      setTimeout(() => { img.src = `img/${w.img}.jpg?r=${tries}`; }, 400 * tries);
+    });
+    img.src = `img/${w.img}.jpg`;
     b.appendChild(img);
     b.addEventListener("click", () => {
       if (dragged) return;
