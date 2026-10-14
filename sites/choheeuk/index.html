@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>조각가 조희욱</title>
+  <meta name="description" content="흙으로 빚는 동심 — 테라코타 조각가 조희욱의 작품과 전시.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+KR:wght@300;400;600;900&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="mark" href="#top" aria-label="처음으로">조희욱</a>
+    <nav>
+      <a href="#works">작품</a>
+      <a href="#about">작가</a>
+      <a href="#process">작업</a>
+      <a href="#exhibition">전시</a>
+      <a href="#contact">문의</a>
+    </nav>
+  </header>
+
+  <!-- 지금 보고 있는 구역을 알려 주는 세로 글씨 -->
+  <p class="side-label" aria-hidden="true"><span>조희욱</span><i></i><span id="sideName">작품</span></p>
+
+  <!-- 첫 화면: 큰 이름 위로 작품 카드가 흐르고, 가운데 작품이 펼쳐진다 -->
+  <section class="stage" id="top" data-label="작품" aria-roledescription="carousel" aria-label="작품 갤러리">
+    <h1 class="hero-name"><span class="hero-role">조각가</span>조희욱</h1>
+    <p class="hero-motto">흙으로 빚는 동심</p>
+
+    <div class="track" id="track"></div>
+
+    <button class="nav-btn prev" type="button" aria-label="이전 작품">←</button>
+    <button class="nav-btn next" type="button" aria-label="다음 작품">→</button>
+
+    <footer class="caption" aria-live="polite">
+      <span class="cap-count"><span id="capIdx">01</span><i></i><span id="capTotal">06</span></span>
+      <span class="cap-info">
+        <b id="capTitle"></b>
+        <span><span id="capSize"></span> · <span id="capMat"></span></span>
+      </span>
+      <span class="cap-hint">Terracotta &amp; Resin</span>
+    </footer>
+  </section>
+
+  <main>
+    <section class="intro" id="about" data-label="작가">
+      <p class="dropcap-text"><span class="dropcap" aria-hidden="true">흙</span><em>테라코타</em>와 <em>레진</em>, 그리고 <em>유화</em>. 조희욱은 30여 년 동안 황토를 빚어 동글동글한 얼굴과 장난기 어린 표정, 어린 시절의 향수를 조각해 왔습니다.</p>
+    </section>
+
+    <section class="collage-wrap" data-label="작가">
+      <div class="collage">
+        <figure class="c1"><img src="img/gallery.jpg" alt="흰 좌대 위로 조각들이 줄지어 놓인 포레스트 갤러리" loading="lazy"></figure>
+        <figure class="c2"><img src="img/bohemian.jpg" alt="테라코타 작품 Bohemian" loading="lazy"></figure>
+        <figure class="c3"><img src="img/window.jpg" alt="전시장 통유리 너머의 소나무와 호수" loading="lazy"></figure>
+        <svg class="c-line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="100" x2="100" y2="0"/></svg>
+      </div>
+      <div class="two-col">
+        <div class="col-small">
+          <p>원광대학교와 같은 대학원을 졸업하고 충남 서천의 서림여중, 서면중학교에서 미술을 가르쳤습니다. 2001년 전주 얼화랑에서 첫 개인전을 연 뒤 전국에서 개인전을 이어 왔습니다.</p>
+          <a class="cta" href="#process"><i></i>작업 들여다보기</a>
+        </div>
+        <p class="col-big">회화와 조각, 구상과 반구상, 전통과 현대의 경계를 오가며 <em>사람의 몸</em>과 <em>색</em>을 빚습니다.</p>
+      </div>
+    </section>
+
+    <section class="works" id="works" data-label="작품">
+      <ol class="work-index" id="workIndex"></ol>
+      <a class="cta center" href="#top"><i></i>처음 화면에서 크게 보기</a>
+    </section>
+
+    <section class="process" id="process" data-label="작업">
+      <h2 class="sec-title">950℃, <em>48시간</em></h2>
+      <ol class="steps">
+        <li>
+          <span class="num">I</span>
+          <h3>빚고, 비우기</h3>
+          <p>점토를 붙여 형태를 만든 뒤 속을 일정한 두께로 파냅니다. 색은 흙을 빚는 단계에서 넣어, 구운 뒤에도 바래지 않습니다.</p>
+        </li>
+        <li>
+          <span class="num">II</span>
+          <h3>그늘에서 말리기</h3>
+          <p>서늘한 그늘에서 4주 넘게 천천히 말립니다. 서두르면 가마 안에서 갈라집니다.</p>
+        </li>
+        <li>
+          <span class="num">III</span>
+          <h3>높은 불로 굽기</h3>
+          <p>950℃를 48시간 유지하며 굽습니다. 유약 없이 흙의 질감과 온기가 그대로 남습니다.</p>
+        </li>
+      </ol>
+      <p class="note">최근에는 복잡한 자세와 다채로운 색이 가능한 레진(FRP) 작업을 함께 합니다. 「여정」은 레진 위에 유화물감을 입힌 작품입니다.</p>
+    </section>
+
+    <section class="exhibition" id="exhibition" data-label="전시">
+      <span class="watermark" aria-hidden="true">전시</span>
+      <div class="ex-inner">
+        <p class="v-date">2026. 09. 01 — 09. 29</p>
+        <div class="ex-body">
+          <h2 class="sec-title">조형적 <em>입체</em> 조각전</h2>
+          <p class="ex-meta">왕궁 포레스트 [공간 쉼표 2층] 포레스트 갤러리<br>17점 — 테라코타 6, 레진 11</p>
+          <div class="ex-grid">
+            <figure><img src="img/poster.jpg" alt="조형적 입체 조각전 포스터" loading="lazy"></figure>
+            <figure><img src="img/lake.jpg" alt="왕궁 포레스트에서 내려다본 호수와 소나무" loading="lazy"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="press" data-label="기록">
+      <ul class="press-list">
+        <li><a href="https://www.domin.co.kr/news/articleView.html?idxno=1568397" target="_blank" rel="noopener"><span class="p-date">2026</span><span class="p-title">조희욱 「조형적 입체 조각전」</span><span class="p-src">전북도민일보</span></a></li>
+        <li><a href="https://www.daehannews.kr/news/article.html?no=449016" target="_blank" rel="noopener"><span class="p-date">2017</span><span class="p-title">인터뷰 — 테라코타 조각가 조희욱</span><span class="p-src">대한뉴스</span></a></li>
+      </ul>
+    </section>
+
+    <section class="contact" id="contact" data-label="문의">
+      <p class="contact-line">작품 구입과 전시 문의는<br><em>연락처 준비 중</em>입니다.</p>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <span>© 조희욱</span>
+    <span>모든 작품 이미지의 저작권은 작가에게 있습니다.</span>
+  </footer>
+
+  <div class="hover-peek" id="peek" aria-hidden="true"></div>
+  <script src="gallery.js"></script>
+</body>
+</html>

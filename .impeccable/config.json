@@ -417,6 +417,42 @@
         ],
         "createdAt": "2026-10-13T14:51:09.933Z",
         "reason": "Claude: Pretendard Variable is demion's existing UI font"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/choheeuk/index.html"
+        ],
+        "createdAt": "2026-10-14T13:26:28.237Z",
+        "reason": "Claude decided: .cv/.press-list/.steps are open ruled lists with top/bottom hairlines only, not boxed containers; zero side padding is intentional"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "cormorant garamond",
+        "files": [
+          "sites/choheeuk/index.html"
+        ],
+        "createdAt": "2026-10-14T13:33:23.066Z",
+        "reason": "Claude decided: DESIGN.md documents the demion site; sites/choheeuk is a separate artist site whose editorial serif direction the user asked for (tobiasse.fr reference)"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto serif kr",
+        "files": [
+          "sites/choheeuk/index.html"
+        ],
+        "createdAt": "2026-10-14T13:33:23.309Z",
+        "reason": "Claude decided: DESIGN.md documents the demion site; sites/choheeuk is a separate artist site whose editorial serif direction the user asked for (tobiasse.fr reference)"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "sites/choheeuk/index.html"
+        ],
+        "createdAt": "2026-10-14T13:41:41.420Z",
+        "reason": "Claude decided: .stage and .exhibition clip on purpose — carousel cards and the giant watermark must be cut at the section edge; no tooltips/menus live inside"
       }
     ]
   }

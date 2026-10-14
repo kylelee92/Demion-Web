@@ -56,6 +56,20 @@
         "sites"
       ],
       "port": 5503
+    },
+    {
+      "name": "site-choheeuk",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5504",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "sites/choheeuk"
+      ],
+      "port": 5504
     }
   ]
 }
