@@ -1,0 +1,13 @@
+// Cloudflare Workers 배포 설정 — 헤어디자이너 조일주 사이트 (ilju.demion.co)
+// demion-web과 같은 저장소를 쓰는 세 번째 Worker. 정적 파일만 내보낸다.
+// Cloudflare 대시보드 Workers Builds의 배포 명령: npx wrangler deploy -c wrangler.ilju.jsonc
+{
+  "name": "ilju-web",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./sites/joilju"
+  },
+  "routes": [
+    { "pattern": "ilju.demion.co", "custom_domain": true }
+  ]
+}
