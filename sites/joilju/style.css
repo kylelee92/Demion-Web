@@ -42,7 +42,7 @@ body { font-family: var(--kr); -webkit-font-smoothing: antialiased; }
 }
 
 /* 가로가 넓은 화면(PC·태블릿)에서는 사진을 꽉 채우지 않고 세로 표지처럼 가운데에 세운다.
-   꽉 채우면 화면 폭만큼 확대되어 얼굴이 너무 커진다. 양옆은 배경색으로 흐려 경계를 지운다. */
+   꽉 채우면 화면 폭만큼 확대되어 얼굴이 너무 커진다. 사진은 배경을 뺀 누끼라 종이색 위에 바로 선다. */
 @media (min-aspect-ratio: 3/4) {
   .photo img {
     position: absolute;
@@ -52,10 +52,6 @@ body { font-family: var(--kr); -webkit-font-smoothing: antialiased; }
     height: 86%;
     translate: -50% 0;
     transform-origin: 50% 100%;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent), linear-gradient(to bottom, transparent, #000 14%);
-    -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent), linear-gradient(to bottom, transparent, #000 14%);
-    mask-composite: intersect;
   }
 }
 
@@ -375,9 +371,9 @@ body { font-family: var(--kr); -webkit-font-smoothing: antialiased; }
   gap: 16px;
   padding: clamp(20px, 2.6vw, 34px) 0;
   border-bottom: 1px solid var(--ink);
-  transition: padding .5s var(--ease-out);
 }
-.sig-list li:hover { padding-left: 14px; }
+.sig-list li > * { transition: transform .5s var(--ease-out); }
+.sig-list li:hover > * { transform: translateX(14px); }
 .sig-list .no { font: 500 12px/1 var(--mono); }
 .sig-list .name { font-size: clamp(26px, 3.6vw, 56px); font-weight: 700; letter-spacing: -.035em; line-height: 1.1; word-break: keep-all; }
 .sig-list .desc { font-size: 15px; color: #4a4a48; word-break: keep-all; }
@@ -462,5 +458,5 @@ body { font-family: var(--kr); -webkit-font-smoothing: antialiased; }
   .bar, .side span { opacity: 1; }
   .play .photo, .play .photo img, .play .logo i, .play .side span, .play .bar, .scroll::after { animation: none; }
   .rv { opacity: 1; transform: none; transition: none; }
-  .tile img, .sig-list li { transition: none; }
+  .tile img, .sig-list li > * { transition: none; }
 }
