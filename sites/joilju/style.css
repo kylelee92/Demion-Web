@@ -41,6 +41,24 @@ body { font-family: var(--kr); -webkit-font-smoothing: antialiased; }
   transform: scale(1.18);
 }
 
+/* 가로가 넓은 화면(PC·태블릿)에서는 사진을 꽉 채우지 않고 세로 표지처럼 가운데에 세운다.
+   꽉 채우면 화면 폭만큼 확대되어 얼굴이 너무 커진다. 양옆은 배경색으로 흐려 경계를 지운다. */
+@media (min-aspect-ratio: 3/4) {
+  .photo img {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: auto;
+    height: 86%;
+    translate: -50% 0;
+    transform-origin: 50% 100%;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent), linear-gradient(to bottom, transparent, #000 14%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent), linear-gradient(to bottom, transparent, #000 14%);
+    mask-composite: intersect;
+  }
+}
+
 /* 작은 글씨는 사진 밝기에 따라 검정/흰색으로 뒤집힌다 (로고는 단색 그대로) */
 .overlay {
   position: absolute;
