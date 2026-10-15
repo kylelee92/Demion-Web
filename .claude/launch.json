@@ -70,6 +70,20 @@
         "sites/choheeuk"
       ],
       "port": 5504
+    },
+    {
+      "name": "site-joilju",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5505",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "sites/joilju"
+      ],
+      "port": 5505
     }
   ]
 }

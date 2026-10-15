@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>헤어디자이너 조일주</title>
+  <meta name="description" content="헤어디자이너 조일주의 포트폴리오.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 첫 화면: 잡지 표지처럼 로고가 올라오고, 가운데 작은 사진이 화면 전체로 펼쳐진다 -->
+  <section class="cover" id="top" aria-label="조일주 헤어디자이너">
+    <div class="photo" aria-hidden="true">
+      <img src="img/profile.webp" alt="" width="1565" height="2000" fetchpriority="high">
+    </div>
+
+    <h1 class="logo" aria-label="ILJU 조일주">
+      <span aria-hidden="true"><i>I</i><i>L</i><i>J</i><i>U</i></span>
+    </h1>
+
+    <div class="overlay">
+      <header class="bar top">
+        <span class="tag">Hair Designer</span>
+        <nav aria-label="주요 메뉴">
+          <a href="#work">Work</a>
+          <a href="#about">About</a>
+          <a href="#signature">Signature</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <p class="side left"><span>조일주</span></p>
+      <p class="side right"><span>Portfolio</span></p>
+
+      <footer class="bar bottom">
+        <span>Cut · Perm · Color</span>
+        <span class="scroll">Scroll</span>
+        <span>Vol. 01 — 2026</span>
+      </footer>
+    </div>
+
+    <button class="replay" type="button" aria-label="첫 화면 움직임 다시 보기">↻</button>
+  </section>
+
+  <!-- 작업: 네이버 예약 스타일 사진 38장 -->
+  <section class="sec work" id="work" aria-labelledby="workTitle">
+    <div class="sec-head">
+      <p class="kicker"><span>02</span>Work</p>
+      <h2 class="display" id="workTitle">The Work</h2>
+      <p class="sec-note">에이바헤어 검단신도시점에서 직접 시술한 스타일입니다.<br>사진을 누르면 크게 볼 수 있어요.</p>
+    </div>
+
+    <div class="filters" role="group" aria-label="시술 종류로 거르기">
+      <button type="button" data-cat="all" aria-pressed="true">All <sup></sup></button>
+      <button type="button" data-cat="layered" aria-pressed="false">레이어드펌 <sup></sup></button>
+      <button type="button" data-cat="c" aria-pressed="false">C컬 · 빌드펌 <sup></sup></button>
+      <button type="button" data-cat="hippie" aria-pressed="false">히피 · 젤리펌 <sup></sup></button>
+      <button type="button" data-cat="glam" aria-pressed="false">글램펌 <sup></sup></button>
+      <button type="button" data-cat="men" aria-pressed="false">남성 <sup></sup></button>
+    </div>
+
+    <ol class="grid" id="grid"></ol>
+    <button class="more" id="more" type="button">더 보기</button>
+  </section>
+
+  <!-- 소개 -->
+  <section class="sec about" id="about" aria-labelledby="aboutTitle">
+    <figure class="about-photo">
+      <img src="img/profile.webp" alt="조일주 실장 프로필 사진" width="1565" height="2000" loading="lazy">
+      <figcaption>조일주 — 에이바헤어 검단신도시점 실장</figcaption>
+    </figure>
+
+    <div class="about-body">
+      <p class="kicker"><span>03</span>About</p>
+      <h2 class="lede" id="aboutTitle">설레는 순간을 위한,<br>한 분 한 분의 감성 맞춤 디자인.</h2>
+      <p class="bio">언제나 세심한 상담과 맞춤형 서비스로 최선을 다합니다. 롱레이어드와 허쉬펌, 허그펌을 중심으로 고객 한 분 한 분의 모질과 분위기에 맞춘 스타일을 제안합니다.</p>
+
+      <ul class="stats">
+        <li><b>7<small>Y+</small></b><span>살롱 경력<br>2019 —</span></li>
+        <li><b>517</b><span>네이버 예약<br>리뷰</span></li>
+        <li><b>106</b><span>최근<br>스타일링</span></li>
+        <li><b>5</b><span>미용 대회<br>수상</span></li>
+      </ul>
+
+      <div class="cv">
+        <section>
+          <h3>Career</h3>
+          <dl>
+            <div><dt>2026 —</dt><dd>송곡대학교 겸임교수</dd></div>
+            <div><dt>2023 —</dt><dd>에이바헤어 검단신도시점 실장</dd></div>
+            <div><dt>2022 – 23</dt><dd>로이드밤 김포 운양 디자이너</dd></div>
+            <div><dt>2019 – 22</dt><dd>헤어시크 익산 스텝 · 디자이너</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h3>Education</h3>
+          <dl>
+            <div><dt>2024</dt><dd>단국대학교 문화예술대학원 뷰티디자인 석사<small>논문 — 헤어 관리가 남자 대학생의 취업 면접 스트레스 해소와 심리적 안정감에 미치는 영향</small></dd></div>
+            <div><dt>2022</dt><dd>호원대학교 미용예술학과</dd></div>
+          </dl>
+        </section>
+        <section>
+          <h3>Awards</h3>
+          <dl>
+            <div><dt>2021</dt><dd>살롱 여성커트 금상<small>대한미용사회</small></dd></div>
+            <div><dt>2021</dt><dd>살롱 드라이 은상<small>대한미용사회</small></dd></div>
+            <div><dt>2021</dt><dd>머리카락 공예 은상<small>BIS 국제이미용기능경기대회</small></dd></div>
+            <div><dt>2020</dt><dd>업스타일 금상<small>BIS 국제이미용기능경기대회</small></dd></div>
+            <div><dt>2019</dt><dd>살롱 남성커트 동상<small>대한미용사회</small></dd></div>
+          </dl>
+        </section>
+        <section>
+          <h3>License</h3>
+          <dl>
+            <div><dt>—</dt><dd>로레알 컬러키 디플로마 수료</dd></div>
+            <div><dt>2021</dt><dd>미용 색채심리 상담전문가 2급</dd></div>
+            <div><dt>2018</dt><dd>미용사(일반)<small>한국산업인력공단</small></dd></div>
+          </dl>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- 전문 시술 -->
+  <section class="sec signature" id="signature" aria-labelledby="sigTitle">
+    <div class="sec-head">
+      <p class="kicker"><span>04</span>Signature</p>
+      <h2 class="display" id="sigTitle">Signature</h2>
+    </div>
+    <ol class="sig-list">
+      <li><span class="no">01</span><span class="name">롱레이어드</span><span class="desc">층을 살려 가볍게 흐르는 긴 머리</span><span class="pick">전문</span></li>
+      <li><span class="no">02</span><span class="name">허쉬펌</span><span class="desc">자연스럽게 흩어지는 볼륨</span><span class="pick">전문</span></li>
+      <li><span class="no">03</span><span class="name">허그펌</span><span class="desc">얼굴을 감싸 안는 부드러운 컬</span><span class="pick">전문</span></li>
+      <li><span class="no">04</span><span class="name">빌드펌 · C컬펌</span><span class="desc">끝선이 차분하게 말리는 컬</span></li>
+      <li><span class="no">05</span><span class="name">남자 아이롱펌 · 시스루펌</span><span class="desc">결과 방향을 정리하는 남성 스타일</span></li>
+    </ol>
+  </section>
+
+  <!-- 예약 -->
+  <section class="sec contact" id="contact" aria-labelledby="contactTitle">
+    <p class="kicker"><span>05</span>Contact</p>
+    <h2 class="display" id="contactTitle">Book<br>a Seat</h2>
+    <div class="contact-row">
+      <p class="salon">에이바헤어 검단신도시점<br><span>실장 조일주</span></p>
+      <div class="cta">
+        <a class="btn solid" href="https://naver.me/5CFXW064" target="_blank" rel="noopener">네이버로 예약하기 <i aria-hidden="true">↗</i></a>
+        <a class="btn" href="https://instagram.com/avahair_jooyi" target="_blank" rel="noopener">Instagram @avahair_jooyi <i aria-hidden="true">↗</i></a>
+      </div>
+    </div>
+    <footer class="foot">
+      <span>© 2026 ILJU — 조일주</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </section>
+
+  <dialog class="viewer" id="viewer" aria-label="작업 사진 크게 보기">
+    <img id="viewerImg" src="img/work/01.jpg" alt="">
+    <p class="viewer-cap"><span id="viewerNo"></span><b id="viewerTitle"></b><span id="viewerTags"></span></p>
+    <button class="v-btn v-prev" type="button" aria-label="이전 사진">←</button>
+    <button class="v-btn v-next" type="button" aria-label="다음 사진">→</button>
+    <button class="v-btn v-close" type="button" aria-label="닫기">✕</button>
+  </dialog>
+
+  <script src="app.js"></script>
+
+  <script>
+    // 사진을 다 받은 뒤에 움직임을 시작한다 (늦어도 1.5초 뒤에는 시작)
+    (function () {
+      var cover = document.querySelector('.cover');
+      var img = cover.querySelector('img');
+      var started = false;
+      function play() {
+        if (started) return;
+        started = true;
+        cover.classList.add('play');
+      }
+      if (img.complete) play();
+      else { img.addEventListener('load', play); img.addEventListener('error', play); }
+      setTimeout(play, 1500);
+
+      cover.querySelector('.replay').addEventListener('click', function () {
+        cover.classList.remove('play');
+        void cover.offsetWidth;
+        cover.classList.add('play');
+      });
+    })();
+  </script>
+</body>
+</html>

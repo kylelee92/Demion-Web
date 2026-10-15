@@ -453,6 +453,18 @@
         ],
         "createdAt": "2026-10-14T13:41:41.420Z",
         "reason": "Claude decided: .stage and .exhibition clip on purpose — carousel cards and the giant watermark must be cut at the section edge; no tooltips/menus live inside"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "archivo black",
+        "createdAt": "2026-10-15T14:33:30.674Z",
+        "reason": "sites/joilju is a separate brand (Jitter magazine-cover concept the user chose); DESIGN.md belongs to another site"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex mono",
+        "createdAt": "2026-10-15T14:33:30.931Z",
+        "reason": "sites/joilju is a separate brand (Jitter magazine-cover concept the user chose); DESIGN.md belongs to another site"
       }
     ]
   }
