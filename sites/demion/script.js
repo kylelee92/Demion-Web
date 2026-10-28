@@ -7,11 +7,12 @@
      비우면 실제로 전송하지 않고 "전송하지 못했습니다" 상태를 보여준다. 성공한 것처럼 표시하지 않는다. */
   const ENDPOINT = '/api/inquiry';
 
-  /* 사례 순서: 0 조희욱(실제 작업), 1 해무 스테이, 2 마루 */
+  /* 사례 순서: 0 조희욱(실제 작업), 1 해무 스테이, 2 마루, 3 GW컨설팅(자체 콘셉트, 배포됨) */
   const WORKS = [
     { id: 'jhw', name: '조희욱', type: '조각가 작가 사이트', url: 'https://jhw.demion.co' },
     { id: 'b', name: '해무 스테이', type: '바닷가 숙소 홈페이지' },
     { id: 'c', name: '마루', type: '매출 정산 서비스 소개 페이지' },
+    { id: 'gw', name: 'GW컨설팅', type: '창업 컨설팅 홈페이지', url: 'https://gw.demion.co', concept: true },
   ];
 
   /* ---------- 축소 프레임 ---------- */
@@ -21,6 +22,10 @@
   window.DEMION.html.jhw = `<div class="scr shot">
     <img class="shot-d" src="img/work-jhw-d.jpg" width="1280" height="6185" alt="" loading="lazy">
     <img class="shot-m" src="img/work-jhw-m.jpg" width="390" height="5846" alt="" loading="lazy">
+  </div>`;
+  window.DEMION.html.gw = `<div class="scr shot">
+    <img class="shot-d" src="img/work-gw-d.jpg" width="1280" height="7161" alt="" loading="lazy">
+    <img class="shot-m" src="img/work-gw-m.jpg" width="390" height="8234" alt="" loading="lazy">
   </div>`;
 
   const ro = new ResizeObserver(entries => entries.forEach(e => fit(e.target)));
@@ -76,7 +81,7 @@
     $('#v-title').textContent = w.name;
     $('#v-type').textContent = w.type;
     const own = $('#v-own');
-    if (w.url) own.innerHTML = `실제 작업 <a href="${w.url}" target="_blank" rel="noopener">${w.url.replace('https://', '')} ↗</a>`;
+    if (w.url) own.innerHTML = `${w.concept ? '자체 콘셉트 ·' : '실제 작업'} <a href="${w.url}" target="_blank" rel="noopener">${w.url.replace('https://', '')} ↗</a>`;
     else own.textContent = '자체 콘셉트이며 실제 고객 작업이 아닙니다';
     segs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === vk)));
     frame.classList.toggle('is-m', vk === 'm');

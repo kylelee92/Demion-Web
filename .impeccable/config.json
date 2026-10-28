@@ -477,6 +477,15 @@
         "value": "jetbrains mono",
         "createdAt": "2026-10-28T13:35:33.712Z",
         "reason": "Claude: GW Consulting brand mono label face, separate from the DESIGN.md riso preset"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/gw-consulting/index.html"
+        ],
+        "createdAt": "2026-10-28T13:40:43.501Z",
+        "reason": "Claude: full-bleed bands and divider-ruled rows; text is inset by the .wrap gutter / lane padding (16-56px), borders are row rules not boxes"
       }
     ]
   }
