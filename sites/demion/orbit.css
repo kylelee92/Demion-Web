@@ -127,20 +127,6 @@
 .f-shot img { position: absolute; left: 0; top: 0; width: 100%; height: calc(100% - 64 * var(--k)); object-fit: cover; object-position: 50% 0; }
 .f-shot-full img { height: 100%; }
 
-/* 해무 스테이 — 바닷가 숙소 */
-.f-haemu {
-  background:
-    linear-gradient(transparent 52%, rgb(232 228 220 / 0.25) 52.3%, transparent 53%),
-    radial-gradient(120% 40% at 50% 52%, rgb(232 228 220 / 0.35), transparent 70%),
-    linear-gradient(#2b343b, #11171d 50%, #0b0f13);
-  color: #e8e4dc;
-}
-.f-haemu h4 {
-  position: absolute; left: calc(24 * var(--k)); bottom: calc(90 * var(--k));
-  font-size: calc(76 * var(--k)); font-weight: 300; line-height: 1;
-}
-.f-haemu p { position: absolute; left: calc(26 * var(--k)); bottom: calc(60 * var(--k)); font-size: calc(14 * var(--k)); color: #98a1a6; }
-
 /* 마루 — 매출 정산 서비스 */
 .f-maru { background: #f4f5f7; color: #12151a; }
 .f-maru h4 { margin: calc(40 * var(--k)) calc(24 * var(--k)) 0; font-size: calc(34 * var(--k)); font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; }
