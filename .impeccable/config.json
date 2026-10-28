@@ -465,6 +465,18 @@
         "value": "ibm plex mono",
         "createdAt": "2026-10-15T14:33:30.931Z",
         "reason": "sites/joilju is a separate brand (Jitter magazine-cover concept the user chose); DESIGN.md belongs to another site"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "inter tight",
+        "createdAt": "2026-10-28T13:35:33.421Z",
+        "reason": "Claude: DESIGN.md documents the riso-flyer preset only; sites/gw-consulting is a separate brand (GW rebrand) with its own type, like other sites/* in this repo"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "jetbrains mono",
+        "createdAt": "2026-10-28T13:35:33.712Z",
+        "reason": "Claude: GW Consulting brand mono label face, separate from the DESIGN.md riso preset"
       }
     ]
   }

@@ -1,0 +1,19 @@
+// Cloudflare Workers 배포 설정 — GW컨설팅 창업 컨설팅 사이트 (gw.demion.co)
+// demion-web과 같은 저장소를 쓰는 Worker. Workers Builds의 배포 명령: npx wrangler deploy -c wrangler.gw.jsonc
+// - sites/gw-consulting: 정적 사이트
+// - worker/gw-inquiry.js: POST /api/inquiry 상담 신청 메일
+// 대시보드에서 직접 설정하는 것: Secret INQUIRY_TO (받는 주소, Email Routing에서 인증된 주소여야 함)
+{
+  "name": "gw-web",
+  "main": "worker/gw-inquiry.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./sites/gw-consulting"
+  },
+  "send_email": [
+    { "name": "INQUIRY_MAIL" }
+  ],
+  "routes": [
+    { "pattern": "gw.demion.co", "custom_domain": true }
+  ]
+}

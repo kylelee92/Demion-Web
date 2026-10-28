@@ -84,6 +84,20 @@
         "sites/joilju"
       ],
       "port": 5505
+    },
+    {
+      "name": "site-gw-consulting",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5506",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "sites/gw-consulting"
+      ],
+      "port": 5506
     }
   ]
 }

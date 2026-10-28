@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GW컨설팅 — 창업의 출발선부터 결승선까지</title>
+  <meta name="description" content="GW컨설팅은 리서치·설립·런칭·네트워크 네 개의 레인으로 창업의 처음부터 성장까지 함께 달리는 창업 컨설팅 회사입니다.">
+  <meta name="theme-color" content="#ff4b1f">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800;900&family=JetBrains+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <!-- GW 마크: 두 레인으로 그린 G + 마지막 획이 솟는 W + 결승선 점 -->
+    <symbol id="gw" viewBox="0 0 140 64">
+      <g fill="none" stroke="currentColor" stroke-width="8">
+        <path d="M51.9 15.3A26 26 0 1 0 58 32H34"/>
+        <path d="M42 23.6A13 13 0 1 0 45 32"/>
+        <path d="M66 12l11 42 11-30 11 30 14-48" stroke-miterlimit="10"/>
+      </g>
+      <rect x="122" y="46" width="10" height="10" fill="var(--dot, #ff4b1f)"/>
+    </symbol>
+  </svg>
+
+  <a class="skip" href="#about">본문으로 건너뛰기</a>
+
+  <header class="site-head">
+    <a class="brand" href="#top" aria-label="GW컨설팅 처음으로">
+      <svg class="mark" aria-hidden="true"><use href="#gw"/></svg>
+      <span>Consulting</span>
+    </a>
+    <nav aria-label="주요 메뉴">
+      <a href="#about">About</a>
+      <a href="#lanes">Lanes</a>
+      <a href="#run">Process</a>
+      <a href="#record">Record</a>
+    </nav>
+    <a class="cta-mini" href="#contact"><span>상담 신청</span></a>
+  </header>
+
+  <main>
+    <!-- 첫 화면: 스크롤에 따라 여섯 장면이 이어지는 프로모 릴 -->
+    <section class="reel" id="top" aria-label="GW컨설팅 소개 영상">
+      <div class="stage" data-scene="1">
+        <div class="marks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+        <!-- 1·2: 흰 포스터 → 검정 반전 -->
+        <div class="scene s-poster">
+          <svg class="poster-mark" aria-hidden="true"><use href="#gw"/></svg>
+          <h1 class="poster-title">
+            <span class="ln"><span>Status: Day 0.</span></span>
+            <span class="dist mono" aria-hidden="true">DIST: <b data-dist>0</b>M</span>
+            <span class="ln"><span>Own the track.</span></span>
+          </h1>
+          <p class="poster-sub">창업의 출발선부터 결승선까지, GW컨설팅</p>
+          <p class="poster-foot mono">GW CONSULTING<sup>®</sup></p>
+        </div>
+
+        <!-- 3: 파란 트랙이 가운데 창에서 화면 전체로 열린다 -->
+        <div class="scene s-track" aria-hidden="true">
+          <svg class="lanes" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+            <rect width="800" height="1000" fill="#1f5fe0"/>
+            <g fill="none" stroke="#f4f4f2" stroke-width="5" opacity=".92">
+              <path d="M-80 140C220 60 520 40 900 -40"/>
+              <path d="M-80 300C240 210 540 170 900 90"/>
+              <path d="M-80 470C260 360 560 310 900 230"/>
+              <path d="M-80 650C280 520 580 460 900 380"/>
+              <path d="M-80 840C300 690 600 620 900 540"/>
+              <path d="M-80 1040C320 870 620 790 900 710"/>
+            </g>
+            <g fill="#f4f4f2" font-family="Inter Tight, sans-serif" font-weight="900" font-size="56" opacity=".9">
+              <text x="610" y="160" transform="rotate(-11 610 160)">1</text>
+              <text x="630" y="300" transform="rotate(-11 630 300)">2</text>
+              <text x="650" y="450" transform="rotate(-11 650 450)">3</text>
+              <text x="670" y="610" transform="rotate(-11 670 610)">4</text>
+            </g>
+          </svg>
+          <p class="track-label mono">LANE 01—04 / 리서치 · 설립 · 런칭 · 네트워크</p>
+        </div>
+
+        <!-- 4: 주황 화면에 단어가 하나씩 -->
+        <div class="scene s-flood" aria-hidden="true">
+          <p class="words"><span>Go.</span> <span>Win.</span><br><span>Own</span> <span>the</span> <span>track.</span></p>
+        </div>
+
+        <!-- 5: 계단식으로 깎여 나가는 타이포 그리드 -->
+        <div class="scene s-stair" aria-hidden="true">
+          <div class="stair-grid">
+            <p><span>own the track</span><span>the track</span><span>track</span><span>rack</span><span>ack</span><span>ck</span><span>k</span></p>
+            <p><span>own the track</span><span>the track</span><span>track</span><span>rack</span><span>ack</span><span>ck</span><span>k</span></p>
+            <p><span>own the track</span><span>the track</span><span>track</span><span>rack</span><span>ack</span><span>ck</span><span>k</span></p>
+            <p><span>own the track</span><span>the track</span><span>track</span><span>rack</span><span>ack</span><span>ck</span><span>k</span></p>
+          </div>
+          <i class="o o1">o</i><i class="o o2">o</i><i class="o o3">o</i><i class="o o4">o</i>
+        </div>
+
+        <!-- 6: 붉은 하늘 위로 마크가 떠오르며 로고로 마무리 -->
+        <div class="scene s-final">
+          <svg class="ridge" viewBox="0 0 1600 400" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 260l120-60 90 40 140-110 120 90 80-30 160 120 130-150 110 80 140-60 150 110 120-70 120 50V400H0z" fill="#2a0a04"/>
+            <path d="M0 330l160-50 140 40 180-70 160 60 200-40 160 70 180-60 160 40 260-30V400H0z" fill="#140402"/>
+          </svg>
+          <svg class="float-mark" aria-hidden="true"><use href="#gw"/></svg>
+          <div class="final-lockup">
+            <p class="mono">Ready · Set · Start</p>
+            <p class="final-line">혼자 뛰는 창업은 없습니다.</p>
+          </div>
+          <span class="scroll-cue mono" aria-hidden="true">Scroll ↓</span>
+        </div>
+
+        <div class="reel-progress" aria-hidden="true"><i></i></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="wrap">
+        <p class="eyebrow mono"><span>00</span> About GW</p>
+        <h2 class="statement reveal">
+          세상에 독불장군은 없습니다.<br>
+          <em>창업도 그렇습니다.</em>
+        </h2>
+        <div class="about-body">
+          <p class="reveal">GW컨설팅은 충분한 정보와 성공적인 커뮤니케이션이 창업의 경쟁력이라고 믿습니다. 시장조사부터 법인 설립, 런칭 마케팅, 투자·바이어 네트워크까지 — 창업자가 정확한 방향과 실행 가능한 해법을 손에 쥐도록 같은 트랙 위에서 함께 달립니다.</p>
+          <p class="reveal">경제·산업·문화를 깊이 이해하는 석·박사 컨설턴트가 핵심이 된 팀으로, 한국과 중국 두 개 법인에서 쌓은 20년 이상의 현장 노하우를 창업자의 첫 레이스에 연결합니다.</p>
+        </div>
+
+        <dl class="stats">
+          <div class="reveal"><dt class="mono">Since</dt><dd><b data-count="2002">2002</b></dd><p>서울·베이징 한국 독자기업으로 출발</p></div>
+          <div class="reveal"><dt class="mono">Years</dt><dd><b data-count="20">20</b><sup>+</sup></dd><p>현지 시장·정책·산업 현장 노하우</p></div>
+          <div class="reveal"><dt class="mono">Offices</dt><dd><b data-count="2">2</b></dd><p>GW컨설팅코리아 · GW컨설팅 베이징</p></div>
+          <div class="reveal"><dt class="mono">Lanes</dt><dd><b data-count="4">4</b></dd><p>리서치 · 설립 · 런칭 · 네트워크</p></div>
+        </dl>
+
+        <ul class="badges mono" aria-label="공식 협력 자격">
+          <li>KOTRA 공식협력업체</li>
+          <li>중소벤처기업진흥공단 해외민간네트워크</li>
+          <li>수출바우처 사업 수행기관</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 서비스: 네 개의 레인 -->
+    <section class="lanes-sec" id="lanes">
+      <div class="wrap">
+        <p class="eyebrow mono"><span>01</span> Four Lanes</p>
+        <h2 class="sec-title reveal">한 레인씩, <br class="m">끝까지 함께.</h2>
+      </div>
+      <ol class="lane-list">
+        <li class="lane reveal">
+          <span class="lane-no">1</span>
+          <div class="lane-head"><h3>창업 전략</h3><p class="mono">Research &amp; Strategy</p></div>
+          <p class="lane-desc">아이템이 시장에서 통하는지 데이터로 확인합니다. 시장·소비자 조사와 정량·정성 분석, 경쟁사 조사를 거쳐 사업계획과 진출 전략을 세웁니다.</p>
+          <ul class="tags"><li>시장·소비자 조사</li><li>설문·통계 분석</li><li>경쟁사 분석</li><li>사업계획 수립</li></ul>
+        </li>
+        <li class="lane reveal">
+          <span class="lane-no">2</span>
+          <div class="lane-head"><h3>설립·인허가</h3><p class="mono">Setup &amp; Licensing</p></div>
+          <p class="lane-desc">출발 신호 전에 서류부터 정리합니다. 법인·대표처 설립, 인허가 대행, 제도·정책 조사, 개인정보·네트워크 보안 규정 대응까지 맡습니다.</p>
+          <ul class="tags"><li>법인·대표처 설립</li><li>인허가 대행</li><li>제도·정책 조사</li><li>개인정보 대응</li></ul>
+        </li>
+        <li class="lane reveal">
+          <span class="lane-no">3</span>
+          <div class="lane-head"><h3>런칭 마케팅</h3><p class="mono">Go-to-Market</p></div>
+          <p class="lane-desc">타깃과 KPI를 먼저 정하고 채널을 고릅니다. 검색 SEO부터 위챗·웨이보·더우인·샤오홍슈 같은 현지 채널 운영, 이커머스 입점과 결과 보고까지 한 번에.</p>
+          <ul class="tags"><li>타깃·KPI 설정</li><li>SEO</li><li>SNS 채널 운영</li><li>이커머스 입점</li></ul>
+        </li>
+        <li class="lane reveal">
+          <span class="lane-no">4</span>
+          <div class="lane-head"><h3>네트워크</h3><p class="mono">Network &amp; Events</p></div>
+          <p class="lane-desc">좋은 파트너를 만나는 자리까지 만듭니다. 시장조사에 근거한 바이어 섭외와 비즈매칭, IR·데모데이·포럼 기획과 운영, 동시·순차 통역과 IR 자료 번역.</p>
+          <ul class="tags"><li>바이어 비즈매칭</li><li>IR·데모데이</li><li>포럼·세미나</li><li>통번역</li></ul>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 진행 과정: 가로로 달리는 트랙 -->
+    <section class="run" id="run" aria-label="진행 과정">
+      <div class="run-stage">
+        <div class="run-head wrap">
+          <p class="eyebrow mono"><span>02</span> The Run</p>
+          <h2 class="sec-title">출발부터 결승까지, <br class="m">네 구간.</h2>
+        </div>
+        <div class="run-track">
+          <div class="run-line" aria-hidden="true"><i class="runner"></i></div>
+          <ol class="splits">
+            <li><p class="split-dist mono">0M</p><h3>진단</h3><p>현황 조사로 창업 아이템과 팀의 위치를 확인하고, 시장 수요와 경쟁 구도를 파악합니다.</p></li>
+            <li><p class="split-dist mono">100M</p><h3>설계</h3><p>목표 KPI, 일정, 예산을 정하고 실행 계획서를 씁니다. 필요한 사람과 자원을 이 단계에서 확보합니다.</p></li>
+            <li><p class="split-dist mono">400M</p><h3>실행</h3><p>설립·인허가, 런칭 캠페인, IR·바이어 미팅을 진행합니다. 품질과 일정은 매 구간 점검합니다.</p></li>
+            <li><p class="split-dist mono">FINISH</p><h3>사후관리</h3><p>결과 보고서와 데이터를 정리해 드리고, 다음 레이스를 위한 후속 전략까지 함께 세웁니다.</p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 주요 실적 -->
+    <section class="record" id="record">
+      <div class="marquee mono" aria-hidden="true">
+        <div class="marquee-in">
+          <span>KOTRA</span><span>KOCCA</span><span>KISA</span><span>한국무역협회</span><span>주중한국대사관</span><span>새만금개발청</span><span>단국대학교</span><span>대외경제정책연구원</span><span>한국농촌경제연구원</span><span>여시재</span>
+          <span>KOTRA</span><span>KOCCA</span><span>KISA</span><span>한국무역협회</span><span>주중한국대사관</span><span>새만금개발청</span><span>단국대학교</span><span>대외경제정책연구원</span><span>한국농촌경제연구원</span><span>여시재</span>
+        </div>
+      </div>
+      <div class="wrap">
+        <p class="eyebrow mono"><span>03</span> Split Times</p>
+        <h2 class="sec-title reveal">기록이 <br class="m">말해 줍니다.</h2>
+        <ol class="splits-table">
+          <li class="reveal"><span class="mono">2019</span><b>중국 바이어 초청 수출 상담회</b><em>충남창조경제혁신센터</em></li>
+          <li class="reveal"><span class="mono">2019</span><b>한·중 ICT Innovation Forum</b><em>KISA · KOTRA</em></li>
+          <li class="reveal"><span class="mono">2019</span><b>차이나 링크 (상하이)</b><em>인천창조경제혁신센터</em></li>
+          <li class="reveal"><span class="mono">2019</span><b>제4회 코리아콘텐츠데이</b><em>한국콘텐츠진흥원</em></li>
+          <li class="reveal"><span class="mono">2019</span><b>새만금 투자설명회</b><em>새만금개발청</em></li>
+          <li class="reveal"><span class="mono">2018</span><b>한중 인터넷기업 협력포럼</b><em>한국인터넷진흥원</em></li>
+          <li class="reveal"><span class="mono">2017</span><b>한중 디지털무역포럼</b><em>한국무역협회</em></li>
+          <li class="reveal"><span class="mono">2016</span><b>제1회 한중 의약 산학협력포럼</b><em>단국대학교</em></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 상담 신청 -->
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="eyebrow mono"><span>04</span> On your mark</p>
+          <h2 class="contact-title">Ready?<br>Set.<br><em>Start.</em></h2>
+          <p class="contact-lead">지금 어느 구간에 있든, 다음 한 걸음부터 함께 정리해 드립니다.</p>
+        </div>
+        <form class="apply" id="apply" novalidate>
+          <label><span class="mono">이름</span><input name="name" autocomplete="name" required></label>
+          <label><span class="mono">이메일 또는 연락처</span><input name="reach" autocomplete="email" required></label>
+          <fieldset>
+            <legend class="mono">지금 어느 구간인가요?</legend>
+            <div class="stage-pick">
+              <label><input type="radio" name="stage" value="아이디어" checked><span>아이디어</span></label>
+              <label><input type="radio" name="stage" value="예비창업"><span>예비창업</span></label>
+              <label><input type="radio" name="stage" value="초기 3년 이내"><span>초기 3년 이내</span></label>
+              <label><input type="radio" name="stage" value="해외 진출"><span>해외 진출</span></label>
+            </div>
+          </fieldset>
+          <label><span class="mono">하고 싶은 이야기</span><textarea name="msg" rows="4" maxlength="5000"></textarea></label>
+          <label class="hp" aria-hidden="true">회사<input name="company" tabindex="-1" autocomplete="off"></label>
+          <label class="agree"><input type="checkbox" name="agree" value="yes" required><span>상담 회신을 위해 이름·연락처를 수집하고, 상담이 끝난 뒤 1년간 보관하는 데 동의합니다. (필수)</span></label>
+          <button type="submit" class="btn"><span>상담 신청하기</span><i aria-hidden="true">→</i></button>
+          <p class="form-note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap foot-in">
+      <svg class="mark" aria-hidden="true"><use href="#gw"/></svg>
+      <p>© 2026 GW Consulting. 창업의 출발선부터 결승선까지.</p>
+      <p class="mono">Portfolio concept — GN컨설팅 자료 기반 리브랜딩</p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

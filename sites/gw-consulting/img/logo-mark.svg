@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 64" fill="none">
+  <!-- G: 트랙의 두 레인으로 그린 G / W: 마지막 획이 솟는 성장 곡선 / 점: 결승선 -->
+  <g stroke="#0d0d0d" stroke-width="8">
+    <path d="M51.9 15.3A26 26 0 1 0 58 32H34"/>
+    <path d="M42 23.6A13 13 0 1 0 45 32"/>
+    <path d="M66 12l11 42 11-30 11 30 14-48" stroke-linejoin="miter" stroke-miterlimit="10"/>
+  </g>
+  <rect x="122" y="46" width="10" height="10" fill="#ff4b1f"/>
+</svg>

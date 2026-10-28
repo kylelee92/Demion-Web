@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 64" fill="none">
+  <g stroke="#0d0d0d" stroke-width="8">
+    <path d="M51.9 15.3A26 26 0 1 0 58 32H34"/>
+    <path d="M42 23.6A13 13 0 1 0 45 32"/>
+    <path d="M66 12l11 42 11-30 11 30 14-48" stroke-linejoin="miter" stroke-miterlimit="10"/>
+  </g>
+  <rect x="122" y="46" width="10" height="10" fill="#ff4b1f"/>
+  <text x="150" y="44" fill="#0d0d0d" font-family="Inter Tight, Inter, Arial, sans-serif" font-weight="800" font-size="34" letter-spacing="-1.2">Consulting</text>
+  <text x="342" y="44" fill="#0d0d0d" font-family="JetBrains Mono, monospace" font-weight="500" font-size="12">/ 창업</text>
+</svg>
