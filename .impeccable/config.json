@@ -492,6 +492,33 @@
         "value": "noto serif kr",
         "createdAt": "2026-10-28T14:23:23.504Z",
         "reason": "Claude: gyeonhae is a separate brand site; serif used only for the 犬解 hanja mark"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/gyeonhae/index.html"
+        ],
+        "createdAt": "2026-10-28T14:40:41.488Z",
+        "reason": "Claude: full-bleed bands (sections, principles band, hero board); text is inset by the .wrap gutter / board padding"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "sites/gyeonhae/index.html"
+        ],
+        "createdAt": "2026-10-28T14:40:41.793Z",
+        "reason": "Claude: body overflow-x clip and .closer clip only decorative color blocks; no menus or tooltips inside"
+      },
+      {
+        "rule": "nested-cards",
+        "value": "*",
+        "files": [
+          "sites/gyeonhae/index.html"
+        ],
+        "createdAt": "2026-10-28T14:40:55.922Z",
+        "reason": "Claude: only the phone mockup nests cards — it depicts app UI inside a device frame"
       }
     ]
   }

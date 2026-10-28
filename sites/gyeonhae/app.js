@@ -69,9 +69,13 @@
     imgs.forEach((im, k) => { im.classList.toggle("is-out", k === cur && k !== i); im.classList.toggle("is-on", k === i); });
     setTimeout(() => imgs.forEach((im, k) => k !== i && im.classList.remove("is-out")), 950);
     reel.style.setProperty("--board", s.board);
-    Object.assign(A.style, { backgroundColor: s.a[0], left: s.a[1] + "%", top: s.a[2] + "%", width: s.a[3] + "%", height: s.a[4] + "%" });
-    Object.assign(B.style, { backgroundColor: s.b[0], right: s.b[1] + "%", bottom: s.b[2] + "%", width: s.b[3] + "%", height: s.b[4] + "%" });
-    Object.assign(Cc.style, { backgroundColor: s.c[0], left: s.c[1] + "%", top: s.c[2] + "%", width: s.c[3] + "%", height: s.c[4] + "%" });
+    // 블록은 무대 전체 크기에서 transform으로만 옮기고 줄인다 (레이아웃 재계산 없음)
+    const place = (el, [bg, x, y, w, h]) => Object.assign(el.style, {
+      backgroundColor: bg, transform: `translate(${x}%, ${y}%) scale(${w / 100}, ${h / 100})`,
+    });
+    place(A, s.a);
+    place(B, [s.b[0], 100 - s.b[1] - s.b[3], 100 - s.b[2] - s.b[4], s.b[3], s.b[4]]);
+    place(Cc, s.c);
     chip.classList.add("is-swap");
     setTimeout(() => {
       chip.querySelector(".sig").className = `sig sig--${s.chip[0]}`;
