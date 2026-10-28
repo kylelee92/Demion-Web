@@ -486,6 +486,12 @@
         ],
         "createdAt": "2026-10-28T13:40:43.501Z",
         "reason": "Claude: full-bleed bands and divider-ruled rows; text is inset by the .wrap gutter / lane padding (16-56px), borders are row rules not boxes"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto serif kr",
+        "createdAt": "2026-10-28T14:23:23.504Z",
+        "reason": "Claude: gyeonhae is a separate brand site; serif used only for the 犬解 hanja mark"
       }
     ]
   }
