@@ -486,6 +486,96 @@
         ],
         "createdAt": "2026-10-28T13:40:43.501Z",
         "reason": "Claude: full-bleed bands and divider-ruled rows; text is inset by the .wrap gutter / lane padding (16-56px), borders are row rules not boxes"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "inter",
+        "createdAt": "2026-10-31T08:26:47.319Z",
+        "reason": "Claude: the user's precision concept brief pins Inter for English headings; DESIGN.md documents the riso preset only"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto sans jp",
+        "createdAt": "2026-10-31T08:26:47.578Z",
+        "reason": "Claude: the user's precision concept brief pins Noto Sans JP; DESIGN.md documents the riso preset only"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "sites/precision-concept/index.html"
+        ],
+        "createdAt": "2026-10-31T08:27:27.582Z",
+        "reason": "Claude: .frame and .hero clip photos on purpose; their only positioned children are image tags and the backdrop, no menus or tooltips"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "sites/precision-concept/index.html"
+        ],
+        "createdAt": "2026-10-31T08:31:02.548Z",
+        "reason": "Claude: flagged bands are full-bleed sections whose text is inset by the .wrap gutter (20-72px), measured in 1440 and 390 screenshots"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-10-31T08:31:42.938Z",
+        "reason": "Claude: the user's precision concept brief names Inter for English headings"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "sites/precision-concept/index.html"
+        ],
+        "createdAt": "2026-10-31T08:31:43.223Z",
+        "reason": "Claude: 0.12em applies only to short uppercase English section labels and contact abbreviations, not running text"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "sites/precision-concept/index.html"
+        ],
+        "createdAt": "2026-10-31T08:31:43.513Z",
+        "reason": "Claude: computed sizes at 1440px are hero 100px, section headings about 53px, body 16px, so steps exceed 1.25x"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "sites/precision-concept/index.html"
+        ],
+        "createdAt": "2026-10-31T08:31:43.788Z",
+        "reason": "Claude: the only looping animation is the 56px line in the SCROLL TO EXPLORE cue the brief asks for; no content scrolls, and it stops under reduced motion"
+      },
+      {
+        "rule": "numbered-section-labels",
+        "value": "*",
+        "files": [
+          "sites/precision-concept/index.html"
+        ],
+        "createdAt": "2026-10-31T08:43:23.049Z",
+        "reason": "Claude: the user's brief specifies the label format 01 / OUR PHILOSOPHY"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "sites/precision-concept/style.css"
+        ],
+        "createdAt": "2026-10-31T08:43:23.321Z",
+        "reason": "Claude: the repeating gradient draws the micrometer ruler that reports scroll progress, not a decorative stripe"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "sites/precision-concept/index.html"
+        ],
+        "createdAt": "2026-10-31T08:43:23.655Z",
+        "reason": "Claude: root DESIGN.md documents the riso preset only; this site follows the user's precision concept brief"
       }
     ]
   }

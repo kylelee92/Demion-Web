@@ -98,6 +98,20 @@
         "sites/gw-consulting"
       ],
       "port": 5506
+    },
+    {
+      "name": "site-precision-concept",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5507",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "sites/precision-concept"
+      ],
+      "port": 5507
     }
   ]
 }

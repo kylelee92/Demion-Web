@@ -13,140 +13,142 @@
   <meta property="og:title" content="demion · 먼저 보고, 결정하는 홈페이지 디자인">
   <meta property="og:description" content="하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#efefec">
+  <meta name="theme-color" content="#0c0c0e">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316171a'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='17' font-weight='600' fill='%23efefec' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="orbit.css?v=12">
-  <link rel="stylesheet" href="styles.css?v=14">
-  <link rel="stylesheet" href="concepts.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=22">
+  <script src="i18n.js?v=3"></script>
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body id="top">
   <a class="skip" href="#main">본문 바로가기</a>
 
-  <header class="site">
-    <div class="wrap bar">
+  <header class="site" data-site>
+    <div class="bar">
       <a class="wordmark" href="#top" aria-label="demion 처음으로">demion</a>
-      <nav class="menu" aria-label="주요 메뉴">
-        <a href="#work">작업</a>
-        <a href="#about">소개</a>
-        <a href="#process">의뢰 방식</a>
+      <nav class="menu" id="site-menu" aria-label="주요 메뉴">
+        <a href="works.html">개발 사례</a>
+        <a href="#day">소개</a>
+        <a href="#pay">의뢰 방식</a>
+        <button type="button" class="menu-cta" data-open-contact>프로젝트 문의</button>
       </nav>
-      <button type="button" class="ask" data-open-contact>프로젝트 문의</button>
+      <nav class="lang" aria-label="언어 선택"><a data-lang="ko" lang="ko" href="?lang=ko">KO</a><a data-lang="en" lang="en" href="?lang=en">EN</a><a data-lang="ja" lang="ja" href="?lang=ja">JA</a></nav>
+      <button type="button" class="btn-sm" data-open-contact>프로젝트 문의</button>
+      <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="l1" d="M3 8h18"/><path class="l2" d="M3 16h18"/></svg></button>
     </div>
+    <i class="progress" data-progress aria-hidden="true"></i>
   </header>
 
   <main id="main">
 
-    <!-- 첫 화면: Orbit 휠 (design-guides/motion/orbit-cards.md) -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <h1 id="hero-title">먼저 보고,<br>결정하는 홈페이지 디자인.</h1>
-        <div class="hero-side">
-          <p class="lead">하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지.</p>
-          <button type="button" class="btn" data-open-contact>프로젝트 문의</button>
+    <section class="stage" id="top" data-stage aria-label="demion 소개와 선택작">
+      <div class="intro" data-head="light" data-intro>
+        <h1 id="hero-title"><span class="ln"><span>먼저 보고,</span></span> <span class="ln"><span>결정하는 홈페이지 디자인.</span></span></h1>
+        <div class="intro-side">
+          <p class="lead">하루 만에 첫 디자인을 확인하세요.<br>웹과 모바일, 디자인부터 개발까지.</p>
+          <button type="button" class="btn-line" data-open-contact>프로젝트 문의</button>
         </div>
       </div>
-      <div class="orbit-scene is-swing" aria-hidden="true">
-        <div class="orbit-wheel"></div>
-        <div class="orbit-dome"></div>
-      </div>
-      <div class="hero-shade" aria-hidden="true"></div>
-      <div class="hero-captions">
-        <span aria-hidden="true">demion</span><span aria-hidden="true">선택작</span><span aria-hidden="true">웹 · 모바일</span><a href="#work">↓ 디자인 보기</a>
+      <div class="reel" id="work" aria-labelledby="work-title">
+        <h2 id="work-title" class="sr">선택작</h2>
+        <a class="reel-more" href="works.html" data-more>개발 사례 전체 보기<svg viewBox="0 0 80 24" fill="none" aria-hidden="true"><path d="M0 12h78M67 2l11 10-11 10" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/></svg></a>
+        <article class="slide slide-jhw" data-head="dark" data-slide>
+          <p class="slide-num" aria-hidden="true">01 / 03</p>
+          <p class="slide-name" aria-hidden="true">조희욱</p>
+          <button type="button" class="open-work" data-work="0" aria-label="조희욱 작가 사이트 크게 보기">
+            <span class="frame">
+              <picture>
+                <source media="(max-width: 640px)" srcset="img/reel-jhw-m.jpg">
+                <img class="page" src="img/reel-jhw-d.jpg" alt="조희욱 작가 사이트 화면">
+              </picture>
+            </span>
+          </button>
+          <div class="slide-cap"><h3>조희욱</h3><span>조각가 작가 사이트</span><span class="own">실제 작업 · <a href="https://jhw.demion.co" target="_blank" rel="noopener">jhw.demion.co ↗</a></span></div>
+        </article>
+        <article class="slide slide-gw" data-head="dark" data-slide>
+          <p class="slide-num" aria-hidden="true">02 / 03</p>
+          <p class="slide-name" aria-hidden="true">GW Consulting</p>
+          <button type="button" class="open-work" data-work="1" aria-label="GW컨설팅 홈페이지 크게 보기">
+            <span class="frame">
+              <picture>
+                <source media="(max-width: 640px)" srcset="img/reel-gw-m.jpg">
+                <img class="page" src="img/reel-gw-d.jpg" alt="GW컨설팅 홈페이지 화면">
+              </picture>
+            </span>
+          </button>
+          <div class="slide-cap"><h3>GW컨설팅</h3><span>창업 컨설팅 홈페이지</span><span class="own">자체 콘셉트 · <a href="https://gw.demion.co" target="_blank" rel="noopener">gw.demion.co ↗</a></span></div>
+        </article>
+        <article class="slide slide-precision" data-head="light" data-slide>
+          <p class="slide-num" aria-hidden="true">03 / 03</p>
+          <p class="slide-name" aria-hidden="true">Precision</p>
+          <button type="button" class="open-work" data-work="2" aria-label="Precision Works 콘셉트 크게 보기">
+            <span class="frame">
+              <picture>
+                <source media="(max-width: 640px)" srcset="img/reel-precision-m.jpg">
+                <img class="page" src="img/reel-precision-d.jpg" alt="Precision Works 콘셉트 화면">
+              </picture>
+            </span>
+          </button>
+          <div class="slide-cap"><h3>Precision Works</h3><span>정밀 가공 기업 홈페이지</span><span class="own">자체 콘셉트</span></div>
+        </article>
       </div>
     </section>
 
-    <!-- 1. 디자인 선택작 -->
-    <section class="work" id="work" aria-labelledby="work-title">
-      <div class="wrap">
-        <div class="work-head">
-          <h2 id="work-title">선택작</h2>
-          <p>실제 작업 1점과 직접 구성한 자체 콘셉트 2점입니다.</p>
+    <section class="day" id="day" data-head="dark" data-day aria-labelledby="day-title">
+      <h2 id="day-title" class="q" data-q><span>이 정도 디자인을,</span> <span>하루 만에 본다고요?</span></h2>
+      <div class="day-a" data-day-a>
+        <div class="day-copy">
+          <p class="big" data-big>네, 하루.</p>
+          <p class="day-text">AI로 제작 과정을 줄이고, 디자인의 완성도에 집중합니다. 빠르게 만들 수 있는 부분은 AI에 맡기고, 구성과 문장, 화면의 비례처럼 사람이 판단해야 하는 일에 시간을 씁니다.</p>
+          <p class="note">하루는 첫 디자인을 보여드리는 기간입니다. 첫 디자인의 범위와 조건은 문의하실 때 안내드립니다.</p>
         </div>
-
-        <div class="work-grid">
-          <figure class="w w-lead">
-            <button type="button" class="open-work" data-work="1" aria-label="GW컨설팅 홈페이지 크게 보기">
-              <span class="fit" data-w="1280" data-case="gw" data-kind="d" data-narrow="m" role="img" aria-label="GW컨설팅 창업 컨설팅 홈페이지 디자인"><span class="sizer"></span></span>
-            </button>
-            <figcaption><b>GW컨설팅</b><span>창업 컨설팅 홈페이지</span><span class="own">자체 콘셉트 · <a href="https://gw.demion.co" target="_blank" rel="noopener">gw.demion.co ↗</a></span></figcaption>
-          </figure>
-
-          <figure class="w w-mobile">
-            <button type="button" class="open-work" data-work="0" data-kind="m" aria-label="조희욱 작가 사이트 모바일 화면 크게 보기">
-              <span class="fit" data-w="390" data-case="jhw" data-kind="m" role="img" aria-label="조각가 조희욱 작가 사이트 모바일 화면"><span class="sizer"></span></span>
-            </button>
-            <figcaption><b>조희욱</b><span>조각가 작가 사이트, 모바일 화면</span><span class="own">실제 작업</span></figcaption>
-          </figure>
-
-          <figure class="w w-wide">
-            <figcaption class="side"><b>마루</b><span>매출 정산 서비스</span><span class="own">자체 콘셉트</span></figcaption>
-            <button type="button" class="open-work" data-work="2" aria-label="마루 디자인 크게 보기">
-              <span class="fit" data-w="1280" data-case="c" data-kind="d" data-narrow="m" role="img" aria-label="마루 서비스 소개 페이지 디자인"><span class="sizer"></span></span>
-            </button>
-          </figure>
+        <div class="day-vis" aria-hidden="true">
+          <svg class="arc" viewBox="0 0 600 120" preserveAspectRatio="none" fill="none"><path data-arc d="M4 116C150-34 450-34 596 116" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke"/></svg>
+          <div class="arc-labels"><span>문의</span><span>첫 디자인</span></div>
+          <div class="mock">
+            <div class="wire" data-wire><i></i><i></i><i></i><i></i><i></i></div>
+            <picture data-shot>
+              <source media="(max-width: 640px)" srcset="img/poster-gw-m.webp">
+              <img src="img/poster-gw-d.webp" width="2400" height="1500" alt="" loading="lazy">
+            </picture>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. 스튜디오 소개 -->
-    <section class="about" id="about" aria-labelledby="about-title">
-      <div class="wrap about-grid">
-        <div class="about-text">
-          <h2 id="about-title">AI로 제작 과정을 줄이고,<br class="pc"> 디자인의 완성도에 집중합니다.</h2>
-          <p>빠르게 만들 수 있는 부분은 AI에 맡기고, 구성과 문장, 화면의 비례처럼 사람이 판단해야 하는 일에 시간을 씁니다. 기업과 개인의 홈페이지를 새로 만들거나 고쳐드립니다.</p>
-        </div>
-        <ul class="services">
-          <li><b>신규 제작</b><span>목적에 맞는 홈페이지 디자인과 개발</span></li>
-          <li><b>기존 홈페이지 개선</b><span>현재 화면의 디자인과 정보 구성 정돈</span></li>
-          <li><b>웹·모바일 디자인과 개발</b><span>화면 크기가 달라도 일관된 경험</span></li>
-        </ul>
+    <section class="pay" id="pay" data-head="light" data-pay aria-labelledby="pay-title">
+      <h2 id="pay-title" class="q" data-q><span>그럼 결제는</span> <span>언제 하나요?</span></h2>
+      <div class="swap" data-swap role="img" aria-label="디자인을 먼저 확인한 다음 결제합니다">
+        <span class="tok" data-tok-a aria-hidden="true">결제</span>
+        <svg class="arrow" viewBox="0 0 80 24" fill="none" aria-hidden="true"><path d="M0 12h78M67 2l11 10-11 10" stroke="currentColor" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg>
+        <span class="tok" data-tok-b aria-hidden="true">디자인</span>
       </div>
+      <p class="pay-text" data-pay-text>디자인을 먼저 보고, 마음에 들면 그때 결제하세요. 제작 범위와 진행 조건은 디자인을 확인한 뒤 협의합니다.</p>
+      <i class="iris" data-iris aria-hidden="true"></i>
     </section>
 
-    <!-- 3. 의뢰 방식 -->
-    <section class="process" id="process" aria-labelledby="process-title">
-      <div class="wrap">
-        <h2 id="process-title" class="sr">의뢰 방식</h2>
-        <ol class="flow">
-          <li>
-            <h3>문의</h3>
-            <p>회사 소개, 현재 홈페이지, 원하는 분위기를 알려주세요.</p>
-          </li>
-          <li>
-            <h3>첫 디자인 확인</h3>
-            <p>전달받은 내용을 바탕으로 하루 만에 디자인 방향을 보여드립니다.</p>
-          </li>
-          <li>
-            <h3>제작 협의</h3>
-            <p>디자인을 확인한 뒤 제작 범위와 진행 조건을 협의합니다.</p>
-          </li>
-        </ol>
-        <p class="process-note">하루는 첫 디자인을 보여드리는 기간입니다. 첫 디자인의 범위와 조건은 문의하실 때 안내드립니다.</p>
-      </div>
-    </section>
-
-    <!-- 4. 문의 -->
-    <section class="closing" id="contact" aria-labelledby="closing-title">
-      <div class="wrap closing-grid">
-        <h2 id="closing-title">새 홈페이지도, 지금 홈페이지의 개선도<br class="pc"> 먼저 이야기해주세요.</h2>
-        <button type="button" class="btn" data-open-contact>프로젝트 문의</button>
-      </div>
+    <section class="finale" id="contact" data-head="light" data-finale aria-labelledby="closing-title">
+      <h2 id="closing-title" class="finale-title" data-finale-title><span>그럼,</span> <span>한번 맡겨볼까요?</span></h2>
+      <button type="button" class="cta" data-open-contact><span>프로젝트 문의</span><svg viewBox="0 0 80 24" fill="none" aria-hidden="true"><path d="M0 12h78M67 2l11 10-11 10" stroke="currentColor" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg></button>
+      <ul class="services">
+        <li><b>신규 제작</b><span>목적에 맞는 홈페이지 디자인과 개발</span></li>
+        <li><b>기존 홈페이지 개선</b><span>현재 화면의 디자인과 정보 구성 정돈</span></li>
+        <li><b>웹·모바일 디자인과 개발</b><span>화면 크기가 달라도 일관된 경험</span></li>
+      </ul>
     </section>
   </main>
 
   <footer class="foot">
-    <div class="wrap foot-grid">
+    <div class="foot-grid">
       <div>
         <a class="wordmark" href="#top" aria-label="demion 처음으로">demion</a>
         <p>AI를 활용해 합리적인 비용으로 웹·모바일 홈페이지를 디자인하고 개발하는 스튜디오.</p>
       </div>
       <nav aria-label="페이지 이동">
-        <a href="#work">작업</a>
-        <a href="#about">소개</a>
-        <a href="#process">의뢰 방식</a>
+        <a href="works.html">개발 사례</a>
+        <a href="#day">소개</a>
+        <a href="#pay">의뢰 방식</a>
         <button type="button" data-open-contact>프로젝트 문의</button>
       </nav>
     </div>
@@ -154,7 +156,7 @@
   </footer>
 
   <!-- 작업 상세 -->
-  <dialog class="viewer" id="viewer" aria-labelledby="v-title">
+  <dialog class="viewer" id="viewer" data-lenis-prevent aria-labelledby="v-title">
     <div class="v-bar">
       <p class="v-name"><b id="v-title">조희욱</b><span id="v-type">조각가 작가 사이트</span><span class="own" id="v-own">실제 작업</span></p>
       <div class="seg" role="group" aria-label="화면 보기 방식">
@@ -171,7 +173,7 @@
   </dialog>
 
   <!-- 프로젝트 문의 패널 -->
-  <dialog class="panel" id="contact-panel" aria-labelledby="panel-title">
+  <dialog class="panel" id="contact-panel" data-lenis-prevent aria-labelledby="panel-title">
     <div class="panel-head">
       <h2 id="panel-title">프로젝트 문의</h2>
       <button type="button" class="plain" id="panel-close">닫기</button>
@@ -240,9 +242,13 @@
     </div>
   </dialog>
 
-  <noscript><p class="noscript">작업 화면을 보려면 JavaScript가 필요합니다.</p></noscript>
-  <script src="concepts.js?v=9"></script>
-  <script src="orbit.js?v=11"></script>
-  <script src="script.js?v=14"></script>
+  <noscript><p class="noscript">작업을 크게 보거나 문의를 보내려면 JavaScript가 필요합니다.</p></noscript>
+  <script>I18N.apply();</script>
+  <script src="viewer.js?v=3"></script>
+  <script src="script.js?v=19"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="motion.js?v=5" defer></script>
 </body>
 </html>

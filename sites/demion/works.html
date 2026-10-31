@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 검토용 시안. 운영 도메인으로 옮길 때 이 줄을 지운다. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>개발 사례 · demion</title>
+  <meta name="description" content="demion이 디자인하고 개발한 홈페이지 사례입니다.">
+  <meta name="theme-color" content="#0c0c0e">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316171a'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='17' font-weight='600' fill='%23efefec' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="styles.css?v=22">
+  <script src="i18n.js?v=3"></script>
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="works-page">
+  <a class="skip" href="#main">본문 바로가기</a>
+
+  <header class="site is-solid">
+    <div class="bar">
+      <a class="wordmark" href="./" aria-label="demion 처음으로">demion</a>
+      <nav class="menu" id="site-menu" aria-label="주요 메뉴">
+        <a href="works.html" aria-current="page">개발 사례</a>
+        <a href="./#day">소개</a>
+        <a href="./#pay">의뢰 방식</a>
+        <a class="menu-cta" href="./#inquiry">프로젝트 문의</a>
+      </nav>
+      <nav class="lang" aria-label="언어 선택"><a data-lang="ko" lang="ko" href="?lang=ko">KO</a><a data-lang="en" lang="en" href="?lang=en">EN</a><a data-lang="ja" lang="ja" href="?lang=ja">JA</a></nav>
+      <a class="btn-sm" href="./#inquiry">프로젝트 문의</a>
+      <button type="button" class="menu-btn" aria-expanded="false" aria-controls="site-menu" aria-label="메뉴 열기"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path class="l1" d="M3 8h18"/><path class="l2" d="M3 16h18"/></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="works-head">
+      <h1>개발 사례</h1>
+      <p>디자인하고 개발한 홈페이지입니다.<br>실제 작업과 자체 콘셉트를 구분해 표기했습니다.</p>
+    </section>
+    <ul class="cases">
+      <li class="case">
+        <button type="button" class="open-work" data-work="0" aria-label="조희욱 작가 사이트 크게 보기">
+          <span class="screen screen-jhw" data-full="img/work-jhw-d.jpg">
+            <picture>
+              <source media="(max-width: 640px)" srcset="img/poster-jhw-m.webp">
+              <img class="poster" src="img/poster-jhw-d.webp" width="2400" height="1500" alt="조희욱 작가 사이트 첫 화면" loading="eager">
+            </picture>
+          </span>
+        </button>
+        <div class="case-cap"><h2>조희욱</h2><span>조각가 작가 사이트</span><span class="own">실제 작업 · <a href="https://jhw.demion.co" target="_blank" rel="noopener">jhw.demion.co ↗</a></span></div>
+      </li>
+      <li class="case">
+        <button type="button" class="open-work" data-work="1" aria-label="GW컨설팅 홈페이지 크게 보기">
+          <span class="screen screen-gw" data-full="img/work-gw-d.jpg">
+            <picture>
+              <source media="(max-width: 640px)" srcset="img/poster-gw-m.webp">
+              <img class="poster" src="img/poster-gw-d.webp" width="2400" height="1500" alt="GW컨설팅 홈페이지 첫 화면" loading="eager">
+            </picture>
+          </span>
+        </button>
+        <div class="case-cap"><h2>GW컨설팅</h2><span>창업 컨설팅 홈페이지</span><span class="own">자체 콘셉트 · <a href="https://gw.demion.co" target="_blank" rel="noopener">gw.demion.co ↗</a></span></div>
+      </li>
+      <li class="case">
+        <button type="button" class="open-work" data-work="2" aria-label="Precision Works 콘셉트 크게 보기">
+          <span class="screen screen-precision" data-full="img/work-precision-d.jpg">
+            <picture>
+              <source media="(max-width: 640px)" srcset="img/poster-precision-m.webp">
+              <img class="poster" src="img/poster-precision-d.webp" width="2400" height="1500" alt="Precision Works 콘셉트 첫 화면" loading="lazy">
+            </picture>
+          </span>
+        </button>
+        <div class="case-cap"><h2>Precision Works</h2><span>정밀 가공 기업 홈페이지</span><span class="own">자체 콘셉트</span></div>
+      </li>
+      <li class="case case-next">
+        <a class="next-tile" href="./#inquiry">
+          <span class="next-q">다음 사례는<br>귀사의 홈페이지일 수 있습니다.</span>
+          <span class="next-go">프로젝트 문의<svg viewBox="0 0 80 24" fill="none" aria-hidden="true"><path d="M0 12h78M67 2l11 10-11 10" stroke="currentColor" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg></span>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="foot">
+    <div class="foot-grid">
+      <div>
+        <a class="wordmark" href="./" aria-label="demion 처음으로">demion</a>
+        <p>AI를 활용해 합리적인 비용으로 웹·모바일 홈페이지를 디자인하고 개발하는 스튜디오.</p>
+      </div>
+      <nav aria-label="페이지 이동">
+        <a href="works.html">개발 사례</a>
+        <a href="./#day">소개</a>
+        <a href="./#pay">의뢰 방식</a>
+        <a href="./#inquiry">프로젝트 문의</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- 작업 상세 -->
+  <dialog class="viewer" id="viewer" data-lenis-prevent aria-labelledby="v-title">
+    <div class="v-bar">
+      <p class="v-name"><b id="v-title">조희욱</b><span id="v-type">조각가 작가 사이트</span><span class="own" id="v-own">실제 작업</span></p>
+      <div class="seg" role="group" aria-label="화면 보기 방식">
+        <button type="button" data-v="d" aria-pressed="true">데스크톱</button>
+        <button type="button" data-v="m" aria-pressed="false">모바일</button>
+      </div>
+      <button type="button" class="plain" id="v-close">닫기</button>
+    </div>
+    <div class="v-stage" id="v-stage">
+      <button type="button" class="v-step v-prev" id="v-prev" aria-label="이전 작업"><svg class="ico flip" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+      <span class="fit v-frame" id="v-frame" data-w="1280" role="img" aria-label="디자인 전체 화면"><span class="sizer"></span></span>
+      <button type="button" class="v-step v-next" id="v-next" aria-label="다음 작업"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+    </div>
+  </dialog>
+
+  <noscript><p class="noscript">사례를 크게 보려면 JavaScript가 필요합니다.</p></noscript>
+  <script>I18N.apply();</script>
+  <script src="viewer.js?v=3"></script>
+</body>
+</html>
