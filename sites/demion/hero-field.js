@@ -1,7 +1,7 @@
 /* 첫 화면의 입자 세계: 수만 개의 빛 입자가 지구, 홈페이지, 모바일 화면, 데이터 지형으로 모였다 흩어진다.
    라이브러리 없이 WebGL 점 하나로 그린다. WebGL이 없으면 아무것도 그리지 않아 글자와 버튼만 남는다. */
 (() => {
-  const canvas = document.querySelector('[data-field]');
+  const canvas = document.querySelector('[data-hero-field]');
   if (!canvas) return;
   const gl = canvas.getContext('webgl', { alpha: true, antialias: false, powerPreference: 'high-performance' });
   if (!gl) return;
