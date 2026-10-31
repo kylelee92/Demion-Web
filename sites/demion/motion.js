@@ -81,6 +81,7 @@
   slides.slice(1).forEach(s => gsap.set($('.frame', s), { y: () => innerHeight * .34, rotateX: 16, transformPerspective: 1600 }));
 
   stageTl
+    .to(window.HeroField ? window.HeroField.state : {}, { scatter: 1, duration: .85, ease: 'power2.in', onUpdate: () => window.HeroField && window.HeroField.wake() }, 0)
     .to(lines[0], { xPercent: -14, autoAlpha: 0, duration: .8 }, 0)
     .to(lines[1], { xPercent: 10, autoAlpha: 0, duration: .8 }, 0)
     .to($('.intro-side', intro), { y: -60, autoAlpha: 0, duration: .5 }, 0)
