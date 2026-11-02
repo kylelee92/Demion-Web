@@ -22,3 +22,4 @@ Thumbs.db
 # impeccable 작업 산출물 (재생성 가능)
 .impeccable/tmp/
 .impeccable/review/
+.wrangler/
