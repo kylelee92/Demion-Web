@@ -9,6 +9,9 @@
     ['개발 사례 · demion', 'Work · demion', '制作事例｜demion'],
     ['하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지 맡는 홈페이지 디자인 스튜디오 demion.', 'See your first design in one day. demion is a website studio handling web and mobile, from design through development.', '1日で最初のデザインをご確認いただけます。Webとモバイル、デザインから開発まで手がけるホームページデザインスタジオ、demion。'],
     ['demion이 디자인하고 개발한 홈페이지 사례입니다.', 'Websites designed and built by demion.', 'demionがデザイン・開発したホームページの事例です。'],
+    ['홈페이지 디자인·개발 사례 · demion', 'Work · demion', '制作事例｜demion'],
+    ['demion이 디자인하고 개발한 홈페이지 사례입니다. 작가 사이트, 컨설팅 회사, 제조 기업 홈페이지를 웹과 모바일 화면으로 확인하세요.', 'Websites designed and built by demion: an artist site, a consulting firm and a manufacturer, shown on web and mobile.', 'demionがデザイン・開発したホームページの事例です。作家サイト、コンサルティング会社、製造企業のサイトをウェブとモバイルでご覧ください。'],
+    ['demion — 먼저 보고, 결정하는 홈페이지 디자인', 'demion — See it first, then decide. Website design', 'demion — 見てから決める、ホームページデザイン'],
     ['본문 바로가기', 'Skip to content', '本文へ移動'],
     ['demion 처음으로', 'demion home', 'demion トップへ'],
     ['주요 메뉴', 'Main menu', 'メインメニュー'],
@@ -147,6 +150,8 @@
     const q = new URLSearchParams(location.search).get('lang');
     if (LANGS.includes(q)) { try { localStorage.setItem('demion-lang', q); } catch {} return q; }
     try { const saved = localStorage.getItem('demion-lang'); if (LANGS.includes(saved)) return saved; } catch {}
+    /* 검색엔진 수집기는 브라우저 언어가 영어라 영문으로 읽어 간다. 원문(한국어)을 그대로 보여 준다 */
+    if (/bot|crawl|spider|slurp|Yeti|Daum|facebookexternalhit|kakaotalk-scrap|Lighthouse/i.test(navigator.userAgent)) return 'ko';
     const nav = (navigator.language || '').slice(0, 2);
     return LANGS.includes(nav) ? nav : 'en';
   };
