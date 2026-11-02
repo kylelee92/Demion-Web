@@ -6,6 +6,8 @@
   const S = [
     /* 문서 정보 */
     ['demion · 먼저 보고, 결정하는 홈페이지 디자인', 'demion · See it first, then decide. Website design', 'demion｜見てから決める、ホームページデザイン'],
+    ['홈페이지 제작 demion · 먼저 보고, 결정하는 홈페이지 디자인', 'demion · See it first, then decide. Website design & development', 'demion｜見てから決める、ホームページ制作・デザイン'],
+    ['홈페이지 제작, 하루 만에 첫 디자인을 확인하세요. 웹·모바일 반응형 디자인부터 개발까지 맡는 홈페이지 디자인 스튜디오 demion. 디자인을 먼저 보고 마음에 들면 결제합니다.', 'See your first website design in one day. demion designs and builds responsive websites for web and mobile. See the design first, pay only if you like it.', '1日で最初のホームページデザインをご確認いただけます。ウェブ・モバイル対応のデザインから開発まで手がけるスタジオ demion。デザインを見てから、気に入ればお支払いください。'],
     ['개발 사례 · demion', 'Work · demion', '制作事例｜demion'],
     ['하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지 맡는 홈페이지 디자인 스튜디오 demion.', 'See your first design in one day. demion is a website studio handling web and mobile, from design through development.', '1日で最初のデザインをご確認いただけます。Webとモバイル、デザインから開発まで手がけるホームページデザインスタジオ、demion。'],
     ['demion이 디자인하고 개발한 홈페이지 사례입니다.', 'Websites designed and built by demion.', 'demionがデザイン・開発したホームページの事例です。'],
@@ -147,6 +149,9 @@
 
   const col = { en: 1, ja: 2 };
   const pick = () => {
+    /* /en/·/ja/ 주소로 들어오면 그 언어로 고정한다 (서버가 html에 data-lang-force를 붙여 보낸다) */
+    const forced = document.documentElement.dataset.langForce;
+    if (LANGS.includes(forced)) { try { localStorage.setItem('demion-lang', forced); } catch {} return forced; }
     const q = new URLSearchParams(location.search).get('lang');
     if (LANGS.includes(q)) { try { localStorage.setItem('demion-lang', q); } catch {} return q; }
     try { const saved = localStorage.getItem('demion-lang'); if (LANGS.includes(saved)) return saved; } catch {}
@@ -197,11 +202,11 @@
     }
 
     /* 언어 전환 링크: 같은 페이지를 해당 언어로 다시 연다 */
+    /* 언어 전환 링크: 같은 페이지의 언어별 주소로 보낸다 (한국어 / , 영어 /en/ , 일본어 /ja/) */
+    const base = location.pathname.replace(/^\/(en|ja)(?=\/|$)/, '') || '/';
     document.querySelectorAll('[data-lang]').forEach(a => {
-      const u = new URL(location.href);
-      u.searchParams.set('lang', a.dataset.lang);
-      u.hash = '';
-      a.href = u.pathname + u.search;
+      const l = a.dataset.lang;
+      a.href = l === 'ko' ? base + '?lang=ko' : '/' + l + base;
       if (a.dataset.lang === lang) a.setAttribute('aria-current', 'true');
     });
 

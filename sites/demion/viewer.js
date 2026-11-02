@@ -17,17 +17,17 @@
 
   /* 실제 작업은 배포된 사이트의 전체 화면 캡처를 쓴다 (데스크톱 1280, 모바일 390@2x) */
   SHOTS.jhw = `<div class="scr shot">
-    <img class="shot-d" src="img/work-jhw-d.jpg" width="1280" height="6185" alt="" loading="lazy">
-    <img class="shot-m" src="img/work-jhw-m.jpg" width="390" height="5846" alt="" loading="lazy">
+    <img class="shot-d" src="/img/work-jhw-d.jpg" width="1280" height="6185" alt="" loading="lazy">
+    <img class="shot-m" src="/img/work-jhw-m.jpg" width="390" height="5846" alt="" loading="lazy">
   </div>`;
   SHOTS.gw = `<div class="scr shot">
-    <img class="shot-d" src="img/work-gw-d.jpg" width="1280" height="7161" alt="" loading="lazy">
-    <img class="shot-m" src="img/work-gw-m.jpg" width="390" height="8234" alt="" loading="lazy">
+    <img class="shot-d" src="/img/work-gw-d.jpg" width="1280" height="7161" alt="" loading="lazy">
+    <img class="shot-m" src="/img/work-gw-m.jpg" width="390" height="8234" alt="" loading="lazy">
   </div>`;
 
   SHOTS.precision = `<div class="scr shot">
-    <img class="shot-d" src="img/work-precision-d.jpg" width="1280" height="12800" alt="" loading="lazy">
-    <img class="shot-m" src="img/work-precision-m.jpg" width="390" height="11070" alt="" loading="lazy">
+    <img class="shot-d" src="/img/work-precision-d.jpg" width="1280" height="12800" alt="" loading="lazy">
+    <img class="shot-m" src="/img/work-precision-m.jpg" width="390" height="11070" alt="" loading="lazy">
   </div>`;
 
   const ro = new ResizeObserver(entries => entries.forEach(e => fit(e.target)));

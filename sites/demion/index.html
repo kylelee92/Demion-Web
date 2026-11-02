@@ -6,9 +6,13 @@
 
   <meta name="robots" content="index, follow, max-image-preview:large">
 
-  <title>demion · 먼저 보고, 결정하는 홈페이지 디자인</title>
-  <meta name="description" content="하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지 맡는 홈페이지 디자인 스튜디오 demion.">
+  <title>홈페이지 제작 demion · 먼저 보고, 결정하는 홈페이지 디자인</title>
+  <meta name="description" content="홈페이지 제작, 하루 만에 첫 디자인을 확인하세요. 웹·모바일 반응형 디자인부터 개발까지 맡는 홈페이지 디자인 스튜디오 demion. 디자인을 먼저 보고 마음에 들면 결제합니다.">
   <link rel="canonical" href="https://demion.co/">
+  <link rel="alternate" hreflang="ko" href="https://demion.co/">
+  <link rel="alternate" hreflang="en" href="https://demion.co/en/">
+  <link rel="alternate" hreflang="ja" href="https://demion.co/ja/">
+  <link rel="alternate" hreflang="x-default" href="https://demion.co/">
 
   <!-- 공유 미리보기 (카카오톡·슬랙·페이스북·링크드인·X) -->
   <meta property="og:site_name" content="demion">
@@ -60,11 +64,14 @@
     ]
   }
   </script>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316171a'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='17' font-weight='600' fill='%23efefec' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="styles.css?v=24">
-  <script src="i18n.js?v=4"></script>
+  <link rel="stylesheet" href="/styles.css?v=24">
+  <script src="/i18n.js?v=5"></script>
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body id="top">
@@ -74,7 +81,7 @@
     <div class="bar">
       <a class="wordmark" href="#top" aria-label="demion 처음으로">demion</a>
       <nav class="menu" id="site-menu" aria-label="주요 메뉴">
-        <a href="works.html">개발 사례</a>
+        <a href="works">개발 사례</a>
         <a href="#day">소개</a>
         <a href="#pay">의뢰 방식</a>
         <button type="button" class="menu-cta" data-open-contact>프로젝트 문의</button>
@@ -99,15 +106,15 @@
       </div>
       <div class="reel" id="work" aria-labelledby="work-title">
         <h2 id="work-title" class="sr">선택작</h2>
-        <a class="reel-more" href="works.html" data-more>개발 사례 전체 보기<svg viewBox="0 0 80 24" fill="none" aria-hidden="true"><path d="M0 12h78M67 2l11 10-11 10" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/></svg></a>
+        <a class="reel-more" href="works" data-more>개발 사례 전체 보기<svg viewBox="0 0 80 24" fill="none" aria-hidden="true"><path d="M0 12h78M67 2l11 10-11 10" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/></svg></a>
         <article class="slide slide-jhw" data-head="dark" data-slide>
           <p class="slide-num" aria-hidden="true">01 / 03</p>
           <p class="slide-name" aria-hidden="true">조희욱</p>
           <button type="button" class="open-work" data-work="0" aria-label="조희욱 작가 사이트 크게 보기">
             <span class="frame">
               <picture>
-                <source media="(max-width: 640px)" srcset="img/reel-jhw-m.jpg">
-                <img class="page" src="img/reel-jhw-d.jpg" alt="조희욱 작가 사이트 화면">
+                <source media="(max-width: 640px)" srcset="/img/reel-jhw-m.jpg">
+                <img class="page" src="/img/reel-jhw-d.jpg" alt="조희욱 작가 사이트 화면">
               </picture>
             </span>
           </button>
@@ -119,8 +126,8 @@
           <button type="button" class="open-work" data-work="1" aria-label="GW컨설팅 홈페이지 크게 보기">
             <span class="frame">
               <picture>
-                <source media="(max-width: 640px)" srcset="img/reel-gw-m.jpg">
-                <img class="page" src="img/reel-gw-d.jpg" alt="GW컨설팅 홈페이지 화면">
+                <source media="(max-width: 640px)" srcset="/img/reel-gw-m.jpg">
+                <img class="page" src="/img/reel-gw-d.jpg" alt="GW컨설팅 홈페이지 화면">
               </picture>
             </span>
           </button>
@@ -132,8 +139,8 @@
           <button type="button" class="open-work" data-work="2" aria-label="Precision Works 콘셉트 크게 보기">
             <span class="frame">
               <picture>
-                <source media="(max-width: 640px)" srcset="img/reel-precision-m.jpg">
-                <img class="page" src="img/reel-precision-d.jpg" alt="Precision Works 콘셉트 화면">
+                <source media="(max-width: 640px)" srcset="/img/reel-precision-m.jpg">
+                <img class="page" src="/img/reel-precision-d.jpg" alt="Precision Works 콘셉트 화면">
               </picture>
             </span>
           </button>
@@ -156,8 +163,8 @@
           <div class="mock">
             <div class="wire" data-wire><i></i><i></i><i></i><i></i><i></i></div>
             <picture data-shot>
-              <source media="(max-width: 640px)" srcset="img/poster-gw-m.webp">
-              <img src="img/poster-gw-d.webp" width="2400" height="1500" alt="" loading="lazy">
+              <source media="(max-width: 640px)" srcset="/img/poster-gw-m.webp">
+              <img src="/img/poster-gw-d.webp" width="2400" height="1500" alt="" loading="lazy">
             </picture>
           </div>
         </div>
@@ -193,7 +200,7 @@
         <p>AI를 활용해 합리적인 비용으로 웹·모바일 홈페이지를 디자인하고 개발하는 스튜디오.</p>
       </div>
       <nav aria-label="페이지 이동">
-        <a href="works.html">개발 사례</a>
+        <a href="works">개발 사례</a>
         <a href="#day">소개</a>
         <a href="#pay">의뢰 방식</a>
         <button type="button" data-open-contact>프로젝트 문의</button>
@@ -291,12 +298,12 @@
 
   <noscript><p class="noscript">작업을 크게 보거나 문의를 보내려면 JavaScript가 필요합니다.</p></noscript>
   <script>I18N.apply();</script>
-  <script src="viewer.js?v=3"></script>
-  <script src="script.js?v=19"></script>
-  <script src="hero-field.js?v=4" defer></script>
+  <script src="/viewer.js?v=4"></script>
+  <script src="/script.js?v=19"></script>
+  <script src="/hero-field.js?v=4" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-  <script src="motion.js?v=6" defer></script>
+  <script src="/motion.js?v=6" defer></script>
 </body>
 </html>

@@ -8,13 +8,17 @@
 
   <title>홈페이지 디자인·개발 사례 · demion</title>
   <meta name="description" content="demion이 디자인하고 개발한 홈페이지 사례입니다. 작가 사이트, 컨설팅 회사, 제조 기업 홈페이지를 웹과 모바일 화면으로 확인하세요.">
-  <link rel="canonical" href="https://demion.co/works.html">
+  <link rel="canonical" href="https://demion.co/works">
+  <link rel="alternate" hreflang="ko" href="https://demion.co/works">
+  <link rel="alternate" hreflang="en" href="https://demion.co/en/works">
+  <link rel="alternate" hreflang="ja" href="https://demion.co/ja/works">
+  <link rel="alternate" hreflang="x-default" href="https://demion.co/works">
 
   <meta property="og:site_name" content="demion">
   <meta property="og:title" content="홈페이지 디자인·개발 사례 · demion">
   <meta property="og:description" content="demion이 디자인하고 개발한 홈페이지 사례입니다.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://demion.co/works.html">
+  <meta property="og:url" content="https://demion.co/works">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:image" content="https://demion.co/img/og-image.jpg">
   <meta property="og:image:width" content="1200">
@@ -23,11 +27,14 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://demion.co/img/og-image.jpg">
   <meta name="theme-color" content="#0c0c0e">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316171a'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='17' font-weight='600' fill='%23efefec' text-anchor='middle'%3Ed%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="styles.css?v=24">
-  <script src="i18n.js?v=4"></script>
+  <link rel="stylesheet" href="/styles.css?v=24">
+  <script src="/i18n.js?v=5"></script>
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body class="works-page">
@@ -37,7 +44,7 @@
     <div class="bar">
       <a class="wordmark" href="./" aria-label="demion 처음으로">demion</a>
       <nav class="menu" id="site-menu" aria-label="주요 메뉴">
-        <a href="works.html" aria-current="page">개발 사례</a>
+        <a href="works" aria-current="page">개발 사례</a>
         <a href="./#day">소개</a>
         <a href="./#pay">의뢰 방식</a>
         <a class="menu-cta" href="./#inquiry">프로젝트 문의</a>
@@ -56,10 +63,10 @@
     <ul class="cases">
       <li class="case">
         <button type="button" class="open-work" data-work="0" aria-label="조희욱 작가 사이트 크게 보기">
-          <span class="screen screen-jhw" data-full="img/work-jhw-d.jpg">
+          <span class="screen screen-jhw" data-full="/img/work-jhw-d.jpg">
             <picture>
-              <source media="(max-width: 640px)" srcset="img/poster-jhw-m.webp">
-              <img class="poster" src="img/poster-jhw-d.webp" width="2400" height="1500" alt="조희욱 작가 사이트 첫 화면" loading="eager">
+              <source media="(max-width: 640px)" srcset="/img/poster-jhw-m.webp">
+              <img class="poster" src="/img/poster-jhw-d.webp" width="2400" height="1500" alt="조희욱 작가 사이트 첫 화면" loading="eager">
             </picture>
           </span>
         </button>
@@ -67,10 +74,10 @@
       </li>
       <li class="case">
         <button type="button" class="open-work" data-work="1" aria-label="GW컨설팅 홈페이지 크게 보기">
-          <span class="screen screen-gw" data-full="img/work-gw-d.jpg">
+          <span class="screen screen-gw" data-full="/img/work-gw-d.jpg">
             <picture>
-              <source media="(max-width: 640px)" srcset="img/poster-gw-m.webp">
-              <img class="poster" src="img/poster-gw-d.webp" width="2400" height="1500" alt="GW컨설팅 홈페이지 첫 화면" loading="eager">
+              <source media="(max-width: 640px)" srcset="/img/poster-gw-m.webp">
+              <img class="poster" src="/img/poster-gw-d.webp" width="2400" height="1500" alt="GW컨설팅 홈페이지 첫 화면" loading="eager">
             </picture>
           </span>
         </button>
@@ -78,10 +85,10 @@
       </li>
       <li class="case">
         <button type="button" class="open-work" data-work="2" aria-label="Precision Works 콘셉트 크게 보기">
-          <span class="screen screen-precision" data-full="img/work-precision-d.jpg">
+          <span class="screen screen-precision" data-full="/img/work-precision-d.jpg">
             <picture>
-              <source media="(max-width: 640px)" srcset="img/poster-precision-m.webp">
-              <img class="poster" src="img/poster-precision-d.webp" width="2400" height="1500" alt="Precision Works 콘셉트 첫 화면" loading="lazy">
+              <source media="(max-width: 640px)" srcset="/img/poster-precision-m.webp">
+              <img class="poster" src="/img/poster-precision-d.webp" width="2400" height="1500" alt="Precision Works 콘셉트 첫 화면" loading="lazy">
             </picture>
           </span>
         </button>
@@ -103,7 +110,7 @@
         <p>AI를 활용해 합리적인 비용으로 웹·모바일 홈페이지를 디자인하고 개발하는 스튜디오.</p>
       </div>
       <nav aria-label="페이지 이동">
-        <a href="works.html">개발 사례</a>
+        <a href="works">개발 사례</a>
         <a href="./#day">소개</a>
         <a href="./#pay">의뢰 방식</a>
         <a href="./#inquiry">프로젝트 문의</a>
@@ -130,6 +137,6 @@
 
   <noscript><p class="noscript">사례를 크게 보려면 JavaScript가 필요합니다.</p></noscript>
   <script>I18N.apply();</script>
-  <script src="viewer.js?v=3"></script>
+  <script src="/viewer.js?v=4"></script>
 </body>
 </html>

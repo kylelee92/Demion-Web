@@ -1,15 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://demion.co/</loc>
     <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://demion.co/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demion.co/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://demion.co/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demion.co/"/>
   </url>
   <url>
-    <loc>https://demion.co/works.html</loc>
+    <loc>https://demion.co/en/</loc>
     <lastmod>2026-11-02</lastmod>
-    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://demion.co/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demion.co/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://demion.co/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demion.co/"/>
+  </url>
+  <url>
+    <loc>https://demion.co/ja/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://demion.co/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demion.co/en/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://demion.co/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demion.co/"/>
+  </url>
+  <url>
+    <loc>https://demion.co/works</loc>
+    <lastmod>2026-11-02</lastmod>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://demion.co/works"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demion.co/en/works"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://demion.co/ja/works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demion.co/works"/>
+  </url>
+  <url>
+    <loc>https://demion.co/en/works</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://demion.co/works"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demion.co/en/works"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://demion.co/ja/works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demion.co/works"/>
+  </url>
+  <url>
+    <loc>https://demion.co/ja/works</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://demion.co/works"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://demion.co/en/works"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://demion.co/ja/works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://demion.co/works"/>
   </url>
 </urlset>
