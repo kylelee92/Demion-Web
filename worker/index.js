@@ -2,7 +2,7 @@
 // 정적 파일은 Cloudflare가 sites/demion에서 먼저 내보내고, 파일이 없는 경로만 여기로 온다.
 // POST /api/inquiry → Email Routing(send_email)으로 운영자 메일함에 보낸다.
 // 받는 주소는 저장소에 남기지 않고 대시보드 Secret `INQUIRY_TO`로 둔다.
-// GET /en/·/ja/(+works) → 한국어 원본 페이지를 그대로 쓰되 <head>만 해당 언어로 바꿔 보낸다.
+// GET /en/·/ja/·/zh/(+works) → 한국어 원본 페이지를 그대로 쓰되 <head>만 해당 언어로 바꿔 보낸다.
 //   검색엔진이 언어별 주소를 따로 수집하게 하려는 것. 본문 번역은 i18n.js가 맡는다.
 import { EmailMessage } from 'cloudflare:email';
 
@@ -13,7 +13,7 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const { pathname, host } = url;
-    const lang = pathname.match(/^\/(en|ja)(\/.*)?$/);
+    const lang = pathname.match(/^\/(en|ja|zh)(\/.*)?$/);
     if (lang && (request.method === 'GET' || request.method === 'HEAD')) return localized(request, env, url, lang[1], lang[2] || '');
     if (pathname !== '/api/inquiry') return new Response('Not found', { status: 404 });
     if (request.method !== 'POST') return json({ error: 'method' }, 405);
@@ -92,7 +92,7 @@ function word(s) {
   return `=?UTF-8?B?${b64(s)}?=`;
 }
 
-// ---------- 언어별 주소 (/en/, /ja/) ----------
+// ---------- 언어별 주소 (/en/, /ja/, /zh/) ----------
 
 const ORIGIN = 'https://demion.co';
 const PAGES = {
@@ -109,6 +109,12 @@ const PAGES = {
       ogTitle: 'demion｜見てから決める、ホームページデザイン',
       ogDesc: '1日で最初のデザインをご確認いただけます。ウェブとモバイル、デザインから開発まで。',
     },
+    zh: {
+      title: 'demion｜先看后定的网站制作与设计',
+      desc: '一天内即可看到网站的第一版设计。demion 是一家负责网页与移动端响应式设计及开发的网站设计工作室。先看设计，满意后再付款。',
+      ogTitle: 'demion｜先看后定的网站设计',
+      ogDesc: '一天内即可看到第一版设计。网页与移动端，从设计到开发。',
+    },
   },
   '/works': {
     en: {
@@ -123,9 +129,15 @@ const PAGES = {
       ogTitle: '制作事例｜demion',
       ogDesc: 'demionがデザイン・開発したホームページの事例です。',
     },
+    zh: {
+      title: '项目案例｜demion',
+      desc: 'demion 设计并开发的网站案例，包括艺术家网站、咨询公司和制造企业的官网，可在网页和移动端画面中查看。',
+      ogTitle: '项目案例｜demion',
+      ogDesc: 'demion 设计并开发的网站案例。',
+    },
   },
 };
-const LOCALE = { en: 'en_US', ja: 'ja_JP' };
+const LOCALE = { en: 'en_US', ja: 'ja_JP', zh: 'zh_CN' };
 
 async function localized(request, env, url, lang, rest) {
   // /en → /en/ , /en/index.html → /en/ , /en/works.html → /en/works (원본 사이트의 주소 규칙과 같게)
