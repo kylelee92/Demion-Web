@@ -1,4 +1,4 @@
-/* 첫 화면의 입자 세계: 수만 개의 빛 입자가 지구, 홈페이지, 모바일 화면, 데이터 지형으로 모였다 흩어진다.
+/* 첫 화면의 입자 세계: 수만 개의 빛 입자가 지구, 별 사면체, 정십이면체 틀, 데이터 지형, 큐브 무리, 팔면체 결정, 와이어 도넛, 워드마크로 모였다 흩어진다.
    라이브러리 없이 WebGL 점 하나로 그린다. WebGL이 없으면 아무것도 그리지 않아 글자와 버튼만 남는다. */
 (() => {
   const canvas = document.querySelector('[data-hero-field]');
@@ -71,40 +71,103 @@
     return out;
   }
 
-  const box = (ctx, x, y, w, h, level = 1) => { const v = Math.round(level * 255); ctx.fillStyle = `rgb(${v},${v},${v})`; ctx.fillRect(x, y, w, h); };
-  const frame = (ctx, x, y, w, h, t = 2) => { ctx.fillStyle = '#fff'; ctx.fillRect(x, y, w, t); ctx.fillRect(x, y + h - t, w, t); ctx.fillRect(x, y, t, h); ctx.fillRect(x + w - t, y, t, h); };
+  /* ---------- 기하 모형: 면, 모서리 관, 선 위에 점을 뿌린다 ---------- */
+  const rot = (v, ax, ay, az = 0) => {
+    let [x, y, z] = v;
+    [y, z] = [y * Math.cos(ax) - z * Math.sin(ax), y * Math.sin(ax) + z * Math.cos(ax)];
+    [x, z] = [x * Math.cos(ay) + z * Math.sin(ay), -x * Math.sin(ay) + z * Math.cos(ay)];
+    [x, y] = [x * Math.cos(az) - y * Math.sin(az), x * Math.sin(az) + y * Math.cos(az)];
+    return [x, y, z];
+  };
+  const lerp3 = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  const onTri = (a, b, c) => { let u = Math.random(), v = Math.random(); if (u + v > 1) { u = 1 - u; v = 1 - v; } return [a[0] + (b[0] - a[0]) * u + (c[0] - a[0]) * v, a[1] + (b[1] - a[1]) * u + (c[1] - a[1]) * v, a[2] + (b[2] - a[2]) * u + (c[2] - a[2]) * v]; };
+  /* 모서리를 두께 r의 관으로: 선을 따라 고르게, 단면은 원 둘레 */
+  const onTube = (a, b, r) => {
+    const t = Math.random(), p = lerp3(a, b, t);
+    const d = [b[0] - a[0], b[1] - a[1], b[2] - a[2]], l = Math.hypot(...d);
+    const T = d.map(x => x / l);
+    const h = Math.abs(T[0]) < .9 ? [1, 0, 0] : [0, 1, 0];
+    let N = [T[1] * h[2] - T[2] * h[1], T[2] * h[0] - T[0] * h[2], T[0] * h[1] - T[1] * h[0]];
+    const nl = Math.hypot(...N); N = N.map(x => x / nl);
+    const B = [T[1] * N[2] - T[2] * N[1], T[2] * N[0] - T[0] * N[2], T[0] * N[1] - T[1] * N[0]];
+    const ang = rand(Math.PI * 2), c = Math.cos(ang) * r, s = Math.sin(ang) * r;
+    return [p[0] + N[0] * c + B[0] * s, p[1] + N[1] * c + B[1] * s, p[2] + N[2] * c + B[2] * s];
+  };
+  /* 길이에 비례해 모서리를 고른다 */
+  const pickerBy = (items, w) => { const cum = []; let t = 0; items.forEach((_, i) => cum.push(t += w(items[i]))); return () => { const r = Math.random() * t; let lo = 0, hi = cum.length - 1; while (lo < hi) { const m = (lo + hi) >> 1; if (cum[m] < r) lo = m + 1; else hi = m; } return items[lo]; }; };
+  const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+  const edgesOf = (verts, len) => { const e = []; for (let i = 0; i < verts.length; i++) for (let j = i + 1; j < verts.length; j++) if (Math.abs(dist(verts[i], verts[j]) - len) < 1e-3) e.push([verts[i], verts[j]]); return e; };
+  const build = (fn, tilt = [0, 0, 0]) => { const out = new Float32Array(COUNT * 3); for (let i = 0; i < COUNT; i++) out.set(rot(fn(), ...tilt), i * 3); return out; };
 
-  /* 편집 디자인형 홈페이지 */
-  const pageA = (c, W, H) => {
-    frame(c, 40, 16, W - 80, H - 32);
-    box(c, 40, 34, W - 80, 2, 1);
-    [56, 68, 80].forEach(x => box(c, x, 23, 6, 6, 1));
-    box(c, 64, 62, 250, 34, 1); box(c, 64, 106, 190, 34, 1);
-    box(c, 64, 156, 150, 3, 1); box(c, 64, 168, 120, 3, 1);
-    box(c, 64, 190, 76, 22, 1);
-    box(c, 356, 58, 220, 168, .1); frame(c, 356, 58, 220, 168);
-    [0, 1, 2].forEach(i => { box(c, 64 + i * 174, 250, 164, 100, .07); frame(c, 64 + i * 174, 250, 164, 100, 2); box(c, 64 + i * 174, 358, 110, 3, 1); });
-  };
-  /* 작품 갤러리형 홈페이지 */
-  const pageB = (c, W, H) => {
-    frame(c, 40, 16, W - 80, H - 32);
-    box(c, 40, 34, W - 80, 2, 1);
-    box(c, 64, 54, 512, 44, 1);
-    [[64, 112, 250, 118, .12], [326, 112, 120, 118, .06], [458, 112, 118, 118, .09], [64, 242, 120, 118, .07], [196, 242, 180, 118, .12], [388, 242, 188, 118, .05]]
-      .forEach(([x, y, w, h, l]) => { box(c, x, y, w, h, l); frame(c, x, y, w, h, 2); });
-  };
-  /* 모바일 화면 세 장 */
-  const phones = (c, W, H) => {
-    [[92, 44, 136, 312], [252, 20, 136, 360], [412, 44, 136, 312]].forEach(([x, y, w, h], i) => {
-      frame(c, x, y, w, h, 2);
-      box(c, x + w / 2 - 18, y + 8, 36, 5, .9);
-      box(c, x + 14, y + 26, w - 28, i === 1 ? 110 : 80, .12); frame(c, x + 14, y + 26, w - 28, i === 1 ? 110 : 80, 1);
-      box(c, x + 14, y + (i === 1 ? 150 : 120), w - 44, 12, 1);
-      box(c, x + 14, y + (i === 1 ? 170 : 140), w - 28, 3, 1);
-      box(c, x + 14, y + (i === 1 ? 182 : 152), w - 50, 3, 1);
-      box(c, x + 14, y + h - 44, w - 28, 28, .5);
+  /* 별 사면체: 서로 꿰뚫은 두 정사면체. 면에 70%, 모서리에 30% */
+  function starTetra() {
+    const A = [[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]].map(v => v.map(x => x * .5));
+    const Bv = A.map(v => v.map(x => -x));
+    const faces = [], edges = [];
+    [A, Bv].forEach(T => {
+      faces.push([T[0], T[1], T[2]], [T[0], T[1], T[3]], [T[0], T[2], T[3]], [T[1], T[2], T[3]]);
+      for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) edges.push([T[i], T[j]]);
     });
-  };
+    return build(() => Math.random() < .7 ? onTri(...faces[Math.floor(Math.random() * 8)]) : onTube(...edges[Math.floor(Math.random() * 12)], .008), [.35, .3, .1]);
+  }
+
+  /* 정십이면체 틀: 오각형 서른 모서리를 굵은 관으로 */
+  function dodecaFrame() {
+    const g = (1 + Math.sqrt(5)) / 2, k = 1 / g;
+    const V = [];
+    for (const a of [-1, 1]) for (const b of [-1, 1]) {
+      for (const c of [-1, 1]) V.push([a, b, c]);
+      V.push([0, a * k, b * g], [a * k, b * g, 0], [a * g, 0, b * k]);
+    }
+    const s = .82 / Math.sqrt(3);
+    const E = edgesOf(V, 2 * k).map(([a, b]) => [a.map(x => x * s), b.map(x => x * s)]);
+    return build(() => onTube(...E[Math.floor(Math.random() * E.length)], .06), [.3, .2, 0]);
+  }
+
+  /* 3×3×3 큐브: 조금씩 어긋난 떠 있는 큐브들. 바깥을 향한 면만 그려 속이 엉키지 않게 한다 */
+  function cubeGrid() {
+    const P = .46, H = .16, faces = [];
+    for (let x = -1; x <= 1; x++) for (let y = -1; y <= 1; y++) for (let z = -1; z <= 1; z++) {
+      const g = [x, y, z];
+      const c = [x * P + rand(.03, -.03), y * P + rand(.05, -.05), z * P + rand(.03, -.03)];
+      for (let axis = 0; axis < 3; axis++) if (g[axis] !== 0) faces.push([c, axis, g[axis] * H]);
+    }
+    return build(() => {
+      const [c, axis, side] = faces[Math.floor(Math.random() * faces.length)];
+      /* 모서리를 또렷하게 */
+      const edge = Math.random() < .55;
+      const u = edge ? (Math.random() < .5 ? -H : H) : rand(H, -H), v = rand(H, -H);
+      const q = axis === 0 ? [side, u, v] : axis === 1 ? [u, side, v] : [u, v, side];
+      return [c[0] + q[0], c[1] + q[1], c[2] + q[2]];
+    }, [.5, .62, 0]);
+  }
+
+  /* 정팔면체 세 개를 x, y, z축으로 45°씩 돌려 겹친 결정: 모서리 관 75%, 면 25% */
+  function octaCompound() {
+    const O = [[1, 0, 0], [-1, 0, 0], [0, 1, 0], [0, -1, 0], [0, 0, 1], [0, 0, -1]].map(v => v.map(x => x * .8));
+    const F = [];
+    for (const sx of [0, 1]) for (const sy of [2, 3]) for (const sz of [4, 5]) F.push([O[sx], O[sy], O[sz]]);
+    const E = edgesOf(O, .8 * Math.SQRT2);
+    const q = Math.PI / 4, turns = [[q, 0, 0], [0, q, 0], [0, 0, q]];
+    return build(() => {
+      const t = turns[Math.floor(Math.random() * 3)];
+      const p = Math.random() < .75 ? onTube(...E[Math.floor(Math.random() * E.length)], .022) : onTri(...F[Math.floor(Math.random() * 8)]);
+      return rot(p, ...t);
+    }, [.4, .25, 0]);
+  }
+
+  /* 와이어프레임 도넛: 세로 고리 28개, 가로 고리 12개 */
+  function torusWire() {
+    const R = .6, r = .27;
+    return build(() => {
+      let u, v;
+      if (Math.random() < .62) { u = Math.floor(Math.random() * 28) / 28 * Math.PI * 2; v = rand(Math.PI * 2); }
+      else { v = Math.floor(Math.random() * 12) / 12 * Math.PI * 2; u = rand(Math.PI * 2); }
+      const w = R + r * Math.cos(v);
+      return [w * Math.cos(u) + rand(.004, -.004), r * Math.sin(v) + rand(.004, -.004), w * Math.sin(u)];
+    }, [1.05, 0, .25]);
+  }
+
   /* 브랜드 이름 */
   const wordmark = (c, W, H) => {
     c.fillStyle = '#fff';
@@ -117,12 +180,12 @@
   let shapes = [];
   const shape = i => {
     if (!shapes[i]) {
-      shapes[i] = [sphere, () => fromDrawing(pageA), () => fromDrawing(phones), terrain, () => fromDrawing(pageB), () => fromDrawing(wordmark)][i]();
+      shapes[i] = [sphere, starTetra, dodecaFrame, terrain, cubeGrid, octaCompound, torusWire, () => fromDrawing(wordmark)][i]();
     }
     return shapes[i];
   };
-  /* 지구와 지형만 3차원으로 돈다 */
-  const SPINS = [1, .0, .0, .12, .0, .0];
+  /* 모형마다 도는 빠르기. 워드마크만 돌지 않는다 */
+  const SPINS = [1, .6, .5, .12, .45, .5, .4, 0];
   const SHAPES = SPINS.length;
 
   /* ---------- 셰이더 ---------- */
