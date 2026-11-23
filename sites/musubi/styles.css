@@ -51,6 +51,7 @@ html[lang="en"] body { letter-spacing: -.005em; line-height: 1.7; font-feature-s
 html[lang="en"] .statement, html[lang="en"] .h2 { letter-spacing: -.03em; line-height: 1.15; }
 html[lang="en"] .h2 { line-height: 1.25; }
 html[lang="en"] .cap { font-weight: 650; margin-top: .02em; }
+html[lang="en"] .btn, html[lang="en"] .float-cta, html[lang="en"] .nav, html[lang="en"] .f > span, html[lang="en"] .f legend { letter-spacing: 0; }
 html[lang^="zh"] { --jp: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; }
 html[lang^="zh"] body { letter-spacing: .02em; font-feature-settings: normal; }
 
