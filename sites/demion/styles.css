@@ -107,6 +107,7 @@ h1 .ln + .ln > span { animation-delay: .1s; }
 .slide-jhw { background: #d4d0c6; color: var(--ink); }
 .slide-gw { background: #ff4b1f; color: var(--ink); }
 .slide-precision { background: #111820; color: var(--bone); }
+.slide-musubi { background: #d24e2c; color: var(--ink); }
 .slide-num { position: absolute; left: var(--gut); top: 76px; z-index: 4; font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums; }
 .slide-name { position: absolute; left: 0; top: 50%; z-index: 1; font-size: clamp(120px, 27vw, 460px); font-weight: 600; line-height: 1; letter-spacing: -.06em; white-space: nowrap; transform: translateY(-50%); opacity: .16; pointer-events: none; }
 .open-work { position: relative; z-index: 3; display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; }
@@ -256,6 +257,7 @@ html[lang="en"] .lead, html[lang="ja"] .lead { white-space: normal; max-width: 2
 .motion .slide { position: absolute; inset: 0; z-index: 0; padding: 0; }
 .motion .slide-gw { z-index: 1; }
 .motion .slide-precision { z-index: 2; }
+.motion .slide-musubi { z-index: 3; }
 .motion .slide-jhw { background: rgb(212 208 198 / 0); }
 .motion .open-work { position: absolute; inset: 72px 0 64px; width: min(var(--fw, 62vw), calc((100svh - 136px) * 1.5)); height: auto; margin-inline: auto; }
 .motion .frame { width: 100%; height: 100%; aspect-ratio: auto; transform-origin: 50% 50%; }

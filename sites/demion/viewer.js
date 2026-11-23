@@ -23,9 +23,11 @@
   ];
 
   /* 개발 사례 카드의 MUSUBI 캡처·링크를 지금 언어로 바꾼다 (HTML에는 한국어판이 적혀 있다) */
+  /* 파일 이름의 'musubi-ko-'를 지금 언어로 바꾼다 (예: reel-musubi-ko-d.jpg → reel-musubi-en-d.jpg) */
+  const loc = v => v.replace('musubi-ko-', `musubi-${ML}-`);
   $$('[data-musubi]').forEach(el => {
-    if (el.dataset.full) el.dataset.full = `/img/work-musubi-${ML}-d.jpg`;
-    if (el.matches('source[srcset*="-d."], img[src*="-d."]')) el[el.tagName === 'IMG' ? 'src' : 'srcset'] = `/img/poster-musubi-${ML}-d.webp`;
+    ['src', 'srcset'].forEach(a => { if (el.hasAttribute(a)) el.setAttribute(a, loc(el.getAttribute(a))); });
+    if (el.dataset.full) el.dataset.full = loc(el.dataset.full);
     if (el.tagName === 'A') el.href = MUSUBI_URL;
   });
 

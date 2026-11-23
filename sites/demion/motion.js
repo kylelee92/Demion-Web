@@ -52,7 +52,7 @@
   }
   const lineChars = q => $$(':scope > span', q).flatMap(chars);
 
-  /* ---------- 장면 1: 첫 화면 → 선택작 3점 ---------- */
+  /* ---------- 장면 1: 첫 화면 → 선택작 ---------- */
   const stage = $('[data-stage]');
   const intro = $('[data-intro]');
   const slides = $$('[data-slide]');
@@ -65,7 +65,7 @@
 
   const stageTl = gsap.timeline({
     defaults: { ease: 'none' },
-    scrollTrigger: { trigger: stage, start: 'top top', end: () => `+=${innerHeight * 3}`, pin: true, scrub: .6, invalidateOnRefresh: true },
+    scrollTrigger: { trigger: stage, start: 'top top', end: () => `+=${innerHeight * (slides.length + 0.5)}`, pin: true, scrub: .6, invalidateOnRefresh: true },
   });
 
   const more = $('[data-more]', stage);
@@ -104,7 +104,7 @@
         .to($('.frame', prev), { scale: .9, duration: .5, ease: 'power2.in' }, at - .5);
     }
     stageTl
-      .to($('.page', slide), { y: () => -pageDist(slide), duration: n === 2 ? .9 : .6 }, at)
+      .to($('.page', slide), { y: () => -pageDist(slide), duration: n === slides.length - 1 ? .9 : .6 }, at)
       .fromTo($('.slide-name', slide), { xPercent: 6 }, { xPercent: -30, duration: 1.4 }, at - (n ? .5 : 0));
   });
 
