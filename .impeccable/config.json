@@ -576,6 +576,18 @@
         ],
         "createdAt": "2026-10-31T08:43:23.655Z",
         "reason": "Claude: root DESIGN.md documents the riso preset only; this site follows the user's precision concept brief"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto sans kr",
+        "createdAt": "2026-11-23T12:59:58.178Z",
+        "reason": "User asked for a Korean version of the musubi site; DESIGN.md documents the demion site, Noto Sans KR is the Korean counterpart of Noto Sans JP here"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "noto sans sc",
+        "createdAt": "2026-11-23T13:07:01.364Z",
+        "reason": "User asked for a Chinese version of the musubi site; DESIGN.md documents the demion site, Noto Sans SC is the Simplified Chinese counterpart of Noto Sans JP here"
       }
     ]
   }
