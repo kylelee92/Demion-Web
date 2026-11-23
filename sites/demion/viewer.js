@@ -5,12 +5,29 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const T = window.I18N ? I18N.t : text => text;
 
-  /* 사례 순서: 0 조희욱(실제 작업), 1 GW컨설팅(자체 콘셉트, 배포됨), 2 Precision Works(자체 콘셉트, 미배포) */
+  /* MUSUBI는 4개 언어 사이트다. demion을 보고 있는 언어와 같은 언어 페이지·캡처를 보여 준다
+     (demion ko → musubi /ko/, en → /en/, ja → / , zh → /zh/) */
+  const LANG = (window.I18N && I18N.lang) || 'ko';
+  const MUSUBI_PATH = { ko: '/ko/', en: '/en/', ja: '/', zh: '/zh/' };
+  const ML = MUSUBI_PATH[LANG] ? LANG : 'ko';
+  const MUSUBI_URL = 'https://musubi.demion.co' + MUSUBI_PATH[ML];
+  /* 전체 화면 캡처 높이 (데스크톱 1280 폭, 모바일 390@2x) */
+  const MUSUBI_H = { ko: [7175, 17470], en: [7057, 17900], ja: [7052, 17654], zh: [7022, 17100] }[ML];
+
+  /* 사례 순서: 0 조희욱(실제 작업), 1 GW컨설팅(자체 콘셉트, 배포됨), 2 Precision Works(자체 콘셉트, 미배포), 3 MUSUBI(자체 콘셉트, 배포됨) */
   const WORKS = [
     { id: 'jhw', name: '조희욱', type: '조각가 작가 사이트', url: 'https://jhw.demion.co' },
     { id: 'gw', name: 'GW컨설팅', type: '창업 컨설팅 홈페이지', url: 'https://gw.demion.co', concept: true },
     { id: 'precision', name: 'Precision Works', type: '정밀 가공 기업 홈페이지' },
+    { id: 'musubi', name: 'MUSUBI', type: 'IT 마케팅 회사 홈페이지 · 4개 언어', url: MUSUBI_URL, concept: true },
   ];
+
+  /* 개발 사례 카드의 MUSUBI 캡처·링크를 지금 언어로 바꾼다 (HTML에는 한국어판이 적혀 있다) */
+  $$('[data-musubi]').forEach(el => {
+    if (el.dataset.full) el.dataset.full = `/img/work-musubi-${ML}-d.jpg`;
+    if (el.matches('source[srcset*="-d."], img[src*="-d."]')) el[el.tagName === 'IMG' ? 'src' : 'srcset'] = `/img/poster-musubi-${ML}-d.webp`;
+    if (el.tagName === 'A') el.href = MUSUBI_URL;
+  });
 
   /* ---------- 작업 상세의 전체 화면 ---------- */
   const SHOTS = {};
@@ -28,6 +45,11 @@
   SHOTS.precision = `<div class="scr shot">
     <img class="shot-d" src="/img/work-precision-d.jpg" width="1280" height="12800" alt="" loading="lazy">
     <img class="shot-m" src="/img/work-precision-m.jpg" width="390" height="11070" alt="" loading="lazy">
+  </div>`;
+
+  SHOTS.musubi = `<div class="scr shot">
+    <img class="shot-d" src="/img/work-musubi-${ML}-d.jpg" width="1280" height="${MUSUBI_H[0]}" alt="" loading="lazy">
+    <img class="shot-m" src="/img/work-musubi-${ML}-m.jpg" width="390" height="${MUSUBI_H[1] / 2}" alt="" loading="lazy">
   </div>`;
 
   const ro = new ResizeObserver(entries => entries.forEach(e => fit(e.target)));
@@ -64,7 +86,7 @@
     $('#v-title').textContent = T(w.name);
     $('#v-type').textContent = T(w.type);
     const own = $('#v-own');
-    if (w.url) own.innerHTML = `${T(w.concept ? '자체 콘셉트 ·' : '실제 작업')} <a href="${w.url}" target="_blank" rel="noopener">${w.url.replace('https://', '')} ↗</a>`;
+    if (w.url) own.innerHTML = `${T(w.concept ? '자체 콘셉트 ·' : '실제 작업')} <a href="${w.url}" target="_blank" rel="noopener">${new URL(w.url).host} ↗</a>`;
     else own.textContent = T(w.note || '자체 콘셉트이며 실제 고객 작업이 아닙니다');
     segs.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === vk)));
     frame.classList.toggle('is-m', vk === 'm');

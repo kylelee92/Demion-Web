@@ -12,7 +12,7 @@
     ['하루 만에 첫 디자인을 확인하세요. 웹과 모바일, 디자인부터 개발까지 맡는 홈페이지 디자인 스튜디오 demion.', 'See your first design in one day. demion is a website studio handling web and mobile, from design through development.', '1日で最初のデザインをご確認いただけます。Webとモバイル、デザインから開発まで手がけるホームページデザインスタジオ、demion。', '一天内即可看到第一版设计。demion 是一家网站设计工作室，承接网页与移动端，从设计到开发。'],
     ['demion이 디자인하고 개발한 홈페이지 사례입니다.', 'Websites designed and built by demion.', 'demionがデザイン・開発したホームページの事例です。', 'demion 设计并开发的网站案例。'],
     ['홈페이지 디자인·개발 사례 · demion', 'Work · demion', '制作事例｜demion', '项目案例｜demion'],
-    ['demion이 디자인하고 개발한 홈페이지 사례입니다. 작가 사이트, 컨설팅 회사, 제조 기업 홈페이지를 웹과 모바일 화면으로 확인하세요.', 'Websites designed and built by demion: an artist site, a consulting firm and a manufacturer, shown on web and mobile.', 'demionがデザイン・開発したホームページの事例です。作家サイト、コンサルティング会社、製造企業のサイトをウェブとモバイルでご覧ください。', 'demion 设计并开发的网站案例，包括艺术家网站、咨询公司和制造企业的官网，可在网页和移动端画面中查看。'],
+    ['demion이 디자인하고 개발한 홈페이지 사례입니다. 작가 사이트, 컨설팅 회사, 제조 기업, IT 마케팅 회사 홈페이지를 웹과 모바일 화면으로 확인하세요.', 'Websites designed and built by demion: an artist site, a consulting firm, a manufacturer and an IT marketing firm, shown on web and mobile.', 'demionがデザイン・開発したホームページの事例です。作家サイト、コンサルティング会社、製造企業、ITマーケティング会社のサイトをウェブとモバイルでご覧ください。', 'demion 设计并开发的网站案例，包括艺术家网站、咨询公司、制造企业和 IT 营销公司的官网，可在网页和移动端画面中查看。'],
     ['demion — 먼저 보고, 결정하는 홈페이지 디자인', 'demion — See it first, then decide. Website design', 'demion — 見てから決める、ホームページデザイン', 'demion — 先看后定的网站设计'],
     ['본문 바로가기', 'Skip to content', '本文へ移動', '跳到正文'],
     ['demion 처음으로', 'demion home', 'demion トップへ', 'demion 首页'],
@@ -58,6 +58,10 @@
     ['조희욱 작가 사이트 첫 화면', 'Cho Hee-uk portfolio site, first screen', 'チョ・ヒウクの作品サイトのトップ画面', 'Cho Hee-uk 作品网站首页'],
     ['GW컨설팅 홈페이지 첫 화면', 'GW Consulting website, first screen', 'GWコンサルティングのホームページのトップ画面', 'GW Consulting 官网首页'],
     ['Precision Works 콘셉트 첫 화면', 'Precision Works concept, first screen', 'Precision Worksのコンセプトのトップ画面', 'Precision Works 概念设计首页'],
+    ['MUSUBI', 'MUSUBI', 'MUSUBI', 'MUSUBI'],
+    ['IT 마케팅 회사 홈페이지 · 4개 언어', 'IT marketing firm website · 4 languages', 'ITマーケティング会社のホームページ・4言語', 'IT 营销公司官网 · 4 种语言'],
+    ['MUSUBI 홈페이지 크게 보기', 'View the MUSUBI website', 'MUSUBIのホームページを拡大表示', '放大查看 MUSUBI 官网'],
+    ['MUSUBI 홈페이지 첫 화면', 'MUSUBI website, first screen', 'MUSUBIのホームページのトップ画面', 'MUSUBI 官网首页'],
 
     /* 장면: 하루 */
     ['이 정도 디자인을,', 'A design like this,', 'このデザインを、', '这样的设计，'],
