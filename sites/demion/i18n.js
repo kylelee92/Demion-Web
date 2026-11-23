@@ -61,6 +61,7 @@
     ['MUSUBI', 'MUSUBI', 'MUSUBI', 'MUSUBI'],
     ['IT 마케팅 회사 홈페이지 · 4개 언어', 'IT marketing firm website · 4 languages', 'ITマーケティング会社のホームページ・4言語', 'IT 营销公司官网 · 4 种语言'],
     ['MUSUBI 홈페이지 크게 보기', 'View the MUSUBI website', 'MUSUBIのホームページを拡大表示', '放大查看 MUSUBI 官网'],
+    ['MUSUBI 홈페이지 화면', 'MUSUBI website screen', 'MUSUBIのホームページの画面', 'MUSUBI 官网画面'],
     ['MUSUBI 홈페이지 첫 화면', 'MUSUBI website, first screen', 'MUSUBIのホームページのトップ画面', 'MUSUBI 官网首页'],
 
     /* 장면: 하루 */
