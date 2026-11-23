@@ -112,6 +112,20 @@
         "sites/precision-concept"
       ],
       "port": 5507
+    },
+    {
+      "name": "site-musubi",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5509",
+        "--bind",
+        "127.0.0.1",
+        "--directory",
+        "sites/musubi"
+      ],
+      "port": 5509
     }
   ]
 }
