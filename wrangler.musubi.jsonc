@@ -1,9 +1,8 @@
-// Cloudflare Workers 배포 설정 — むすび ITマーケティング 사이트
-// demion-web과 같은 저장소를 쓰는 Worker. 배포 명령: npx wrangler deploy -c wrangler.musubi.jsonc
-// - sites/musubi: 정적 사이트
+// Cloudflare Workers 배포 설정 — むすび ITマーケティング 사이트 (musubi.demion.co)
+// demion-web과 같은 저장소를 쓰는 Worker. Workers Builds의 배포 명령: npx wrangler deploy -c wrangler.musubi.jsonc
+// - sites/musubi: 정적 사이트 (/, /ko/, /en/, /zh/)
 // - worker/musubi-inquiry.js: POST /api/inquiry 문의 메일
 // 대시보드에서 직접 설정하는 것: Secret INQUIRY_TO (받는 주소, Email Routing에서 인증된 주소여야 함)
-// 도메인이 정해지면 routes에 custom_domain을 추가한다.
 {
   "name": "musubi-web",
   "main": "worker/musubi-inquiry.js",
@@ -13,5 +12,8 @@
   },
   "send_email": [
     { "name": "INQUIRY_MAIL" }
+  ],
+  "routes": [
+    { "pattern": "musubi.demion.co", "custom_domain": true }
   ]
 }
